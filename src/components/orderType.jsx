@@ -1,6 +1,6 @@
 import React from 'react';
 
-const OrderTypes = () => {
+const OrderType = () => {
   return (
     <div>
       <h1>OrderTypes</h1>
@@ -8,4 +8,4 @@ const OrderTypes = () => {
   );
 };
 
-export default OrderTypes;
+export default OrderType;
