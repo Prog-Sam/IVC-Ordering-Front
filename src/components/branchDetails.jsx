@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BranchDetail = () => {
+const BranchDetails = () => {
   return (
     <div>
       <h1>BranchDetails</h1>
@@ -8,4 +8,4 @@ const BranchDetail = () => {
   );
 };
 
-export default BranchDetail;
+export default BranchDetails;
