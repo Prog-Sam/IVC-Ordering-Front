@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import NavBar from './components/navbar';
 import Supplier from './components/supplier';
 import Brand from './components/brand';
@@ -23,12 +23,38 @@ import TransactionType from './components/transactionType';
 import User from './components/user';
 import Home from './components/home';
 
+import SupplierDetails from './components/supplierDetails';
+import BrandDetails from './components/brandDetails';
+import OrderTypeDetails from './components/orderTypeDetails';
+import LensTypeDetails from './components/lensTypeDetails';
+import IndexTypeDetails from './components/indexTypeDetails';
+import ProductFamilyDetails from './components/productFamilyDetails';
+import SupplyCategoryDetails from './components/supplyCategoryDetails';
+import LensMaterialDetails from './components/lensMaterialDetails';
+import LensItemDetails from './components/lensItemDetails';
+import LensParamDetails from './components/lensParamDetails';
+import ColorDayDetails from './components/colorDayDetails';
+import FSCSAModelDetails from './components/fscsaModelDetails';
+import FsItemDetails from './components/fsItemDetails';
+import CSAItemDetails from './components/csaItemDetails';
+import BranchTypeDetails from './components/branchTypeDetails';
+import MallDetails from './components/mallDetails';
+import BranchDetails from './components/branchDetails';
+import UnitDetails from './components/unitDetails';
+import TransactionTypeDetails from './components/transactionTypeDetails';
+import UserDetails from './components/userDetails';
+import NotFound from './components/notFound';
+
 function App() {
   return (
     <div className='App'>
       <NavBar />
       <main className='container'>
         <Switch>
+          <Route></Route>
+          <div path='/system-settings' render=''></div>
+          <div path='/branches-settings' render=''></div>
+          <div path='/items-settings' render=''></div>
           <Route
             path='/suppliers/:id'
             render={(props) => <SupplierDetails {...props} />}
@@ -109,7 +135,7 @@ function App() {
             path='/users/:id'
             render={(props) => <UserDetails {...props} />}
           />
-
+          {/*Routes for Non Details */}
           <Route
             path='/suppliers'
             render={(props) => <Supplier {...props} />}
@@ -169,7 +195,9 @@ function App() {
             render={(props) => <TransactionType {...props} />}
           />
           <Route path='/users' render={(props) => <User {...props} />} />
-          <Route path='/' render={(props) => <Home {...props} />} />
+          <Route path='/not-found' component={NotFound}></Route>
+          <Route path='/' exact render={(props) => <Home {...props} />} />
+          <Redirect to='/not-found' />
         </Switch>
       </main>
     </div>
