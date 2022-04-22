@@ -44,6 +44,9 @@ import UnitDetails from './components/unitDetails';
 import TransactionTypeDetails from './components/transactionTypeDetails';
 import UserDetails from './components/userDetails';
 import NotFound from './components/notFound';
+import SystemSettings from './components/systemSettings';
+import ItemSettings from './components/itemSettings';
+import BranchSettings from './components/branchSettings';
 
 function App() {
   return (
@@ -51,10 +54,6 @@ function App() {
       <NavBar />
       <main className='container'>
         <Switch>
-          <Route></Route>
-          <div path='/system-settings' render=''></div>
-          <div path='/branches-settings' render=''></div>
-          <div path='/items-settings' render=''></div>
           <Route
             path='/suppliers/:id'
             render={(props) => <SupplierDetails {...props} />}
@@ -195,6 +194,18 @@ function App() {
             render={(props) => <TransactionType {...props} />}
           />
           <Route path='/users' render={(props) => <User {...props} />} />
+          <Route
+            path='/system-settings'
+            render={(props) => <SystemSettings {...props} />}
+          />
+          <Route
+            path='/item-settings'
+            render={(props) => <ItemSettings {...props} />}
+          />
+          <Route
+            path='/branch-settings'
+            render={(props) => <BranchSettings {...props} />}
+          />
           <Route path='/not-found' component={NotFound}></Route>
           <Route path='/' exact render={(props) => <Home {...props} />} />
           <Redirect to='/not-found' />
