@@ -1,4 +1,3 @@
-import './App.css';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import NavBar from './components/navbar';
 import Supplier from './components/supplier';
@@ -47,11 +46,14 @@ import NotFound from './components/notFound';
 import SystemSettings from './components/systemSettings';
 import ItemSettings from './components/itemSettings';
 import BranchSettings from './components/branchSettings';
+import Navigation from './components/navigation';
+import './App.css';
 
 function App() {
   return (
     <div className='App'>
-      <NavBar />
+      <Navigation />
+      {/* <NavBar /> */}
       <main className='container'>
         <Switch>
           <Route
