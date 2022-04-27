@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Input from './../common/input';
 import Joi from 'joi-browser';
 
 const useForm = (schema, submitCallback, itemInDb = {}) => {
@@ -46,7 +47,28 @@ const useForm = (schema, submitCallback, itemInDb = {}) => {
     setErrors(localErrors);
   };
 
-  return [state, handleChange, handleSubmit, errors, validate];
+  const renderButton = (label) => {
+    return (
+      <button disabled={validate()} className='btn btn-primary'>
+        {label}
+      </button>
+    );
+  };
+
+  const renderInput = (name, label, type = 'text') => {
+    return (
+      <Input
+        name={name}
+        label={label}
+        onChange={handleChange}
+        value={state[name] || ''}
+        type={type}
+        error={errors[name]}
+      />
+    );
+  };
+
+  return [state, handleSubmit, renderButton, renderInput];
 };
 
 export default useForm;

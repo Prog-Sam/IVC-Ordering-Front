@@ -1,5 +1,4 @@
 import React from 'react';
-import Input from './../common/input';
 import Joi from 'joi-browser';
 import useForm from './../hooks/useForm';
 
@@ -14,7 +13,7 @@ const LoginForm = () => {
     console.log(values);
   };
 
-  const [values, handleChange, handleSubmit, errors, validate] = useForm(
+  const [values, handleSubmit, renderButton, renderInput] = useForm(
     schema,
     doSubmit
   );
@@ -23,25 +22,9 @@ const LoginForm = () => {
     <div>
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
-        <Input
-          name='username'
-          label='Username'
-          onChange={handleChange}
-          value={values.username || ''}
-          type='text'
-          error={errors.username}
-        />
-        <Input
-          name='password'
-          label='Password'
-          onChange={handleChange}
-          value={values.password || ''}
-          type='password'
-          error={errors.password}
-        />
-        <button disabled={validate()} className='btn btn-primary'>
-          Login
-        </button>
+        {renderInput('username', 'Username')}
+        {renderInput('password', 'Password', 'password')}
+        {renderButton('Login')};
       </form>
     </div>
   );
