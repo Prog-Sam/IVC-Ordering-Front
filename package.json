@@ -9,6 +9,8 @@
     "bootstrap": "^4.1.1",
     "joi-browser": "13.4",
     "jquery": "^3.6.0",
+    "lodash": "^4.17.10",
+    "prop-types": "^15.6.2",
     "query-string": "^6.1.0",
     "react": "^18.0.0",
     "react-bootstrap": "^2.3.0",
