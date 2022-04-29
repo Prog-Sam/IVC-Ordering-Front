@@ -4,8 +4,19 @@ const Input = ({ name, label, error, ...rest }) => {
   return (
     <Fragment>
       <div className='form-group'>
-        <label htmlFor={name}>{label}</label>
-        <input {...rest} id={name} name={name} className='form-control' />
+        <div>
+          <label className='d-flex align-items-left' htmlFor={name}>
+            {label}
+          </label>
+        </div>
+        <div>
+          <input
+            {...rest}
+            id={name}
+            name={name}
+            className='form-control d-flex align-items-left'
+          />
+        </div>
         {error && <div className='alert alert-danger'>{error}</div>}
       </div>
     </Fragment>
