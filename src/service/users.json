@@ -1,0 +1,3071 @@
+[
+  {
+    "id": 1,
+    "name": "SO, RICHARD Y.",
+    "branchKey": 173,
+    "access": 0,
+    "username": "devRichard",
+    "password": "devPassword1",
+    "status": 0
+  },
+  {
+    "id": 2,
+    "name": "BASCO, SAM",
+    "branchKey": 173,
+    "access": 0,
+    "username": "devSam",
+    "password": "devPassword2",
+    "status": 0
+  },
+  {
+    "id": 3,
+    "name": "PABOROQUEZ, JOSHUA",
+    "branchKey": 173,
+    "access": 0,
+    "username": "devJoshua",
+    "password": "devPassword3",
+    "status": 0
+  },
+  {
+    "id": 4,
+    "name": "LLAVE, ANNA RUBY",
+    "branchKey": 10,
+    "access": 1,
+    "username": "llaveannaruby10",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 5,
+    "name": "MALLARI, SHEERA",
+    "branchKey": 71,
+    "access": 1,
+    "username": "mallarisheera71",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 6,
+    "name": "CARBUNGCO, BERNA JOY",
+    "branchKey": 15,
+    "access": 1,
+    "username": "carbungcobernajoy15",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 7,
+    "name": "VILLANUEVA, JOFFREY",
+    "branchKey": 75,
+    "access": 1,
+    "username": "villanuevajoffrey75",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 8,
+    "name": "VEGAFRIA, JESSAMINE",
+    "branchKey": 73,
+    "access": 1,
+    "username": "vegafriajessamine73",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 9,
+    "name": "TORRES, ANNA MARIE T,",
+    "branchKey": 76,
+    "access": 1,
+    "username": "torresannamarie76",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 10,
+    "name": "VELASCO, DIANA K.",
+    "branchKey": 24,
+    "access": 1,
+    "username": "velascodiana24",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 11,
+    "name": "CARLOS, MARTHA ROWENA",
+    "branchKey": 77,
+    "access": 1,
+    "username": "carlosmartharowena77",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 12,
+    "name": "REDOBLE, MARIA CECILIA",
+    "branchKey": 78,
+    "access": 1,
+    "username": "redoblemariacecilia78",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 13,
+    "name": "DELA TORRE, JOSEFF L.",
+    "branchKey": 80,
+    "access": 1,
+    "username": "delatorrejoseff80",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 14,
+    "name": "NAYAN, DEXTER",
+    "branchKey": 49,
+    "access": 1,
+    "username": "nayandexter49",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 15,
+    "name": "PATROLLA, RYAN M.",
+    "branchKey": 39,
+    "access": 1,
+    "username": "patrollaryan39",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 16,
+    "name": "CRUZ, LORNA D.",
+    "branchKey": 107,
+    "access": 1,
+    "username": "cruzlorna107",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 17,
+    "name": "RAMOS, JERRY",
+    "branchKey": 84,
+    "access": 1,
+    "username": "ramosjerry84",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 18,
+    "name": "LAO, LINDY",
+    "branchKey": 86,
+    "access": 1,
+    "username": "laolindy86",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 19,
+    "name": "BALILI, WILMA R.",
+    "branchKey": 87,
+    "access": 1,
+    "username": "baliliwilma87",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 20,
+    "name": "DIESTRO, BERYL",
+    "branchKey": 17,
+    "access": 1,
+    "username": "diestroberyl17",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 21,
+    "name": "GURON, MARY GRACE",
+    "branchKey": 88,
+    "access": 1,
+    "username": "guronmarygrace88",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 22,
+    "name": "RELOX, JOSEPHINE M.",
+    "branchKey": 27,
+    "access": 1,
+    "username": "reloxjosephine27",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 23,
+    "name": "JORDAN, MARIDEL S.",
+    "branchKey": 28,
+    "access": 1,
+    "username": "jordanmaridel28",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 24,
+    "name": "DAYAO, ARNEL",
+    "branchKey": 91,
+    "access": 1,
+    "username": "dayaoarnel91",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 25,
+    "name": "ARELLA, RIZZA JOY T.",
+    "branchKey": 92,
+    "access": 1,
+    "username": "arellarizzajoy92",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 26,
+    "name": "YU, ROUL RONALD A.",
+    "branchKey": 92,
+    "access": 1,
+    "username": "yuroulronald92",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 27,
+    "name": "CHUA, KAREN A.",
+    "branchKey": 113,
+    "access": 1,
+    "username": "chuakaren113",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 28,
+    "name": "DACLISON, ADELAIDA B.",
+    "branchKey": 94,
+    "access": 1,
+    "username": "daclisonadelaida94",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 29,
+    "name": "LEOBRERA, EMYLINE",
+    "branchKey": 18,
+    "access": 1,
+    "username": "leobreraemyline18",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 30,
+    "name": "BALBOA, KAREN Q.",
+    "branchKey": 31,
+    "access": 1,
+    "username": "balboakaren31",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 31,
+    "name": "SIM, MARITES",
+    "branchKey": 34,
+    "access": 1,
+    "username": "simmarites34",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 32,
+    "name": "CHUA, ELEANOR",
+    "branchKey": 37,
+    "access": 1,
+    "username": "chuaeleanor37",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 33,
+    "name": "ALVAREZ, MA.ESPERANZA",
+    "branchKey": 96,
+    "access": 1,
+    "username": "alvarezmaesperanza96",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 34,
+    "name": "GO, RALPH MARTIN",
+    "branchKey": 174,
+    "access": 1,
+    "username": "goralphmartin174",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 35,
+    "name": "LEE, WILLIAM",
+    "branchKey": 175,
+    "access": 1,
+    "username": "leewilliam175",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 36,
+    "name": "LASCANO, REYNALDO",
+    "branchKey": 175,
+    "access": 1,
+    "username": "lascanoreynaldo175",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 37,
+    "name": "SO, RIZZA MAY G.",
+    "branchKey": 175,
+    "access": 1,
+    "username": "sorizzamay175",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 38,
+    "name": "LEE, RACHEL JOY G.",
+    "branchKey": 175,
+    "access": 1,
+    "username": "leeracheljoy175",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 39,
+    "name": "CHANG, MICHAEL P.",
+    "branchKey": 175,
+    "access": 1,
+    "username": "changmichael175",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 40,
+    "name": "CRUZ, NICHOLAS R.",
+    "branchKey": 40,
+    "access": 1,
+    "username": "cruznicholas40",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 41,
+    "name": "ADAM, LESLIE D.",
+    "branchKey": 42,
+    "access": 1,
+    "username": "adamleslie42",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 42,
+    "name": "CABANLONG, JASMIN Y.",
+    "branchKey": 43,
+    "access": 1,
+    "username": "cabanlongjasmin43",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 43,
+    "name": "ARBAN, STEPHEN JOHN A.",
+    "branchKey": 129,
+    "access": 1,
+    "username": "arbanstephenjohn129",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 44,
+    "name": "LUNA, NERMA",
+    "branchKey": 159,
+    "access": 1,
+    "username": "lunanerma159",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 45,
+    "name": "PIELAGO, JOSEPH JET S.",
+    "branchKey": 47,
+    "access": 1,
+    "username": "pielagojosephjet47",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 46,
+    "name": "EVANGELIO, RIO S.",
+    "branchKey": 99,
+    "access": 1,
+    "username": "evangeliorio99",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 47,
+    "name": "PAGADUAN, NIÃ‘A VERNA",
+    "branchKey": 156,
+    "access": 1,
+    "username": "pagaduanninaverna156",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 48,
+    "name": "CHAN, DELFIN C.",
+    "branchKey": 100,
+    "access": 1,
+    "username": "chandelfin100",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 49,
+    "name": "YU, SANDRA A.",
+    "branchKey": 102,
+    "access": 1,
+    "username": "yusandra102",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 50,
+    "name": "NAYAN, MARY ANNE F.",
+    "branchKey": 103,
+    "access": 1,
+    "username": "nayanmaryanne103",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 51,
+    "name": "MORADA, LORYLI D.",
+    "branchKey": 104,
+    "access": 1,
+    "username": "moradaloryli104",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 52,
+    "name": "LORENZO, RIZZA D.",
+    "branchKey": 105,
+    "access": 1,
+    "username": "lorenzorizza105",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 53,
+    "name": "CANDA, RUDY",
+    "branchKey": 23,
+    "access": 1,
+    "username": "candarudy23",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 54,
+    "name": "Dee, Jessica",
+    "branchKey": 108,
+    "access": 1,
+    "username": "deejessica108",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 55,
+    "name": "MOULIC, MA. LUISA C.",
+    "branchKey": 151,
+    "access": 1,
+    "username": "moulicmaluisa151",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 56,
+    "name": "CHUA, MICHELLE LOVE C.",
+    "branchKey": 30,
+    "access": 1,
+    "username": "chuamichellelove30",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 57,
+    "name": "CABRERA, KRISTIAN EARL",
+    "branchKey": 112,
+    "access": 1,
+    "username": "cabrerakristianearl112",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 58,
+    "name": "DALIDA, EVYLIN P.",
+    "branchKey": 114,
+    "access": 1,
+    "username": "dalidaevylin114",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 59,
+    "name": "BAU, ARCHIE P.",
+    "branchKey": 115,
+    "access": 1,
+    "username": "bauarchie115",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 60,
+    "name": "ABRENICA, MARY LISBETH CHANG",
+    "branchKey": 51,
+    "access": 1,
+    "username": "abrenicamarylisbethchang51",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 61,
+    "name": "PABUAYA, JAMAICA BLANCA",
+    "branchKey": 61,
+    "access": 1,
+    "username": "pabuayajamaicablanca61",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 62,
+    "name": "QUA, KATHERINE TIO",
+    "branchKey": 63,
+    "access": 1,
+    "username": "quakatherinetio63",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 63,
+    "name": "GUARINO, HERMIE",
+    "branchKey": 65,
+    "access": 1,
+    "username": "guarinohermie65",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 64,
+    "name": "SANTIAGO, KAYPEE Z.",
+    "branchKey": 66,
+    "access": 1,
+    "username": "santiagokaypee66",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 65,
+    "name": "DELA PASION, MARGIE",
+    "branchKey": 121,
+    "access": 1,
+    "username": "delapasionmargie121",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 66,
+    "name": "DE GUZMAN, MARIA ISABEL S.",
+    "branchKey": 124,
+    "access": 1,
+    "username": "deguzmanmariaisabel124",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 67,
+    "name": "TY, CHARITO C.",
+    "branchKey": 125,
+    "access": 1,
+    "username": "tycharito125",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 68,
+    "name": "PADOC, JOSEPHINE D.",
+    "branchKey": 118,
+    "access": 1,
+    "username": "padocjosephine118",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 69,
+    "name": "RAMIL, ROXANNE",
+    "branchKey": 127,
+    "access": 1,
+    "username": "ramilroxanne127",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 70,
+    "name": "MARZON, CECILIA L.",
+    "branchKey": 123,
+    "access": 1,
+    "username": "marzoncecilia123",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 71,
+    "name": "MAURE, AMALIA",
+    "branchKey": 70,
+    "access": 1,
+    "username": "maureamalia70",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 72,
+    "name": "AGUILAR, MARLYN MAY M.",
+    "branchKey": 72,
+    "access": 1,
+    "username": "aguilarmarlynmay72",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 73,
+    "name": "PARDO, MA. VIVETH DE BELEN",
+    "branchKey": 79,
+    "access": 1,
+    "username": "pardomavivethdebelen79",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 74,
+    "name": "TADLAS, KIRBY",
+    "branchKey": 89,
+    "access": 1,
+    "username": "tadlaskirby89",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 75,
+    "name": "BARDELOZA, AIDYL AURORA",
+    "branchKey": 90,
+    "access": 1,
+    "username": "bardelozaaidylaurora90",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 76,
+    "name": "CALDERON, SHEILA RICA SANA",
+    "branchKey": 93,
+    "access": 1,
+    "username": "calderonsheilaricasana93",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 77,
+    "name": "DOGOLDOGOL, GLENN",
+    "branchKey": 95,
+    "access": 1,
+    "username": "dogoldogolglenn95",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 78,
+    "name": "BUCAOTO, LAURALIE P.",
+    "branchKey": 97,
+    "access": 1,
+    "username": "bucaotolauralie97",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 79,
+    "name": "SEE, IVY HONEYLOU",
+    "branchKey": 101,
+    "access": 1,
+    "username": "seeivyhoneylou101",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 80,
+    "name": "PORCINCULA, JANETTE F.",
+    "branchKey": 131,
+    "access": 1,
+    "username": "porcinculajanette131",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 81,
+    "name": "RIVERA, GERLIE",
+    "branchKey": 126,
+    "access": 1,
+    "username": "riveragerlie126",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 82,
+    "name": "CHAN, CATHERINE",
+    "branchKey": 133,
+    "access": 1,
+    "username": "chancatherine133",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 83,
+    "name": "RAMOS, KATHERINE F.",
+    "branchKey": 136,
+    "access": 1,
+    "username": "ramoskatherine136",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 84,
+    "name": "CHAN, CONNIE F.",
+    "branchKey": 142,
+    "access": 1,
+    "username": "chanconnie142",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 85,
+    "name": "ESTILLORE, MERCEVINA GEMMA E.",
+    "branchKey": 153,
+    "access": 1,
+    "username": "estilloremercevinagemma153",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 86,
+    "name": "QUINANAHAN, MARIA MARIETTA MICHELLE P.",
+    "branchKey": 130,
+    "access": 1,
+    "username": "quinanahanmariamariettamichelle130",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 87,
+    "name": "SAMIA, MELANIE SUGUI",
+    "branchKey": 132,
+    "access": 1,
+    "username": "samiamelaniesugui132",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 88,
+    "name": "LABUTONG, JOSE",
+    "branchKey": 134,
+    "access": 1,
+    "username": "labutongjose134",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 89,
+    "name": "GUANZON, JOAN B.",
+    "branchKey": 135,
+    "access": 1,
+    "username": "guanzonjoan135",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 90,
+    "name": "DAYAO, LORELEI G.",
+    "branchKey": 137,
+    "access": 1,
+    "username": "dayaolorelei137",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 91,
+    "name": "LLORENTE, ABIGAIL M.",
+    "branchKey": 144,
+    "access": 1,
+    "username": "llorenteabigail144",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 92,
+    "name": "ALONZO, LOLITA T.",
+    "branchKey": 140,
+    "access": 1,
+    "username": "alonzololita140",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 93,
+    "name": "TRINIDAD, ANGELA V.",
+    "branchKey": 148,
+    "access": 1,
+    "username": "trinidadangela148",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 94,
+    "name": "VALDEZ, JOSEFINA L.",
+    "branchKey": 150,
+    "access": 1,
+    "username": "valdezjosefina150",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 95,
+    "name": "SALALILA, ANTOINETTE CRUZ",
+    "branchKey": 152,
+    "access": 1,
+    "username": "salalilaantoinettecruz152",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 96,
+    "name": "MORALES, EVELYN T.",
+    "branchKey": 172,
+    "access": 1,
+    "username": "moralesevelyn172",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 97,
+    "name": "LUCEROS, WENZEL ANN K.",
+    "branchKey": 141,
+    "access": 1,
+    "username": "luceroswenzelann141",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 98,
+    "name": "MAMACLAY, MARIFEL P.",
+    "branchKey": 13,
+    "access": 2,
+    "username": "mamaclaymarifel13",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 99,
+    "name": "GEÃ‘OSO, NICA MARIE E.",
+    "branchKey": 11,
+    "access": 2,
+    "username": "genosonicamarie11",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 100,
+    "name": "DAYRIT, MARY RUTHSEN",
+    "branchKey": 16,
+    "access": 2,
+    "username": "dayritmaryruthsen16",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 101,
+    "name": "SANCHEZ, MICHAEL L.",
+    "branchKey": 19,
+    "access": 2,
+    "username": "sanchezmichael19",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 102,
+    "name": "MANAGASE, XAJA",
+    "branchKey": 14,
+    "access": 2,
+    "username": "managasexaja14",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 103,
+    "name": "ABREA, GULLIVER",
+    "branchKey": 22,
+    "access": 2,
+    "username": "abreagulliver22",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 104,
+    "name": "CARAG, MANUEL",
+    "branchKey": 165,
+    "access": 2,
+    "username": "caragmanuel165",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 105,
+    "name": "DELICANO, AL DEO RAY",
+    "branchKey": 73,
+    "access": 2,
+    "username": "delicanoaldeoray73",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 106,
+    "name": "SELISANA, EDDEL MAR A.",
+    "branchKey": 76,
+    "access": 2,
+    "username": "selisanaeddelmar76",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 107,
+    "name": "TABOSO, MARIA TERESA I.",
+    "branchKey": 77,
+    "access": 2,
+    "username": "tabosomariateresa77",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 108,
+    "name": "POLICARPIO, RUTH MAE C.",
+    "branchKey": 80,
+    "access": 2,
+    "username": "policarpioruthmae\\80",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 109,
+    "name": "CORONIA, MA. JANNELYN O.",
+    "branchKey": 49,
+    "access": 2,
+    "username": "coroniamajannelyn49",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 110,
+    "name": "VILLAR, RHODA",
+    "branchKey": 107,
+    "access": 2,
+    "username": "villarrhoda107",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 111,
+    "name": "FESALBON, GENEVIEVE",
+    "branchKey": 149,
+    "access": 2,
+    "username": "fesalbongenevieve149",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 112,
+    "name": "SISON, GILDA R.",
+    "branchKey": 54,
+    "access": 2,
+    "username": "sisongilda54",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 113,
+    "name": "ODRON, RAYSHELLE",
+    "branchKey": 83,
+    "access": 2,
+    "username": "odronrayshelle83",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 114,
+    "name": "LABERGUE, JENMER",
+    "branchKey": 25,
+    "access": 2,
+    "username": "laberguejenmer25",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 115,
+    "name": "DAYON, GILDA",
+    "branchKey": 87,
+    "access": 2,
+    "username": "dayongilda87",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 116,
+    "name": "BAUTISTA, XENIA A.",
+    "branchKey": 88,
+    "access": 2,
+    "username": "bautistaxenia88",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 117,
+    "name": "ROA, QUENNY",
+    "branchKey": 27,
+    "access": 2,
+    "username": "roaquenny27",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 118,
+    "name": "MAPALO, LAARNI NICOLAS",
+    "branchKey": 28,
+    "access": 2,
+    "username": "mapalolaarninicolas28",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 119,
+    "name": "CARDIÃ‘O, NOREEN S.",
+    "branchKey": 91,
+    "access": 2,
+    "username": "cardinonoreen91",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 120,
+    "name": "TONGOL, CHRISTY",
+    "branchKey": 92,
+    "access": 2,
+    "username": "tongolchristy92",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 121,
+    "name": "CAIÃ‘A, RODULFO",
+    "branchKey": 26,
+    "access": 2,
+    "username": "cainarodulfo26",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 122,
+    "name": "RAM, SER JANSSEN HARRY B.",
+    "branchKey": 48,
+    "access": 2,
+    "username": "ramserjanssenharry48",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 123,
+    "name": "SUPERABLE, ELMA LOIDA C.",
+    "branchKey": 113,
+    "access": 2,
+    "username": "superableelmaloida113",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 124,
+    "name": "COMPLETO, SHERYL FAYE L.",
+    "branchKey": 6,
+    "access": 2,
+    "username": "completosherylfaye6",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 125,
+    "name": "AQUINO, RIZALINA",
+    "branchKey": 94,
+    "access": 2,
+    "username": "aquinorizalina94",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 126,
+    "name": "CARBONELL, KRISTIA M.",
+    "branchKey": 31,
+    "access": 2,
+    "username": "carbonellkristia31",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 127,
+    "name": "SEMPIO, JAN ANTHONY",
+    "branchKey": 41,
+    "access": 2,
+    "username": "sempiojananthony41",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 128,
+    "name": "NARANJO, JONATHAN",
+    "branchKey": 20,
+    "access": 2,
+    "username": "naranjojonathan20",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 129,
+    "name": "ABRENICA, MARY KRISTELLE CHANG",
+    "branchKey": 2,
+    "access": 2,
+    "username": "abrenicamarykristellechang2",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 130,
+    "name": "DELA CRUZ, EDWARD HOWELL",
+    "branchKey": 38,
+    "access": 2,
+    "username": "delacruzedwardhowell38",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 131,
+    "name": "REGALA, BRENJOHN R.",
+    "branchKey": 96,
+    "access": 2,
+    "username": "regalabrenjohn96",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 132,
+    "name": "ASAKIL, RYAN",
+    "branchKey": 43,
+    "access": 2,
+    "username": "asakilryan43",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 133,
+    "name": "MENDOZA, ERWIN",
+    "branchKey": 60,
+    "access": 2,
+    "username": "mendozaerwin60",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 134,
+    "name": "SASING, GINA BUNAC",
+    "branchKey": 157,
+    "access": 2,
+    "username": "sasingginabunac157",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 135,
+    "name": "ONG, CYNTHIA T.",
+    "branchKey": 158,
+    "access": 2,
+    "username": "ongcynthia158",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 136,
+    "name": "LAGAHUYA, CONCEPCION E.",
+    "branchKey": 47,
+    "access": 2,
+    "username": "lagahuyaconcepcion47",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 137,
+    "name": "BABON, KING DAVID",
+    "branchKey": 154,
+    "access": 2,
+    "username": "babonkingdavid154",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 138,
+    "name": "ESCLETO, HASMIN",
+    "branchKey": 100,
+    "access": 2,
+    "username": "escletohasmin100",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 139,
+    "name": "APACIONADO, MARIA CRISTINA A.",
+    "branchKey": 102,
+    "access": 2,
+    "username": "apacionadomariacristina102",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 140,
+    "name": "PUNO, JASPER",
+    "branchKey": 103,
+    "access": 2,
+    "username": "punojasper103",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 141,
+    "name": "CADAOAS, CARLO YVES",
+    "branchKey": 104,
+    "access": 2,
+    "username": "cadaoascarloyves104",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 142,
+    "name": "ACUÃ‘A, MARRY JEAN",
+    "branchKey": 106,
+    "access": 2,
+    "username": "acunamarryjean106",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 143,
+    "name": "DELA PAZ, JENNIFER C.",
+    "branchKey": 106,
+    "access": 2,
+    "username": "delapazjennifer106",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 144,
+    "name": "NAVARRETE, JOHANN",
+    "branchKey": 108,
+    "access": 2,
+    "username": "navarretejohann108",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 145,
+    "name": "ARANAS, SHAMAINE",
+    "branchKey": 110,
+    "access": 2,
+    "username": "aranasshamaine110",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 146,
+    "name": "ARANAS, MARIA LEA F.",
+    "branchKey": 111,
+    "access": 2,
+    "username": "aranasmarialea111",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 147,
+    "name": "DELA CRUZ, ABIGAIL",
+    "branchKey": 151,
+    "access": 2,
+    "username": "delacruzabigail151",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 148,
+    "name": "CARIÃ‘O, SIR ROWELL S.",
+    "branchKey": 50,
+    "access": 2,
+    "username": "carinosirrowell50",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 149,
+    "name": "VICENCION, MA. VICTORIE L.",
+    "branchKey": 114,
+    "access": 2,
+    "username": "vicencionmavictori114",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 150,
+    "name": "OLASO, MELVIN",
+    "branchKey": 116,
+    "access": 2,
+    "username": "olasomelvin116",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 151,
+    "name": "RAVAL, SHERRY LYN D.",
+    "branchKey": 115,
+    "access": 2,
+    "username": "ravalsherrylyn115",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 152,
+    "name": "MARCALINAS, ZORAIDA",
+    "branchKey": 37,
+    "access": 2,
+    "username": "marcalinaszoraida37",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 153,
+    "name": "ESGUERRA, JANE",
+    "branchKey": 52,
+    "access": 2,
+    "username": "esguerrajane52",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 154,
+    "name": "SISON, LOUISE ANN R.",
+    "branchKey": 53,
+    "access": 2,
+    "username": "sisonlouiseann53",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 155,
+    "name": "MAGTO, CHERRYL S.",
+    "branchKey": 55,
+    "access": 2,
+    "username": "magtocherryl55",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 156,
+    "name": "DOMINGO, ROSEN JERLY B.",
+    "branchKey": 60,
+    "access": 2,
+    "username": "domingorosenjerly60",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 157,
+    "name": "RADA, MIKAELLA N.",
+    "branchKey": 63,
+    "access": 2,
+    "username": "radamikaella63",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 158,
+    "name": "AGTANG, MELISA",
+    "branchKey": 65,
+    "access": 2,
+    "username": "agtangmelisa65",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 159,
+    "name": "SARCON, EVANGELINE T.",
+    "branchKey": 68,
+    "access": 2,
+    "username": "sarconevangeline68",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 160,
+    "name": "CAOC, DIANA MARIZ",
+    "branchKey": 122,
+    "access": 2,
+    "username": "caocdianamariz122",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 161,
+    "name": "BAGUILAT, JOHN PAUL",
+    "branchKey": 124,
+    "access": 2,
+    "username": "baguilatjohnpaul124",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 162,
+    "name": "BAUTISTA, APRIL G.",
+    "branchKey": 125,
+    "access": 2,
+    "username": "bautistaapril125",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 163,
+    "name": "LIANGCO, JOCELYN",
+    "branchKey": 118,
+    "access": 2,
+    "username": "liangcojocelyn118",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 164,
+    "name": "EBREO, DAISY B.",
+    "branchKey": 127,
+    "access": 2,
+    "username": "ebreodaisy127",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 165,
+    "name": "DALMAN, JOSEPH",
+    "branchKey": 128,
+    "access": 2,
+    "username": "dalmanjoseph128",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 166,
+    "name": "CASTIGADOR, KRISTINE KAMILLE E.",
+    "branchKey": 70,
+    "access": 2,
+    "username": "castigadorkristinekamille70",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 167,
+    "name": "AGUIRRE, CHRISTIAN JUDE LAURENCE",
+    "branchKey": 82,
+    "access": 2,
+    "username": "aguirrechristianjudelaurence82",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 168,
+    "name": "GABITAN, NOREEN V.",
+    "branchKey": 85,
+    "access": 2,
+    "username": "gabitannoreen85",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 169,
+    "name": "BAGUISTA, MARILAG",
+    "branchKey": 93,
+    "access": 2,
+    "username": "baguistamarilag93",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 170,
+    "name": "LARDIZABAL, JOHANNA",
+    "branchKey": 95,
+    "access": 2,
+    "username": "lardizabaljohanna95",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 171,
+    "name": "MORALES, MARIA CRISTINA M.",
+    "branchKey": 101,
+    "access": 2,
+    "username": "moralesmariacristina101",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 172,
+    "name": "MONTEALEGRE, RAJINI LARNE R.",
+    "branchKey": 119,
+    "access": 2,
+    "username": "montealegrerajinilarne119",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 173,
+    "name": "BUENAVENTURA, JOSEPHINE",
+    "branchKey": 120,
+    "access": 2,
+    "username": "buenaventurajosephine120",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 174,
+    "name": "TUVILLA, AMIE JO S.",
+    "branchKey": 131,
+    "access": 2,
+    "username": "tuvillaamiejo131",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 175,
+    "name": "SALVADOR, PERCYCHEL V.",
+    "branchKey": 142,
+    "access": 2,
+    "username": "salvadorpercychel142",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 176,
+    "name": "BORJA, RHODA C.",
+    "branchKey": 153,
+    "access": 2,
+    "username": "borjarhoda153",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 177,
+    "name": "ORTEGA, ARLYN",
+    "branchKey": 130,
+    "access": 2,
+    "username": "ortegaarlyn130",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 178,
+    "name": "EDEJER, JOY",
+    "branchKey": 21,
+    "access": 2,
+    "username": "edejerjoy21",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 179,
+    "name": "LACAYANGA, EUGENIA D.",
+    "branchKey": 36,
+    "access": 2,
+    "username": "lacayangaeugenia36",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 180,
+    "name": "GABRIEL, KRISTEL N.",
+    "branchKey": 134,
+    "access": 2,
+    "username": "gabrielkristel134",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 181,
+    "name": "LALOG, MAGDIWANG M.",
+    "branchKey": 135,
+    "access": 2,
+    "username": "lalogmagdiwang135",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 182,
+    "name": "KALLOS, KHRISTINE MARY Y.",
+    "branchKey": 137,
+    "access": 2,
+    "username": "kalloskhristinemary137",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 183,
+    "name": "RAMOS, MYLENE",
+    "branchKey": 46,
+    "access": 2,
+    "username": "ramosmylene46",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 184,
+    "name": "LIM, SARAH JOYCE D.",
+    "branchKey": 144,
+    "access": 2,
+    "username": "limsarahjoyce144",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 185,
+    "name": "KAHULUGAN, SARAH JANE M.",
+    "branchKey": 4,
+    "access": 2,
+    "username": "kahulugansarahjane4",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 186,
+    "name": "PEREZ, LAWRENCE ISIDERIO",
+    "branchKey": 145,
+    "access": 2,
+    "username": "perezlawrenceisiderio145",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 187,
+    "name": "MACAPAGAL, CHESTER S.",
+    "branchKey": 147,
+    "access": 2,
+    "username": "macapagalchester147",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 188,
+    "name": "SILVA, REGINALD A.",
+    "branchKey": 150,
+    "access": 2,
+    "username": "silvareginald150",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 189,
+    "name": "CRUZ, MARY CLAIRE VICTORIA O.",
+    "branchKey": 152,
+    "access": 2,
+    "username": "cruzmaryclairevictoria152",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 190,
+    "name": "PAREÃ‘AS, VIVIEN G.",
+    "branchKey": 166,
+    "access": 2,
+    "username": "parenasvivien166",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 191,
+    "name": "YAPTENGCO, ERLENE",
+    "branchKey": 167,
+    "access": 2,
+    "username": "yaptengcoerlene167",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 192,
+    "name": "BAGUILAT, PRINCESS ANN DE VERA",
+    "branchKey": 168,
+    "access": 2,
+    "username": "baguilatprincessanndevera168",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 193,
+    "name": "LEE, ROCHELLE JOT",
+    "branchKey": 160,
+    "access": 2,
+    "username": "leerochellejot160",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 194,
+    "name": "ESCOVILLA, EUSIDES ELLA MAE C.",
+    "branchKey": 161,
+    "access": 2,
+    "username": "escovillaeusidesellamae161",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 195,
+    "name": "REGIS, JERROLD",
+    "branchKey": 169,
+    "access": 2,
+    "username": "regisjerrold169",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 196,
+    "name": "LIBRADO, CHERRIE",
+    "branchKey": 163,
+    "access": 2,
+    "username": "libradocherrie163",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 197,
+    "name": "GUMANID, LORAMAE KRISZEL",
+    "branchKey": 46,
+    "access": 6,
+    "username": "gumanidloramaekriszel46",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 198,
+    "name": "MONTILLA, MARVIN JOHN J.",
+    "branchKey": 81,
+    "access": 4,
+    "username": "montillamarvinjohnj81",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 199,
+    "name": "CURA, BLENDA",
+    "branchKey": 124,
+    "access": 6,
+    "username": "curablenda124",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 200,
+    "name": "SIM, DR. MARITES",
+    "branchKey": 34,
+    "access": 1,
+    "username": "simdrmarites34",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 201,
+    "name": "MINA, NORILYN",
+    "branchKey": 124,
+    "access": 6,
+    "username": "minanorilyn124",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 202,
+    "name": "REYES, CHERADEE",
+    "branchKey": 125,
+    "access": 6,
+    "username": "reyescheradee125",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 203,
+    "name": "AMOR, JERALYN",
+    "branchKey": 113,
+    "access": 6,
+    "username": "amorjeralyn113",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 204,
+    "name": "SAMIA, MELANIE",
+    "branchKey": 132,
+    "access": 1,
+    "username": "samiamelanie132",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 205,
+    "name": "FALIBLE, ROSE",
+    "branchKey": 113,
+    "access": 6,
+    "username": "faliblerose113",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 206,
+    "name": "VILLACERAN, PETER DARREN",
+    "branchKey": 132,
+    "access": 4,
+    "username": "villaceranpeterdarren132",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 207,
+    "name": "HERRERA, CHERRYLYN",
+    "branchKey": 113,
+    "access": 6,
+    "username": "herreracherrylyn113",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 208,
+    "name": "GIRON, MARIETA",
+    "branchKey": 132,
+    "access": 4,
+    "username": "gironmarieta132",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 209,
+    "name": "PASCUA, RONALYN",
+    "branchKey": 113,
+    "access": 6,
+    "username": "pascuaronalyn113",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 210,
+    "name": "MILITANTE, ROSE",
+    "branchKey": 132,
+    "access": 5,
+    "username": "militanterose132",
+    "password": "ideal-encoder",
+    "status": 0
+  },
+  {
+    "id": 211,
+    "name": "MAPALO, LAARNI",
+    "branchKey": 28,
+    "access": 2,
+    "username": "mapalolaarni28",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 212,
+    "name": "RAMOS, ROWENA",
+    "branchKey": 113,
+    "access": 6,
+    "username": "ramosrowena113",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 213,
+    "name": "MARCELO, JONAS",
+    "branchKey": 63,
+    "access": 5,
+    "username": "marcelojonas63",
+    "password": "ideal-encoder",
+    "status": 0
+  },
+  {
+    "id": 214,
+    "name": "DE JESUS, EMILYN",
+    "branchKey": 132,
+    "access": 6,
+    "username": "dejesusemilyn132",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 215,
+    "name": "CRUZ, IMELDA",
+    "branchKey": 88,
+    "access": 4,
+    "username": "cruzimelda88",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 216,
+    "name": "GARGALLANO, ANGELYN",
+    "branchKey": 113,
+    "access": 6,
+    "username": "gargallanoangelyn113",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 217,
+    "name": "ONG, WILSON",
+    "branchKey": 88,
+    "access": 4,
+    "username": "ongwilson88",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 218,
+    "name": "PORNIAS, JHONNA MAY M.",
+    "branchKey": 7,
+    "access": 6,
+    "username": "porniasjhonnamaym7",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 219,
+    "name": "POSO, EDWIN",
+    "branchKey": 132,
+    "access": 6,
+    "username": "posoedwin132",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 220,
+    "name": "RIVERA, ROWENA",
+    "branchKey": 135,
+    "access": 6,
+    "username": "riverarowena135",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 221,
+    "name": "PINEDA, MA. CHARLENE",
+    "branchKey": 63,
+    "access": 6,
+    "username": "pinedamacharlene63",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 222,
+    "name": "BLANCHE, LEAH",
+    "branchKey": 88,
+    "access": 5,
+    "username": "blancheleah88",
+    "password": "ideal-encoder",
+    "status": 0
+  },
+  {
+    "id": 223,
+    "name": "PICAR, AILYN",
+    "branchKey": 135,
+    "access": 4,
+    "username": "picarailyn135",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 224,
+    "name": "FARINAS, HELEN",
+    "branchKey": 113,
+    "access": 6,
+    "username": "farinashelen113",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 225,
+    "name": "GUDTAN, RUZIELL",
+    "branchKey": 113,
+    "access": 5,
+    "username": "gudtanruziell113",
+    "password": "ideal-encoder",
+    "status": 0
+  },
+  {
+    "id": 226,
+    "name": "GOZAR, MARIEL",
+    "branchKey": 135,
+    "access": 5,
+    "username": "gozarmariel135",
+    "password": "ideal-encoder",
+    "status": 0
+  },
+  {
+    "id": 227,
+    "name": "PEREZ, APRILYN",
+    "branchKey": 7,
+    "access": 6,
+    "username": "perezaprilyn7",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 228,
+    "name": "RADA, MIKAELLA MAY",
+    "branchKey": 63,
+    "access": 2,
+    "username": "radamikaellamay63",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 229,
+    "name": "NUÃ‘EZ, CAMILLE ANGELA",
+    "branchKey": 108,
+    "access": 6,
+    "username": "nunezcamilleangela108",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 230,
+    "name": "QUA, KATHERINE",
+    "branchKey": 63,
+    "access": 1,
+    "username": "quakatherine63",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 231,
+    "name": "DOLORES, GLENN",
+    "branchKey": 108,
+    "access": 6,
+    "username": "doloresglenn108",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 232,
+    "name": "BALBARIN, CLAUDINE",
+    "branchKey": 56,
+    "access": 6,
+    "username": "balbarinclaudine56",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 233,
+    "name": "MOLDES, JEMILYN",
+    "branchKey": 56,
+    "access": 4,
+    "username": "moldesjemilyn56",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 234,
+    "name": "SABERON, EDMAR R.",
+    "branchKey": 102,
+    "access": 5,
+    "username": "saberonedmarr102",
+    "password": "ideal-encoder",
+    "status": 0
+  },
+  {
+    "id": 235,
+    "name": "KARNANI, KAREN",
+    "branchKey": 113,
+    "access": 1,
+    "username": "karnanikaren113",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 236,
+    "name": "CRUZ, LORNA",
+    "branchKey": 82,
+    "access": 1,
+    "username": "cruzlorna82",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 237,
+    "name": "SY, EPHRAIM MARK",
+    "branchKey": 102,
+    "access": 4,
+    "username": "syephraimmark102",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 238,
+    "name": "CAYAYA, JOAN",
+    "branchKey": 24,
+    "access": 4,
+    "username": "cayayajoan24",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 239,
+    "name": "CHAN, CONNIE F.",
+    "branchKey": 142,
+    "access": 1,
+    "username": "chanconnief142",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 240,
+    "name": "FESALBON, GENEVIEVE N.",
+    "branchKey": 149,
+    "access": 2,
+    "username": "fesalbongenevieven149",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 241,
+    "name": "DILEM, KATHLEEN",
+    "branchKey": 24,
+    "access": 4,
+    "username": "dilemkathleen24",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 242,
+    "name": "CALIMBAS, DR. LASMIEL",
+    "branchKey": 34,
+    "access": 4,
+    "username": "calimbasdrlasmiel34",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 243,
+    "name": "SANCHEZ, MARIA BONANZA T.",
+    "branchKey": 142,
+    "access": 4,
+    "username": "sanchezmariabonanzat142",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 244,
+    "name": "CARREON, RENIEL",
+    "branchKey": 34,
+    "access": 5,
+    "username": "carreonreniel34",
+    "password": "ideal-encoder",
+    "status": 0
+  },
+  {
+    "id": 245,
+    "name": "NEPOMUCENO, MAILA J.",
+    "branchKey": 142,
+    "access": 5,
+    "username": "nepomucenomailaj142",
+    "password": "ideal-encoder",
+    "status": 0
+  },
+  {
+    "id": 246,
+    "name": "BUEN, MARC",
+    "branchKey": 142,
+    "access": 6,
+    "username": "buenmarc142",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 247,
+    "name": "CARLOS, MARTHA ROWENA",
+    "branchKey": 62,
+    "access": 1,
+    "username": "carlosmartharowena62",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 248,
+    "name": "ALDABA, MARLENE",
+    "branchKey": 62,
+    "access": 4,
+    "username": "aldabamarlene62",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 249,
+    "name": "REYES, JEANETTE",
+    "branchKey": 77,
+    "access": 4,
+    "username": "reyesjeanette77",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 250,
+    "name": "ABRENICA, MARY LISBETH",
+    "branchKey": 51,
+    "access": 1,
+    "username": "abrenicamarylisbeth51",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 251,
+    "name": "BARCELONA, CORAZON",
+    "branchKey": 62,
+    "access": 6,
+    "username": "barcelonacorazon62",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 252,
+    "name": "DE BELEN, EMILY JANNE",
+    "branchKey": 77,
+    "access": 6,
+    "username": "debelenemilyjanne77",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 253,
+    "name": "OMALAY, FE",
+    "branchKey": 140,
+    "access": 6,
+    "username": "omalayfe140",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 254,
+    "name": "AGUINALDO, FRANCIS",
+    "branchKey": 62,
+    "access": 4,
+    "username": "aguinaldofrancis62",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 255,
+    "name": "MOLEÃ‘O, MARK CHRISTIAN",
+    "branchKey": 53,
+    "access": 5,
+    "username": "molenomarkchristian53",
+    "password": "ideal-encoder",
+    "status": 0
+  },
+  {
+    "id": 256,
+    "name": "PICAR, ALJON",
+    "branchKey": 53,
+    "access": 6,
+    "username": "picaraljon53",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 257,
+    "name": "CEBALLO, CHRISTINA",
+    "branchKey": 53,
+    "access": 4,
+    "username": "ceballochristina53",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 258,
+    "name": "SIM, MARITES",
+    "branchKey": 160,
+    "access": 1,
+    "username": "simmarites160",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 259,
+    "name": "LEE, ROCHELLE",
+    "branchKey": 160,
+    "access": 2,
+    "username": "leerochelle160",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 260,
+    "name": "ORAIS, JAYSON",
+    "branchKey": 160,
+    "access": 5,
+    "username": "oraisjayson160",
+    "password": "ideal-encoder",
+    "status": 0
+  },
+  {
+    "id": 261,
+    "name": "LORICA, JAYMARK",
+    "branchKey": 160,
+    "access": 6,
+    "username": "loricajaymark160",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 262,
+    "name": "NOLASCO, KIMBERLY MAE",
+    "branchKey": 66,
+    "access": 5,
+    "username": "nolascokimberlymae66",
+    "password": "ideal-encoder",
+    "status": 0
+  },
+  {
+    "id": 263,
+    "name": "OLAT, LEMABELLE",
+    "branchKey": 85,
+    "access": 4,
+    "username": "olatlemabelle85",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 264,
+    "name": "MACATANGAY, ELIZABETH",
+    "branchKey": 98,
+    "access": 5,
+    "username": "macatangayelizabeth98",
+    "password": "ideal-encoder",
+    "status": 0
+  },
+  {
+    "id": 265,
+    "name": "BORBON, WILMA",
+    "branchKey": 118,
+    "access": 6,
+    "username": "borbonwilma118",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 266,
+    "name": "NACU, MERVIN",
+    "branchKey": 118,
+    "access": 5,
+    "username": "nacumervin118",
+    "password": "ideal-encoder",
+    "status": 0
+  },
+  {
+    "id": 267,
+    "name": "ZULUETA, HAIDEE",
+    "branchKey": 118,
+    "access": 4,
+    "username": "zuluetahaidee118",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 268,
+    "name": "CALVO, HILARIA",
+    "branchKey": 118,
+    "access": 4,
+    "username": "calvohilaria118",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 269,
+    "name": "INFIESTO, AIMIE",
+    "branchKey": 95,
+    "access": 6,
+    "username": "infiestoaimie95",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 270,
+    "name": "LIANGCO, JOCELYN",
+    "branchKey": 159,
+    "access": 4,
+    "username": "liangcojocelyn159",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 271,
+    "name": "CORNELIO, ANGELLIE PAZ",
+    "branchKey": 95,
+    "access": 5,
+    "username": "cornelioangelliepaz95",
+    "password": "ideal-encoder",
+    "status": 0
+  },
+  {
+    "id": 272,
+    "name": "SAGUN, CRISELDA ",
+    "branchKey": 121,
+    "access": 4,
+    "username": "saguncriselda121",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 273,
+    "name": "BORBON, WILMA",
+    "branchKey": 159,
+    "access": 6,
+    "username": "borbonwilma159",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 274,
+    "name": "YECLA, MERCY LOU",
+    "branchKey": 95,
+    "access": 6,
+    "username": "yeclamercylou95",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 275,
+    "name": "SY, EPHRAIM MARK",
+    "branchKey": 22,
+    "access": 4,
+    "username": "syephraimmark22",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 276,
+    "name": "ALEMNKIA, JENNY",
+    "branchKey": 136,
+    "access": 4,
+    "username": "alemnkiajenny136",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 277,
+    "name": "ESPEJO, ROMEO",
+    "branchKey": 7,
+    "access": 6,
+    "username": "espejoromeo7",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 278,
+    "name": "CHING, ERIC",
+    "branchKey": 126,
+    "access": 5,
+    "username": "chingeric126",
+    "password": "ideal-encoder",
+    "status": 0
+  },
+  {
+    "id": 279,
+    "name": "LAMUG, OLIVER",
+    "branchKey": 115,
+    "access": 6,
+    "username": "lamugoliver115",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 280,
+    "name": "BAU, ARCHIE",
+    "branchKey": 116,
+    "access": 1,
+    "username": "bauarchie116",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 281,
+    "name": "SEDO, VAN LOUISE SHEEN",
+    "branchKey": 116,
+    "access": 4,
+    "username": "sedovanlouisesheen116",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 282,
+    "name": "DISTO,IMEE",
+    "branchKey": 39,
+    "access": 6,
+    "username": "disto,imee39",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 283,
+    "name": "PONDAVILLA,ARLYN",
+    "branchKey": 39,
+    "access": 6,
+    "username": "pondavilla,arlyn39",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 284,
+    "name": "BARBOSA,RAMIL",
+    "branchKey": 39,
+    "access": 6,
+    "username": "barbosa,ramil39",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 285,
+    "name": "ONG, CYNTHIA",
+    "branchKey": 170,
+    "access": 2,
+    "username": "ongcynthia170",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 286,
+    "name": "CASTRO, ROMMEL",
+    "branchKey": 12,
+    "access": 6,
+    "username": "castrorommel12",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 287,
+    "name": "SANCHEZ, MICHAEL L.",
+    "branchKey": 19,
+    "access": 2,
+    "username": "sanchezmichaell19",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 288,
+    "name": "PELICANO, MARLON",
+    "branchKey": 19,
+    "access": 6,
+    "username": "pelicanomarlon19",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 289,
+    "name": "REGENCIA, RECILYN",
+    "branchKey": 158,
+    "access": 5,
+    "username": "regenciarecilyn158",
+    "password": "ideal-encoder",
+    "status": 0
+  },
+  {
+    "id": 290,
+    "name": "NAVAL, KARL JUN C",
+    "branchKey": 7,
+    "access": 6,
+    "username": "navalkarljunc7",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 291,
+    "name": "ACIERTO, SWEETZERL",
+    "branchKey": 32,
+    "access": 4,
+    "username": "aciertosweetzerl32",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 292,
+    "name": "CASTRO, KRISTINE",
+    "branchKey": 106,
+    "access": 5,
+    "username": "castrokristine106",
+    "password": "ideal-encoder",
+    "status": 0
+  },
+  {
+    "id": 293,
+    "name": "FAJUTAGANA, ROSE ANN",
+    "branchKey": 170,
+    "access": 6,
+    "username": "fajutaganaroseann170",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 294,
+    "name": "CUMPA, JASTINE GRACE",
+    "branchKey": 170,
+    "access": 6,
+    "username": "cumpajastinegrace170",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 295,
+    "name": "TRANGIA, CHLESTER",
+    "branchKey": 170,
+    "access": 6,
+    "username": "trangiachlester170",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 296,
+    "name": "COMPAS, KIVEN",
+    "branchKey": 170,
+    "access": 4,
+    "username": "compaskiven170",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 297,
+    "name": "SICAT, IMILA",
+    "branchKey": 158,
+    "access": 6,
+    "username": "sicatimila158",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 298,
+    "name": "PASCUAL, JOHN ERICK",
+    "branchKey": 158,
+    "access": 6,
+    "username": "pascualjohnerick158",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 299,
+    "name": "SALVAN, MARY JOY",
+    "branchKey": 20,
+    "access": 6,
+    "username": "salvanmaryjoy20",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 300,
+    "name": "ABRENICA, DR. MARY KRISTELLE",
+    "branchKey": 2,
+    "access": 2,
+    "username": "abrenicadrmarykristelle2",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 301,
+    "name": "IRICA, MILAGROS",
+    "branchKey": 104,
+    "access": 6,
+    "username": "iricamilagros104",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 302,
+    "name": "BALAORO, DINALYN M.",
+    "branchKey": 104,
+    "access": 5,
+    "username": "balaorodinalynm104",
+    "password": "ideal-encoder",
+    "status": 0
+  },
+  {
+    "id": 303,
+    "name": "PELAYO, EUGENE MICHAEL",
+    "branchKey": 104,
+    "access": 6,
+    "username": "pelayoeugenemichael104",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 304,
+    "name": "BELGA, JOHNLHEX",
+    "branchKey": 107,
+    "access": 5,
+    "username": "belgajohnlhex107",
+    "password": "ideal-encoder",
+    "status": 0
+  },
+  {
+    "id": 305,
+    "name": "CASTIGADOR, KRISTINE",
+    "branchKey": 70,
+    "access": 2,
+    "username": "castigadorkristine70",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 306,
+    "name": "TORIO, MYRA SUMANG",
+    "branchKey": 52,
+    "access": 5,
+    "username": "toriomyrasumang52",
+    "password": "ideal-encoder",
+    "status": 0
+  },
+  {
+    "id": 307,
+    "name": "EVANGELIO, RIO S",
+    "branchKey": 99,
+    "access": 1,
+    "username": "evangeliorios99",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 308,
+    "name": "MALLARI, SHEERA MAILA",
+    "branchKey": 71,
+    "access": 1,
+    "username": "mallarisheeramaila71",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 309,
+    "name": "GANCIAR, MEDELISSA",
+    "branchKey": 126,
+    "access": 4,
+    "username": "ganciarmedelissa126",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 310,
+    "name": "JURILLA, LENY",
+    "branchKey": 126,
+    "access": 6,
+    "username": "jurillaleny126",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 311,
+    "name": "DARAY, ARIEL",
+    "branchKey": 69,
+    "access": 5,
+    "username": "darayariel69",
+    "password": "ideal-encoder",
+    "status": 0
+  },
+  {
+    "id": 312,
+    "name": "ESPINOSA, CHIRSLY MIE",
+    "branchKey": 126,
+    "access": 6,
+    "username": "espinosachirslymie126",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 313,
+    "name": "OGANO, VIRGINIA",
+    "branchKey": 69,
+    "access": 4,
+    "username": "oganovirginia69",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 314,
+    "name": "ANGIWAN, JAYNE FLOR",
+    "branchKey": 69,
+    "access": 4,
+    "username": "angiwanjayneflor69",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 315,
+    "name": "DE LA CRUZ, JOZELYN JOY",
+    "branchKey": 138,
+    "access": 4,
+    "username": "delacruzjozelynjoy138",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 316,
+    "name": "SEDO, VAN LOUISE SHEEN",
+    "branchKey": 21,
+    "access": 4,
+    "username": "sedovanlouisesheen21",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 317,
+    "name": "DE GUZMAN, MERLY",
+    "branchKey": 107,
+    "access": 4,
+    "username": "deguzmanmerly107",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 318,
+    "name": "DR. GUECO, JOSHUA HICKS",
+    "branchKey": 52,
+    "access": 4,
+    "username": "drguecojoshuahicks52",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 319,
+    "name": "SARAGPON, CHRISTIAN",
+    "branchKey": 106,
+    "access": 6,
+    "username": "saragponchristian106",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 320,
+    "name": "ACOSTA, JUNNIESES ",
+    "branchKey": 84,
+    "access": 4,
+    "username": "acostajunnieses84",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 321,
+    "name": "GUARINO, ROXANNE RAMIL",
+    "branchKey": 127,
+    "access": 1,
+    "username": "guarinoroxanneramil127",
+    "password": "ideal-oic",
+    "status": 0
+  },
+  {
+    "id": 322,
+    "name": "ODRON, RAYSHELLE COSETTE",
+    "branchKey": 83,
+    "access": 2,
+    "username": "odronrayshellecosette83",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 323,
+    "name": "PALACIOS, JAMILLE LYLE",
+    "branchKey": 96,
+    "access": 5,
+    "username": "palaciosjamillelyle96",
+    "password": "ideal-encoder",
+    "status": 0
+  },
+  {
+    "id": 324,
+    "name": "BARROCAMO, NIEVES",
+    "branchKey": 96,
+    "access": 6,
+    "username": "barrocamonieves96",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 325,
+    "name": "HAQUIAS, CAMILA LORAINE",
+    "branchKey": 96,
+    "access": 6,
+    "username": "haquiascamilaloraine96",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 326,
+    "name": "ANONOY, MARIE ROSE",
+    "branchKey": 96,
+    "access": 6,
+    "username": "anonoymarierose96",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 327,
+    "name": "MARIFEL MAMACLAY",
+    "branchKey": 13,
+    "access": 2,
+    "username": "marifelmamaclay13",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 328,
+    "name": "CASTRO, SUNSHINE",
+    "branchKey": 51,
+    "access": 6,
+    "username": "castrosunshine51",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 329,
+    "name": "RIMA, ROWENA",
+    "branchKey": 51,
+    "access": 5,
+    "username": "rimarowena51",
+    "password": "ideal-encoder",
+    "status": 0
+  },
+  {
+    "id": 330,
+    "name": "LARION, NERRENA",
+    "branchKey": 51,
+    "access": 6,
+    "username": "larionnerrena51",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 331,
+    "name": "TABULOC,EUSIDES ELLA MAE ESCOVILLA",
+    "branchKey": 161,
+    "access": 2,
+    "username": "tabuloceusidesellamaeescovilla161",
+    "password": "ideal-asst-oic",
+    "status": 0
+  },
+  {
+    "id": 332,
+    "name": "FLORES, MARK KENNETH",
+    "branchKey": 161,
+    "access": 5,
+    "username": "floresmarkkenneth161",
+    "password": "ideal-encoder",
+    "status": 0
+  },
+  {
+    "id": 333,
+    "name": "DARACEN, GENE FE C.",
+    "branchKey": 161,
+    "access": 6,
+    "username": "daracengenefe161",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 334,
+    "name": "SANTIAGO,LIZA",
+    "branchKey": 161,
+    "access": 4,
+    "username": "santiagoliza161",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 335,
+    "name": "LIONG, ERCHAN",
+    "branchKey": 35,
+    "access": 4,
+    "username": "liongerchan35",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 336,
+    "name": "NAVAL, KARL JUN C. ",
+    "branchKey": 7,
+    "access": 6,
+    "username": "navalkarljun7",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 337,
+    "name": "OMAC LEILANI",
+    "branchKey": 22,
+    "access": 6,
+    "username": "omacleilani22",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 338,
+    "name": "VELASQUES, JUDELYN",
+    "branchKey": 29,
+    "access": 6,
+    "username": "velasquesjudelyn29",
+    "password": "ideal-sales",
+    "status": 0
+  },
+  {
+    "id": 339,
+    "name": "PEDRONIO, JERICHO JAMES",
+    "branchKey": 13,
+    "access": 4,
+    "username": "pedroniojerichojames13",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 340,
+    "name": "TAGANAHAN, PAULA JANE",
+    "branchKey": 35,
+    "access": 4,
+    "username": "taganahanpaulajane35",
+    "password": "ideal-optometrist",
+    "status": 0
+  },
+  {
+    "id": 341,
+    "name": "TUYCO, RIVIANNE",
+    "branchKey": 36,
+    "access": 4,
+    "username": "tuycorivianne36",
+    "password": "ideal-optometrist",
+    "status": 0
+  }
+]
