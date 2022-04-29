@@ -32,6 +32,9 @@ const Navigation = () => {
                 Separated link
               </NavDropdown.Item>
             </NavDropdown> */}
+            <Link to='/login' className='nav-link'>
+              Login
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
