@@ -49,7 +49,10 @@ const useForm = (schema, submitCallback, itemInDb = {}) => {
 
   const renderButton = (label) => {
     return (
-      <button disabled={validate()} className='btn btn-primary'>
+      <button
+        disabled={validate()}
+        className='btn btn-primary d-flex align-items-left'
+      >
         {label}
       </button>
     );
