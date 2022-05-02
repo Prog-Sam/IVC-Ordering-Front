@@ -1,5 +1,6 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
-import NavBar from './components/navbar';
+import http from './services/httpService';
+import { ToastContainer } from 'react-toastify';
 import Supplier from './components/supplier';
 import Brand from './components/brand';
 import OrderType from './components/orderType';
@@ -41,19 +42,21 @@ import MallDetails from './components/mallDetails';
 import BranchDetails from './components/branchDetails';
 import UnitDetails from './components/unitDetails';
 import TransactionTypeDetails from './components/transactionTypeDetails';
-import UserDetails from './components/userDetails';
+import UserForm from './components/userForm';
 import NotFound from './components/notFound';
 import SystemSettings from './components/systemSettings';
 import ItemSettings from './components/itemSettings';
 import BranchSettings from './components/branchSettings';
 import Navigation from './components/navigation';
+import LoginForm from './components/loginForm';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 function App() {
   return (
     <div className='App'>
       <Navigation />
-      {/* <NavBar /> */}
+      <ToastContainer />
       <main className='container'>
         <Switch>
           <Route
@@ -134,9 +137,10 @@ function App() {
           />
           <Route
             path='/users/:id'
-            render={(props) => <UserDetails {...props} />}
+            render={(props) => <UserForm {...props} />}
           />
           {/*Routes for Non Details */}
+          <Route path='/login' render={(props) => <LoginForm {...props} />} />
           <Route
             path='/suppliers'
             render={(props) => <Supplier {...props} />}
