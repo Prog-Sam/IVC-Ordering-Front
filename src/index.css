@@ -11,6 +11,10 @@ body {
   margin-bottom: 30px;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
