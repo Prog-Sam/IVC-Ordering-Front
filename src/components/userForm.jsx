@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Joi from 'joi-browser';
 import useForm from '../hooks/useForm';
-import Branches from './../service/branches.json';
+import Branches from '../services/branches.json';
 
 const UserForm = (props) => {
   const [branches, setBranches] = useState([]);

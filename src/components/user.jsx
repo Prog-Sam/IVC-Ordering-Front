@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Users from './../service/users.json';
-import Branches from './../service/branches.json';
+import Users from '../services/users.json';
+import Branches from '../services/branches.json';
 import Pagination from './../common/pagination';
 import { paginate } from '../utils/paginate';
 import ListGroup from './../common/listGroup';
