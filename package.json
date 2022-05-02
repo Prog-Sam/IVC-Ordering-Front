@@ -14,6 +14,7 @@
     "lodash": "^4.17.10",
     "prop-types": "^15.6.2",
     "query-string": "^6.1.0",
+    "raven-js": "^3.26.4",
     "react": "^18.0.0",
     "react-bootstrap": "^2.3.0",
     "react-dom": "^18.0.0",
