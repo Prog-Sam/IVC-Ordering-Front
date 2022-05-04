@@ -11,6 +11,7 @@ const UserTable = ({ users, localEnums, sortColumn, onSort }) => {
       content: (user) => <Link to={'/users/' + user.id}>{user.name}</Link>,
       label: 'Name',
     },
+    { path: 'BranchDetail.name', label: 'Branch' },
     { path: 'username', label: 'Username' },
     { path: 'access', label: 'Access' },
     { path: 'status', label: 'Status' },
