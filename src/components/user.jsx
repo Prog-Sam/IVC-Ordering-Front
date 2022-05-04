@@ -1,8 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Users from '../services/users.json';
-import Branches from '../services/branches.json';
+import { getUsers } from '../services/userService';
 import Pagination from './../common/pagination';
 import { paginate } from '../utils/paginate';
 import ListGroup from './../common/listGroup';
@@ -11,7 +10,6 @@ import _ from 'lodash';
 
 const User = () => {
   const [users, setUsers] = useState([]);
-  const [branches, setBranches] = useState([]);
   const [pageSize, setPageSize] = useState(25);
   const [currentPage, setCurrentPage] = useState(1);
   const [sortColumn, setSortColumn] = useState({});
@@ -22,20 +20,25 @@ const User = () => {
       { id: 2, value: 'DISABLED' },
     ],
     access: [
-      { id: 0, value: 'DEVELOPER' },
-      { id: 1, value: 'OIC' },
-      { id: 2, value: 'ASSISTANT OIC' },
-      { id: 3, value: 'MANAGEMENT' },
-      { id: 4, value: 'OPTOMETRIST' },
-      { id: 5, value: 'ENCODER' },
-      { id: 6, value: 'SALES' },
+      { id: '0', value: 'DEVELOPER' },
+      { id: '1', value: 'OIC' },
+      { id: '2', value: 'ASSISTANT OIC' },
+      { id: '3', value: 'MANAGEMENT' },
+      { id: '4', value: 'OPTOMETRIST' },
+      { id: '5', value: 'ENCODER' },
+      { id: '6', value: 'SALES' },
     ],
   });
 
   useEffect(() => {
     handlePageChange(0);
-    setUsers(Users);
-    setBranches(Branches);
+
+    async function getData() {
+      const { data } = await getUsers();
+      setUsers(data);
+    }
+
+    getData();
   }, []);
 
   const handleSort = (sortColumn) => {
