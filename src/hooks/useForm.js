@@ -71,7 +71,15 @@ const useForm = (schema, submitCallback, itemInDb = {}) => {
     );
   };
 
-  return [state, handleSubmit, renderButton, renderInput];
+  const renderLabel = (name, label) => {
+    return (
+      <h4 className='d-flex align-items-left'>
+        {name}: {label}
+      </h4>
+    );
+  };
+
+  return [state, handleSubmit, renderButton, renderInput, renderLabel];
 };
 
 export default useForm;
