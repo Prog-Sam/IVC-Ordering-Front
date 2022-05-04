@@ -1,10 +1,14 @@
-import React from 'react';
-import Branches from './branches.json';
+import http from './httpService';
+import config from './../config.json';
 
-const BranchService = () => {
-  const getBranches = () => {
-    return Branches;
-  };
-};
+export async function getBranches() {
+  const branches = await http.get(`${config.apiEndpoint}/branchDetails`);
+  // console.log(result);
+  return branches;
+}
 
-export default BranchService;
+export async function getBranch(id) {
+  const branch = await http.get(`${config.apiEndpoint}/branchDetails/${id}`);
+  // console.log(result);
+  return branch;
+}
