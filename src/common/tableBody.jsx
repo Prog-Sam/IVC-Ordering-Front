@@ -5,7 +5,7 @@ const TableBody = ({ data, columns, localEnums }) => {
   const visualizeId = (id, itemType) => {
     if (!_.has(localEnums, itemType)) return id;
     let item = _.find(localEnums[itemType], { id });
-    return item.value;
+    return item ? item.value : id;
   };
 
   const renderCell = (item, column) => {
