@@ -64,7 +64,7 @@ const User = () => {
         <h1 className='d-flex align-items-left'>USERS </h1>
         <div className='d-flex align-items-left'>
           <Link
-            to='/users/new'
+            to='/users/New'
             className='btn btn-primary'
             style={{ marginBottom: 20 }}
           >

@@ -1,19 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Joi from 'joi-browser';
+import _ from 'lodash';
 import useForm from '../hooks/useForm';
 import { getBranches, getBranch } from './../services/branchService';
 import { getUser, saveUser } from './../services/userService';
 
 const UserForm = (props) => {
   const [branches, setBranches] = useState([]);
-  const [user, setUser] = useState({
-    id: '',
-    name: '',
-    branchKey: 0,
-    access: '',
-    username: '',
-    password: '',
-  });
 
   const localEnums = {
     status: [
@@ -33,7 +26,7 @@ const UserForm = (props) => {
   };
 
   const schema = {
-    id: Joi.string().label('ID'),
+    id: Joi.number().label('ID'),
     name: Joi.string().required().min(3).label('Name'),
     branchKey: Joi.number().required().label('Branch Key'),
     access: Joi.string().required().label('Access'),
@@ -55,7 +48,8 @@ const UserForm = (props) => {
 
     async function populateUser() {
       let { data } = await getUser(userId);
-      setUser(data);
+      let paths = Object.keys(schema);
+      setUser(_.pick(data, [...paths]));
     }
     populateUser();
 
@@ -72,7 +66,8 @@ const UserForm = (props) => {
   };
 
   const [
-    values,
+    user,
+    setUser,
     handleSubmit,
     renderButton,
     renderInput,

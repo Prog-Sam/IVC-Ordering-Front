@@ -8,22 +8,11 @@ const useForm = (schema, submitCallback, itemInDb = {}) => {
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    // if (!itemInDb) return;
-    // let localState = {};
-    // let localSelState = {};
-    // let fields = Object.keys(itemInDb);
-    // for (let i = 0; i < fields.length; i++) {
-    //   if (
-    //     typeof itemInDb[fields[i]] === 'object' &&
-    //     itemInDb[fields[i]] !== null
-    //   ) {
-    //     localSelState[fields[i]] = itemInDb[fields[i]];
-    //     return;
-    //   }
-    //   localState[fields[i]] = itemInDb[fields[i]];
-    // }
-    // setState({ ...localState });
-    // setSelState({ ...localSelState });
+    if (itemInDb) {
+      setState({ ...itemInDb });
+      return;
+    }
+    setState({});
   }, []);
 
   const getSelectOptions = (options) => {
@@ -76,12 +65,6 @@ const useForm = (schema, submitCallback, itemInDb = {}) => {
       ...state,
       [name]: value,
     });
-
-    console.log(state);
-    // setSelState({
-    //   ...selState,
-    //   ['selVal' + name]: { label: label, value: value },
-    // });
 
     const localErrors = { ...errors };
     const errorMessage = validateProperty({ value, name });
@@ -140,6 +123,7 @@ const useForm = (schema, submitCallback, itemInDb = {}) => {
 
   return [
     state,
+    setState,
     handleSubmit,
     renderButton,
     renderInput,
