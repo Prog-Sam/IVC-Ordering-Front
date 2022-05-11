@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Input from './../common/input';
 import Select from '../common/select';
+import _ from 'lodash';
 import Joi from 'joi-browser';
 
 const useForm = (schema, submitCallback, itemInDb = {}) => {
@@ -19,9 +20,19 @@ const useForm = (schema, submitCallback, itemInDb = {}) => {
     return options.map((opt) => ({ label: opt.name, value: opt.id }));
   };
 
+  const getSelectedOption = (id, options) => {
+    const item = _.find(options, { id });
+    return { label: item.name, label: item.id };
+  };
+
+  const mapToViewModel = (data) => {
+    let paths = Object.keys(schema);
+    return _.pick(data, [...paths]);
+  };
+
   const validate = () => {
     const options = { abortEarly: false };
-    const { error } = Joi.validate(state, schema, options);
+    const { error } = Joi.validate(mapToViewModel(state), schema, options);
     if (!error) return null;
 
     const localErrors = {};
@@ -64,6 +75,7 @@ const useForm = (schema, submitCallback, itemInDb = {}) => {
     setState({
       ...state,
       [name]: value,
+      ['objectVal-' + name]: { label, value },
     });
 
     const localErrors = { ...errors };
@@ -129,6 +141,8 @@ const useForm = (schema, submitCallback, itemInDb = {}) => {
     renderInput,
     renderLabel,
     renderSelect,
+    mapToViewModel,
+    getSelectedOption,
   ];
 };
 
