@@ -3,7 +3,8 @@ import Joi from 'joi-browser';
 import _ from 'lodash';
 import useForm from '../hooks/useForm';
 import { getBranches, getBranch } from './../services/branchService';
-import { getUser, saveUser } from './../services/userService';
+import { getUser, saveUser, updateUser } from './../services/userService';
+import { toast } from 'react-toastify';
 
 const UserForm = (props) => {
   const [branches, setBranches] = useState([]);
@@ -48,8 +49,7 @@ const UserForm = (props) => {
 
     async function populateUser() {
       let { data } = await getUser(userId);
-      let paths = Object.keys(schema);
-      setUser(_.pick(data, [...paths]));
+      setUser(data);
     }
     populateUser();
 
@@ -59,10 +59,21 @@ const UserForm = (props) => {
   }, []);
 
   const doSubmit = async () => {
-    console.log(branches);
-    await saveUser(user);
-
-    this.props.history.push('/users');
+    try {
+      const isNew = props.match.params.id === 'New';
+      const result = isNew
+        ? await saveUser(mapToViewModel(user))
+        : await updateUser(mapToViewModel(user));
+      toast(
+        `User ${user.name} with the id of ${user.id} has been ${
+          isNew ? 'added.' : 'updated.'
+        }`
+      );
+      props.history.push('/users');
+    } catch (e) {
+      console.error(e);
+      toast(e);
+    }
   };
 
   const [
@@ -73,11 +84,15 @@ const UserForm = (props) => {
     renderInput,
     renderLabel,
     renderSelect,
+    mapToViewModel,
+    getSelectedOption,
   ] = useForm(schema, doSubmit);
 
   return (
     <div>
-      <h1 className='d-flex align-items-left'>REGISTER OR UPDATE USER</h1>
+      <h1 className='d-flex align-items-left'>
+        {props.match.params.id === 'New' ? 'REGISTER' : 'UPDATE'} USER
+      </h1>
       <form onSubmit={handleSubmit}>
         {renderLabel('ID', props.match.params.id)}
         {renderInput('name', 'Name')}
