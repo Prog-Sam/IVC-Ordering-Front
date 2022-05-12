@@ -5,22 +5,21 @@ import useForm from './../hooks/useForm';
 import { login } from '../services/authService';
 import { toast } from 'react-toastify';
 import UserContext from './../context/userContext';
-import AuthContext from './../context/authContext';
 
-const LoginForm = () => {
+const LoginForm = (props) => {
   const schema = {
     username: Joi.string().required().min(3).label('Username'),
     password: Joi.string().required().label('Password'),
   };
 
-  const authContext = useContext(AuthContext);
   const userContext = useContext(UserContext);
 
   const doSubmit = async () => {
     try {
-      const auth = await login(values);
-      authContext.setJwt(auth.data);
-      userContext.setCurrentUser(jwtDecode(authContext.jwt));
+      const { data: jwt } = await login(values);
+      userContext.setCurrentUser(jwtDecode(jwt));
+      props.history.push('/');
+
       toast('Login Successful!');
     } catch (ex) {
       console.log(ex);

@@ -1,8 +1,9 @@
-import React from 'react';
+import userEvent from '@testing-library/user-event';
+import React, { Fragment } from 'react';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const Navigation = () => {
+const Navigation = ({ currentUser, onLogout }) => {
   return (
     <Navbar bg='dark' variant='dark' expand='lg'>
       <Container>
@@ -21,20 +22,21 @@ const Navigation = () => {
             <Link to='/system-settings' className='nav-link'>
               SYSTEM
             </Link>
-            {/* <NavDropdown title='Dropdown' id='basic-nav-dropdown'>
-              <NavDropdown.Item href='#action/3.1'>Action</NavDropdown.Item>
-              <NavDropdown.Item href='#action/3.2'>
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href='#action/3.3'>Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href='#action/3.4'>
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown> */}
-            <Link to='/login' className='nav-link'>
-              Login
-            </Link>
+            {currentUser && (
+              <Fragment>
+                <Link to='/#' className='nav-link'>
+                  {currentUser.name}
+                </Link>
+                <Link to='/#' className='nav-link' onClick={onLogout}>
+                  LOGOUT
+                </Link>
+              </Fragment>
+            )}
+            {!currentUser && (
+              <Link to='/login' className='nav-link'>
+                LOGIN
+              </Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
