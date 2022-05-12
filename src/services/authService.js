@@ -10,6 +10,10 @@ export async function login(user) {
   return auth;
 }
 
+export function getJwt() {
+  return localStorage.getItem(tokenKey);
+}
+
 export function logout() {
   localStorage.removeItem(tokenKey);
 }
