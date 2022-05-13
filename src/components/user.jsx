@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom';
 import { getUsers } from '../services/userService';
 import Pagination from './../common/pagination';
 import { paginate } from '../utils/paginate';
-import ListGroup from './../common/listGroup';
 import UserTable from '../common/userTable';
+import SearchBox from '../common/searchBox';
 import _ from 'lodash';
 
 const User = () => {
   const [users, setUsers] = useState([]);
   const [pageSize, setPageSize] = useState(25);
+  const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [sortColumn, setSortColumn] = useState({});
   const [localEnums, setLocalEnums] = useState({
@@ -41,20 +42,30 @@ const User = () => {
     getData();
   }, []);
 
-  const handleSort = (sortColumn) => {
-    setSortColumn(sortColumn);
-  };
-
   const handlePageChange = (i) => {
     setCurrentPage(i + 1);
   };
 
+  const handleSort = (sortColumn) => {
+    setSortColumn(sortColumn);
+  };
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    setCurrentPage(1);
+  };
+
   const getPagedData = () => {
-    // const filtered
+    let filtered = users;
+    if (searchQuery)
+      filtered = users.filter((u) =>
+        u.name.toLowerCase().startsWith(searchQuery.toLocaleLowerCase())
+      );
 
-    const sortedUsers = _.orderBy(users, [sortColumn.path], [sortColumn.order]);
+    const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
 
-    return paginate(sortedUsers, currentPage, pageSize);
+    const paginated = paginate(sorted, currentPage, pageSize);
+    return { paginated, filtered };
   };
 
   return (
@@ -71,14 +82,15 @@ const User = () => {
             New User
           </Link>
         </div>
+        <SearchBox value={searchQuery} onChange={handleSearch} />
         <UserTable
-          users={getPagedData()}
+          users={getPagedData().paginated}
           localEnums={localEnums}
           onSort={handleSort}
           sortColumn={sortColumn}
         />
         <Pagination
-          totalItems={users.length}
+          totalItems={getPagedData().filtered.length}
           pageSize={pageSize}
           onPageChange={handlePageChange}
           currentPage={currentPage}
