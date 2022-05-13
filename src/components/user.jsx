@@ -1,11 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { getUsers } from '../services/userService';
 import Pagination from './../common/pagination';
 import { paginate } from '../utils/paginate';
 import UserTable from '../common/userTable';
-import SearchBox from '../common/searchBox';
+import MenuHeader from '../common/menuHeader';
 import _ from 'lodash';
 
 const User = () => {
@@ -72,17 +71,13 @@ const User = () => {
     <div className='row'>
       {/* <div className='col-2'><ListGroup items={ }/></div> */}
       <div className='col'>
-        <h1 className='d-flex align-items-left'>USERS </h1>
-        <div className='d-flex align-items-left'>
-          <Link
-            to='/users/New'
-            className='btn btn-primary'
-            style={{ marginBottom: 20 }}
-          >
-            New User
-          </Link>
-        </div>
-        <SearchBox value={searchQuery} onChange={handleSearch} />
+        <MenuHeader
+          path='userIds'
+          header={'USERS'}
+          buttonLabel='User'
+          onSearch={handleSearch}
+          searchQuery={searchQuery}
+        />
         <UserTable
           users={getPagedData().paginated}
           localEnums={localEnums}
