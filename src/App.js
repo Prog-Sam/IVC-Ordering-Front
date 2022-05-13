@@ -51,6 +51,7 @@ import Navigation from './components/navigation';
 import LoginForm from './components/loginForm';
 import UserContext from './context/userContext';
 import { getCurrentUser, logout } from './services/authService';
+import ProtectedRoute from './common/protectedRoute';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
@@ -76,86 +77,53 @@ function App() {
         <ToastContainer />
         <main className='container'>
           <Switch>
-            <Route
-              path='/suppliers/:id'
-              render={(props) => <SupplierDetails {...props} />}
-            />
-            <Route
-              path='/brands/:id'
-              render={(props) => <BrandDetails {...props} />}
-            />
-            <Route
+            <ProtectedRoute path='/suppliers/:id' component={SupplierDetails} />
+            <ProtectedRoute path='/brands/:id' component={BrandDetails} />
+            <ProtectedRoute
               path='/ordertypes/:id'
-              render={(props) => <OrderTypeDetails {...props} />}
+              component={OrderTypeDetails}
             />
-            <Route
-              path='/lenstypes/:id'
-              render={(props) => <LensTypeDetails {...props} />}
-            />
-            <Route
+            <ProtectedRoute path='/lenstypes/:id' component={LensTypeDetails} />
+            <ProtectedRoute
               path='/indextypes/:id'
-              render={(props) => <IndexTypeDetails {...props} />}
+              component={IndexTypeDetails}
             />
-            <Route
+            <ProtectedRoute
               path='/productfamilies/:id'
-              render={(props) => <ProductFamilyDetails {...props} />}
+              component={ProductFamilyDetails}
             />
-            <Route
+            <ProtectedRoute
               path='/supplycategories/:id'
-              render={(props) => <SupplyCategoryDetails {...props} />}
+              component={SupplyCategoryDetails}
             />
-            <Route
+            <ProtectedRoute
               path='/lensmaterials/:id'
-              render={(props) => <LensMaterialDetails {...props} />}
+              component={LensMaterialDetails}
             />
-            <Route
-              path='/lensItems/:id'
-              render={(props) => <LensItemDetails {...props} />}
-            />
-            <Route
+            <ProtectedRoute path='/lensItems/:id' component={LensItemDetails} />
+            <ProtectedRoute
               path='/lensparams/:id'
-              render={(props) => <LensParamDetails {...props} />}
+              component={LensParamDetails}
             />
-            <Route
-              path='/colordays/:id'
-              render={(props) => <ColorDayDetails {...props} />}
-            />
-            <Route
+            <ProtectedRoute path='/colordays/:id' component={ColorDayDetails} />
+            <ProtectedRoute
               path='/fscsamodels/:id'
-              render={(props) => <FSCSAModelDetails {...props} />}
+              component={FSCSAModelDetails}
             />
-            <Route
-              path='/fsitems/:id'
-              render={(props) => <FsItemDetails {...props} />}
-            />
-            <Route
-              path='/csaitems/:id'
-              render={(props) => <CSAItemDetails {...props} />}
-            />
-            <Route
+            <ProtectedRoute path='/fsitems/:id' component={FsItemDetails} />
+            <ProtectedRoute path='/csaitems/:id' component={CSAItemDetails} />
+            <ProtectedRoute
               path='/branchtypes/:id'
-              render={(props) => <BranchTypeDetails {...props} />}
+              component={BranchTypeDetails}
             />
-            <Route
-              path='/malls/:id'
-              render={(props) => <MallDetails {...props} />}
-            />
-            <Route
-              path='/branches/:id'
-              render={(props) => <BranchForm {...props} />}
-            />
-            <Route
-              path='/units/:id'
-              render={(props) => <UnitDetails {...props} />}
-            />
-            <Route
+            <ProtectedRoute path='/malls/:id' component={MallDetails} />
+            <ProtectedRoute path='/branches/:id' component={BranchForm} />
+            <ProtectedRoute path='/units/:id' component={UnitDetails} />
+            <ProtectedRoute
               path='/transactiontypes/:id'
-              render={(props) => <TransactionTypeDetails {...props} />}
+              component={TransactionTypeDetails}
             />
-            <Route
-              path='/users/:id'
-              render={(props) => <UserForm {...props} />}
-            />
+            <ProtectedRoute path='/users/:id' component={UserForm} />
             {/*Routes for Non Details */}
             <Route path='/login' render={(props) => <LoginForm {...props} />} />
             <Route

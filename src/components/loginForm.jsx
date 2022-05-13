@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 import Joi from 'joi-browser';
 import jwtDecode from 'jwt-decode';
 import useForm from './../hooks/useForm';
-import { login } from '../services/authService';
+import { getCurrentUser, login } from '../services/authService';
 import { toast } from 'react-toastify';
 import UserContext from './../context/userContext';
+import { Redirect } from 'react-router-dom';
 
 const LoginForm = (props) => {
   const schema = {
@@ -18,7 +19,9 @@ const LoginForm = (props) => {
     try {
       const { data: jwt } = await login(values);
       userContext.setCurrentUser(jwtDecode(jwt));
-      props.history.push('/');
+
+      const { state } = props.location;
+      window.location = state ? state.from.pathname : '/';
 
       toast('Login Successful!');
     } catch (ex) {
@@ -35,6 +38,7 @@ const LoginForm = (props) => {
 
   return (
     <div>
+      {getCurrentUser() && <Redirect to='/' />}
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         {renderInput('username', 'Username')}
