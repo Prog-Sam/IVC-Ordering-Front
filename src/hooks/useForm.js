@@ -17,12 +17,15 @@ const useForm = (schema, submitCallback, itemInDb = {}) => {
   }, []);
 
   const getSelectOptions = (options) => {
-    return options.map((opt) => ({ label: opt.name, value: opt.id }));
+    return options.map((opt) => ({
+      label: opt.name || opt.type,
+      value: opt.id,
+    }));
   };
 
   const getSelectedOption = (id, options) => {
     const item = _.find(options, { id });
-    return { label: item.name, label: item.id };
+    return { label: item.name || item.type, label: item.id };
   };
 
   const mapToViewModel = (data) => {
