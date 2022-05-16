@@ -1,10 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { getBranch, getBranches } from '../services/branchService';
+import _ from 'lodash';
+import { getBranches } from '../services/branchService';
 import Pagination from './../common/pagination';
 import { paginate } from '../utils/paginate';
 import BranchTable from '../common/branchTable';
-import _ from 'lodash';
 import MenuHeader from '../common/menuHeader';
 
 const Branch = () => {
