@@ -38,7 +38,7 @@ import FSCSAModelDetails from './components/fscsaModelDetails';
 import FsItemDetails from './components/fsItemDetails';
 import CSAItemDetails from './components/csaItemDetails';
 import BranchTypeDetails from './components/branchTypeDetails';
-import MallDetails from './components/mallDetails';
+import MallForm from './components/mallForm';
 import BranchForm from './components/branchForm';
 import UnitDetails from './components/unitDetails';
 import TransactionTypeDetails from './components/transactionTypeDetails';
@@ -116,7 +116,7 @@ function App() {
               path='/branchtypes/:id'
               component={BranchTypeDetails}
             />
-            <ProtectedRoute path='/malls/:id' component={MallDetails} />
+            <ProtectedRoute path='/malls/:id' component={MallForm} />
             <ProtectedRoute path='/branches/:id' component={BranchForm} />
             <ProtectedRoute path='/units/:id' component={UnitDetails} />
             <ProtectedRoute
