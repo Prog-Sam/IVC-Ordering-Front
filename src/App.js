@@ -37,7 +37,7 @@ import ColorDayDetails from './components/colorDayDetails';
 import FSCSAModelDetails from './components/fscsaModelDetails';
 import FsItemDetails from './components/fsItemDetails';
 import CSAItemDetails from './components/csaItemDetails';
-import BranchTypeDetails from './components/branchTypeDetails';
+import BranchTypeForm from './components/branchTypeForm';
 import MallForm from './components/mallForm';
 import BranchForm from './components/branchForm';
 import UnitDetails from './components/unitDetails';
@@ -114,7 +114,7 @@ function App() {
             <ProtectedRoute path='/csaitems/:id' component={CSAItemDetails} />
             <ProtectedRoute
               path='/branchtypes/:id'
-              component={BranchTypeDetails}
+              component={BranchTypeForm}
             />
             <ProtectedRoute path='/malls/:id' component={MallForm} />
             <ProtectedRoute path='/branches/:id' component={BranchForm} />
