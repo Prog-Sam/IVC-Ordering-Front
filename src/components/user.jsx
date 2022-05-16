@@ -72,7 +72,7 @@ const User = () => {
       {/* <div className='col-2'><ListGroup items={ }/></div> */}
       <div className='col'>
         <MenuHeader
-          path='userIds'
+          path='users'
           header={'USERS'}
           buttonLabel='User'
           onSearch={handleSearch}
