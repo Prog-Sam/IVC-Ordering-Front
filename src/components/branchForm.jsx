@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Joi from 'joi-browser';
 import _ from 'lodash';
 import useForm from '../hooks/useForm';
-import { getBranchType, getBranchTypes } from '../services/branchTypeService';
-import { getMall, getMalls } from '../services/mallService';
+import { getBranchTypes } from '../services/branchTypeService';
+import { getMalls } from '../services/mallService';
 import {
   getBranch,
   saveBranch,
