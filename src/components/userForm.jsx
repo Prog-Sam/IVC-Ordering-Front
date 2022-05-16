@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Joi from 'joi-browser';
 import _ from 'lodash';
 import useForm from '../hooks/useForm';
-import { getBranches, getBranch } from './../services/branchService';
+import { getBranches } from './../services/branchService';
 import { getUser, saveUser, updateUser } from './../services/userService';
 import { toast } from 'react-toastify';
 
@@ -28,9 +28,9 @@ const UserForm = (props) => {
 
   const schema = {
     id: Joi.number().label('ID'),
-    name: Joi.string().required().min(3).label('Name'),
+    name: Joi.string().required().min(2).label('Name'),
     branchKey: Joi.number().required().label('Branch Key'),
-    access: Joi.string().required().label('Access'),
+    access: Joi.string().required().max(15).label('Access'),
     username: Joi.string().required().min(6).label('Username'),
     password: Joi.string().required().min(6).label('Password'),
     status: Joi.number().required().label('Status'),

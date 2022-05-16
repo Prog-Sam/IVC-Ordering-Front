@@ -10,8 +10,8 @@ const MallForm = (props) => {
 
   const schema = {
     id: Joi.number().label('ID'),
-    type: Joi.string().required().min(3).label('Name'),
-    typeDesc: Joi.string().required().min(3).label('Description'),
+    type: Joi.string().required().min(1).max(20).label('Name'),
+    typeDesc: Joi.string().required().min(1).max(50).label('Description'),
   };
 
   useEffect(() => {

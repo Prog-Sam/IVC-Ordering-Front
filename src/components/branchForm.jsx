@@ -14,16 +14,19 @@ import { toast } from 'react-toastify';
 const BranchForm = (props) => {
   const [malls, setMalls] = useState([]);
   const [branchTypes, setBranchTypes] = useState([]);
-  const localEnums = {};
 
   const schema = {
     id: Joi.number().label('ID'),
-    name: Joi.string().required().min(3).label('Name'),
+    name: Joi.string().required().min(3).max(50).label('Name'),
     branchTypeKey: Joi.number().required().label('Branch Type'),
     mallKey: Joi.number().required().label('Mall'),
-    address1: Joi.string().required().label('Address 1'),
-    address2: Joi.string().required().label('Address 2'),
-    emailAddress: Joi.string().email().required().label('Email Address'),
+    address1: Joi.string().required().max(250).label('Address 1'),
+    address2: Joi.string().required().max(250).label('Address 2'),
+    emailAddress: Joi.string()
+      .email()
+      .required()
+      .max(100)
+      .label('Email Address'),
   };
 
   useEffect(() => {
