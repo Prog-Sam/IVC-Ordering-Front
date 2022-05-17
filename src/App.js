@@ -23,7 +23,7 @@ import TransactionType from './components/transactionType';
 import User from './components/user';
 import Home from './components/home';
 
-import SupplierDetails from './components/supplierDetails';
+import SupplierForm from './components/supplierForm';
 import BrandDetails from './components/brandDetails';
 import OrderTypeDetails from './components/orderTypeDetails';
 import LensTypeDetails from './components/lensTypeDetails';
@@ -77,7 +77,7 @@ function App() {
         <ToastContainer />
         <main className='container'>
           <Switch>
-            <ProtectedRoute path='/suppliers/:id' component={SupplierDetails} />
+            <ProtectedRoute path='/suppliers/:id' component={SupplierForm} />
             <ProtectedRoute path='/brands/:id' component={BrandDetails} />
             <ProtectedRoute
               path='/ordertypes/:id'
