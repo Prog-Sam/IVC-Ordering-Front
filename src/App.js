@@ -26,22 +26,22 @@ import Home from './components/home';
 import SupplierForm from './components/supplierForm';
 import BrandForm from './components/brandForm';
 import OrderTypeForm from './components/orderTypeForm';
-import LensTypeDetails from './components/lensTypeDetails';
-import IndexTypeDetails from './components/indexTypeDetails';
-import ProductFamilyDetails from './components/productFamilyDetails';
-import SupplyCategoryDetails from './components/supplyCategoryDetails';
-import LensMaterialDetails from './components/lensMaterialDetails';
-import LensItemDetails from './components/lensItemDetails';
-import LensParamDetails from './components/lensParamDetails';
-import ColorDayDetails from './components/colorDayDetails';
-import FSCSAModelDetails from './components/fscsaModelDetails';
-import FsItemDetails from './components/fsItemDetails';
-import CSAItemDetails from './components/csaItemDetails';
+import LensTypeForm from './components/lensTypeForm';
+import IndexTypeForm from './components/indexTypeForm';
+import ProductFamilyForm from './components/productFamilyForm';
+import SupplyCategoryForm from './components/supplyCategoryForm';
+import LensMaterialForm from './components/lensMaterialForm';
+import LensItemForm from './components/lensItemForm';
+import LensParamForm from './components/lensParamForm';
+import ColorDayForm from './components/colorDayForm';
+import FSCSAModelForm from './components/fscsaModelForm';
+import FsItemForm from './components/fsItemForm';
+import CSAItemForm from './components/csaItemForm';
 import BranchTypeForm from './components/branchTypeForm';
 import MallForm from './components/mallForm';
 import BranchForm from './components/branchForm';
-import UnitDetails from './components/unitDetails';
-import TransactionTypeDetails from './components/transactionTypeDetails';
+import UnitForm from './components/unitForm';
+import TransactionTypeForm from './components/transactionTypeForm';
 import UserForm from './components/userForm';
 import NotFound from './components/notFound';
 import SystemSettings from './components/systemSettings';
@@ -80,48 +80,42 @@ function App() {
             <ProtectedRoute path='/suppliers/:id' component={SupplierForm} />
             <ProtectedRoute path='/brands/:id' component={BrandForm} />
             <ProtectedRoute path='/ordertypes/:id' component={OrderTypeForm} />
-            <ProtectedRoute path='/lenstypes/:id' component={LensTypeDetails} />
-            <ProtectedRoute
-              path='/indextypes/:id'
-              component={IndexTypeDetails}
-            />
+            <ProtectedRoute path='/lenstypes/:id' component={LensTypeForm} />
+            <ProtectedRoute path='/indextypes/:id' component={IndexTypeForm} />
             <ProtectedRoute
               path='/productfamilies/:id'
-              component={ProductFamilyDetails}
+              component={ProductFamilyForm}
             />
             <ProtectedRoute
               path='/supplycategories/:id'
-              component={SupplyCategoryDetails}
+              component={SupplyCategoryForm}
             />
             <ProtectedRoute
               path='/lensmaterials/:id'
-              component={LensMaterialDetails}
+              component={LensMaterialForm}
             />
-            <ProtectedRoute path='/lensItems/:id' component={LensItemDetails} />
-            <ProtectedRoute
-              path='/lensparams/:id'
-              component={LensParamDetails}
-            />
-            <ProtectedRoute path='/colordays/:id' component={ColorDayDetails} />
+            <ProtectedRoute path='/lensItems/:id' component={LensItemForm} />
+            <ProtectedRoute path='/lensparams/:id' component={LensParamForm} />
+            <ProtectedRoute path='/colordays/:id' component={ColorDayForm} />
             <ProtectedRoute
               path='/fscsamodels/:id'
-              component={FSCSAModelDetails}
+              component={FSCSAModelForm}
             />
-            <ProtectedRoute path='/fsitems/:id' component={FsItemDetails} />
-            <ProtectedRoute path='/csaitems/:id' component={CSAItemDetails} />
+            <ProtectedRoute path='/fsitems/:id' component={FsItemForm} />
+            <ProtectedRoute path='/csaitems/:id' component={CSAItemForm} />
             <ProtectedRoute
               path='/branchtypes/:id'
               component={BranchTypeForm}
             />
             <ProtectedRoute path='/malls/:id' component={MallForm} />
             <ProtectedRoute path='/branches/:id' component={BranchForm} />
-            <ProtectedRoute path='/units/:id' component={UnitDetails} />
+            <ProtectedRoute path='/units/:id' component={UnitForm} />
             <ProtectedRoute
               path='/transactiontypes/:id'
-              component={TransactionTypeDetails}
+              component={TransactionTypeForm}
             />
             <ProtectedRoute path='/users/:id' component={UserForm} />
-            {/*Routes for Non Details */}
+            {/*Routes for Non Form */}
             <Route path='/login' render={(props) => <LoginForm {...props} />} />
             <Route
               path='/suppliers'
