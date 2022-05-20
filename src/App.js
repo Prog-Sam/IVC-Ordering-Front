@@ -25,7 +25,7 @@ import Home from './components/home';
 
 import SupplierForm from './components/supplierForm';
 import BrandForm from './components/brandForm';
-import OrderTypeDetails from './components/orderTypeDetails';
+import OrderTypeForm from './components/orderTypeForm';
 import LensTypeDetails from './components/lensTypeDetails';
 import IndexTypeDetails from './components/indexTypeDetails';
 import ProductFamilyDetails from './components/productFamilyDetails';
@@ -79,10 +79,7 @@ function App() {
           <Switch>
             <ProtectedRoute path='/suppliers/:id' component={SupplierForm} />
             <ProtectedRoute path='/brands/:id' component={BrandForm} />
-            <ProtectedRoute
-              path='/ordertypes/:id'
-              component={OrderTypeDetails}
-            />
+            <ProtectedRoute path='/ordertypes/:id' component={OrderTypeForm} />
             <ProtectedRoute path='/lenstypes/:id' component={LensTypeDetails} />
             <ProtectedRoute
               path='/indextypes/:id'
