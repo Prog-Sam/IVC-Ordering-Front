@@ -15,7 +15,7 @@ const LensMaterialTable = ({
       key: 'name',
       content: (lensMaterial) => (
         <Link to={'/lensMaterials/' + lensMaterial.id}>
-          {lensMaterial.name}
+          {lensMaterial.name || `[BLANK]`}
         </Link>
       ),
       label: 'Name',
