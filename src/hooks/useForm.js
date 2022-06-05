@@ -121,12 +121,13 @@ const useForm = (schema, submitCallback, itemInDb = {}) => {
     );
   };
 
-  const renderSelect = (name, label, options) => {
+  const renderSelect = (name, label, options, isDisabled = false) => {
     return (
       <Select
         name={name}
         label={label}
         options={getSelectOptions(options)}
+        isDisabled={isDisabled}
         error={errors[name]}
         value={getSelectOptions(options).filter(
           (option) => option.value === state[name]
