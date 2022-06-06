@@ -14,3 +14,21 @@ export function getColorId(name, colors) {
   const colorCode = _.find(colors, { colorName: Number(colorName) }).id;
   return formatter(colorCode.toString(), '0000') + days;
 }
+
+export function getStringifyName(cdKeys, colors) {
+  const stringKeys = JSON.parse(cdKeys);
+  let stringNames = [];
+  for (let key of stringKeys) {
+    stringNames.push(getColorName(key, colors));
+  }
+  return JSON.stringify(stringNames);
+}
+
+export function getStringifyColorId(cdNames, colors) {
+  const stringNames = JSON.parse(cdNames);
+  let stringKeys = [];
+  for (let name of stringNames) {
+    stringKeys.push(getColorName(name, colors));
+  }
+  return JSON.stringify(stringKeys);
+}
