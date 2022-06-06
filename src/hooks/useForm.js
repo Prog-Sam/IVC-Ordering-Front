@@ -4,11 +4,18 @@ import Select from '../common/select';
 import _ from 'lodash';
 import Joi from 'joi-browser';
 
-const useForm = (schema, submitCallback, itemInDb = {}) => {
+const useForm = (
+  schema,
+  submitCallback,
+  itemInDb = {},
+  subscriberSchema = {}
+) => {
   const [state, setState] = useState({});
   const [errors, setErrors] = useState({});
+  const [subscribers, setSubscribers] = useState([]);
 
   useEffect(() => {
+    setSubscribers(subscriberSchema);
     if (itemInDb) {
       setState({ ...itemInDb });
       return;
@@ -26,6 +33,19 @@ const useForm = (schema, submitCallback, itemInDb = {}) => {
   const getSelectedOption = (id, options) => {
     const item = _.find(options, { id });
     return { label: item.name || item.type, label: item.id };
+  };
+
+  const checkSubscribers = (name, value, pendingState) => {
+    let localState = { ...pendingState };
+    console.log(localState);
+    for (const subscriber of subscribers) {
+      subscriber.keys[name] = value || '';
+      subscriber.value = subscriber.getValue(subscriber.keys);
+      localState[subscriber.path] = subscriber.value;
+    }
+    setState({ ...pendingState, ...localState });
+    // console.log({ ...localState });
+    // console.log({ ...state });
   };
 
   const mapToViewModel = (data) => {
@@ -75,11 +95,13 @@ const useForm = (schema, submitCallback, itemInDb = {}) => {
   };
 
   const handleSelectChange = ({ value, label }, { name }) => {
-    setState({
+    let pendingState = {
       ...state,
       [name]: value,
       ['objectVal-' + name]: { label, value },
-    });
+    };
+    console.log(state);
+    checkSubscribers(name, label, pendingState);
 
     const localErrors = { ...errors };
     const errorMessage = validateProperty({ value, name });
@@ -100,7 +122,7 @@ const useForm = (schema, submitCallback, itemInDb = {}) => {
     );
   };
 
-  const renderInput = (name, label, type = 'text') => {
+  const renderInput = (name, label, type = 'text', readOnly = false) => {
     return (
       <Input
         name={name}
@@ -108,6 +130,7 @@ const useForm = (schema, submitCallback, itemInDb = {}) => {
         onChange={handleChange}
         value={state[name] || ''}
         type={type}
+        readOnly={readOnly}
         error={errors[name]}
       />
     );

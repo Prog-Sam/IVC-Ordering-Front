@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Joi from 'joi-browser';
-import _ from 'lodash';
+import _, { trim } from 'lodash';
 import useForm from '../hooks/useForm';
 import {
   getLensItem,
@@ -39,6 +39,27 @@ const LensItemForm = (props) => {
     supplyCategoryKey: Joi.number().required().label('Supply Category'),
     materialKey: Joi.number().required().label('Lens Material'),
   };
+
+  const subscriberSchema = [
+    {
+      path: 'name',
+      keys: {
+        brandKey: '',
+        orderTypeKey: '',
+        typeKey: '',
+        indexTypeKey: '',
+        productFamilyKey: '',
+        materialKey: '',
+        supplyCategoryKey: '',
+      },
+      value: '',
+      getValue: function (keys) {
+        return trim(
+          `${keys.brandKey} ${keys.orderTypeKey} ${keys.typeKey} ${keys.indexTypeKey} ${keys.productFamilyKey} ${keys.materialKey} ${keys.supplyCategoryKey}`
+        );
+      },
+    },
+  ];
 
   useEffect(() => {
     const lensItemId = props.match.params.id;
@@ -123,7 +144,7 @@ const LensItemForm = (props) => {
     renderSelect,
     mapToViewModel,
     getSelectedOption,
-  ] = useForm(schema, doSubmit);
+  ] = useForm(schema, doSubmit, {}, subscriberSchema);
 
   return (
     <div>
@@ -132,7 +153,7 @@ const LensItemForm = (props) => {
       </h1>
       <form onSubmit={handleSubmit}>
         {renderLabel('ID', props.match.params.id)}
-        {renderInput('name', 'Name')}
+        {renderInput('name', 'Name', 'text', 'readonly')}
         {renderSelect('orderTypeKey', 'Order Type', orderTypes, !isNew)}
         {renderSelect('brandKey', 'Brand', brands, !isNew)}
         {renderSelect('typeKey', 'Lens Type', lensTypes, !isNew)}
