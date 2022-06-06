@@ -18,7 +18,7 @@ const useForm = (schema, submitCallback, itemInDb = {}) => {
 
   const getSelectOptions = (options) => {
     return options.map((opt) => ({
-      label: opt.name || opt.type,
+      label: opt.name || opt.type || opt.colorName || opt.modelName,
       value: opt.id,
     }));
   };
