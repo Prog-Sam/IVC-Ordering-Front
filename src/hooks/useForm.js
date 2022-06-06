@@ -37,11 +37,13 @@ const useForm = (
 
   const checkSubscribers = (name, value, pendingState) => {
     let localState = { ...pendingState };
-    console.log(localState);
-    for (const subscriber of subscribers) {
-      subscriber.keys[name] = value || '';
-      subscriber.value = subscriber.getValue(subscriber.keys);
-      localState[subscriber.path] = subscriber.value;
+
+    if (subscribers.length > 0) {
+      for (const subscriber of subscribers) {
+        subscriber.keys[name] = value || '';
+        subscriber.value = subscriber.getValue(subscriber.keys);
+        localState[subscriber.path] = subscriber.value;
+      }
     }
     setState({ ...pendingState, ...localState });
     // console.log({ ...localState });
@@ -100,7 +102,6 @@ const useForm = (
       [name]: value,
       ['objectVal-' + name]: { label, value },
     };
-    console.log(state);
     checkSubscribers(name, label, pendingState);
 
     const localErrors = { ...errors };

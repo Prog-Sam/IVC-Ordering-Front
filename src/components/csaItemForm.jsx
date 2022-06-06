@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import Joi from 'joi-browser';
 import _ from 'lodash';
 import useForm from '../hooks/useForm';
-import { getFsItem, saveFsItem, updateFsItem } from '../services/fsItemService';
+import {
+  getCsaItem,
+  saveCsaItem,
+  updateCsaItem,
+} from '../services/csaItemService';
 import { getOrderTypes } from '../services/orderTypeService';
 import { getBrands } from '../services/brandService';
 import { getFSCSAModels } from '../services/fscsaModelService';
@@ -10,7 +14,7 @@ import { getColorDays } from '../services/colorDayService';
 import { getSupplyCategories } from '../services/supplyCategoryService';
 import { toast } from 'react-toastify';
 
-const FsItemForm = (props) => {
+const CsaItemForm = (props) => {
   const [orderTypes, setOrderTypes] = useState([]);
   const [brands, setBrands] = useState([]);
   const [fsModels, setFsModels] = useState([]);
@@ -24,17 +28,14 @@ const FsItemForm = (props) => {
     id: Joi.number().label('Lens Code'),
     orderTypeKey: Joi.number().required().label('Order Type'),
     brandKey: Joi.number().required().label('Brand'),
-    fsModelKey: Joi.number().required().label('Model'),
+    csaModelKey: Joi.number().required().label('Model'),
     cdKey: Joi.number().required().label('Color'),
-    supplyCategoryKey: Joi.number().required().label('Supply Category'),
-    width: Joi.number().required().label('Width'),
-    height: Joi.number().required().label('Height'),
-    bridge: Joi.number().required().label('Bridge'),
-    templeArms: Joi.number().required().label('Temple Arms'),
+    scKey: Joi.number().required().label('Supply Category'),
+    description: Joi.string().required().min(1).max(100).label('Description'),
   };
 
   useEffect(() => {
-    const fsItemId = props.match.params.id;
+    const csaItemId = props.match.params.id;
 
     async function populateOrderTypes() {
       let { data } = await getOrderTypes();
@@ -63,17 +64,17 @@ const FsItemForm = (props) => {
     populateCdKeys();
     populateSupplyCategories();
 
-    isNew = fsItemId === 'New';
+    isNew = csaItemId === 'New';
     if (isNew) return;
 
-    async function populateFsItem() {
-      let { data } = await getFsItem(fsItemId);
-      setFsItem(data);
+    async function populateCsaItem() {
+      let { data } = await getCsaItem(csaItemId);
+      setCsaItem(data);
     }
 
-    populateFsItem();
+    populateCsaItem();
 
-    if (!fsItem) return props.history.replace('/not-found');
+    if (!csaItem) return props.history.replace('/not-found');
 
     return console.log('disconnect Server');
   }, []);
@@ -82,14 +83,14 @@ const FsItemForm = (props) => {
     try {
       const isNew = props.match.params.id === 'New';
       const result = isNew
-        ? await saveFsItem(mapToViewModel(fsItem))
-        : await updateFsItem(mapToViewModel(fsItem));
+        ? await saveCsaItem(mapToViewModel(csaItem))
+        : await updateCsaItem(mapToViewModel(csaItem));
       toast(
-        `FsItem ${fsItem.name} with the id of ${fsItem.id} has been ${
+        `CsaItem ${csaItem.name} with the id of ${csaItem.id} has been ${
           isNew ? 'added.' : 'updated.'
         }`
       );
-      props.history.push('/fsItems');
+      props.history.push('/csaItems');
     } catch (e) {
       console.error(e);
       toast(e);
@@ -97,8 +98,8 @@ const FsItemForm = (props) => {
   };
 
   const [
-    fsItem,
-    setFsItem,
+    csaItem,
+    setCsaItem,
     handleSubmit,
     renderButton,
     renderInput,
@@ -111,28 +112,20 @@ const FsItemForm = (props) => {
   return (
     <div>
       <h1 className='d-flex align-items-left'>
-        {props.match.params.id === 'New' ? 'REGISTER' : 'UPDATE'} FRAME
+        {props.match.params.id === 'New' ? 'REGISTER' : 'UPDATE'} CSA
       </h1>
       <form onSubmit={handleSubmit}>
-        {renderLabel('Frame Code', props.match.params.id)}
+        {renderLabel('CSA Code', props.match.params.id)}
         {renderSelect('orderTypeKey', 'Order Type', orderTypes, !isNew)}
         {renderSelect('brandKey', 'Brand', brands, !isNew)}
-        {renderSelect('fsModelKey', 'Model', fsModels, !isNew)}
+        {renderSelect('csaModelKey', 'Model', fsModels, !isNew)}
         {renderSelect('cdKey', 'Color', colorDays, !isNew)}
-        {renderSelect(
-          'supplyCategoryKey',
-          'Supply Category',
-          supplyCategories,
-          !isNew
-        )}
-        {renderInput('width', 'Width')}
-        {renderInput('height', 'Height')}
-        {renderInput('bridge', 'Bridge')}
-        {renderInput('templeArms', 'Temple Arms')}
+        {renderSelect('scKey', 'Supply Category', supplyCategories, !isNew)}
+        {renderInput('description', 'Description')}
         {renderButton('Submit')}
       </form>
     </div>
   );
 };
 
-export default FsItemForm;
+export default CsaItemForm;
