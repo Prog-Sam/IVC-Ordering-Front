@@ -14,7 +14,7 @@ const Pagination = ({ totalItems, pageSize, onPageChange, currentPage }) => {
 
   return (
     <nav aria-label='Page navigation example'>
-      <ul className='pagination'>
+      <ul className='pagination d-flex flex-wrap'>
         <li className={currentPage === 1 ? 'page-item disabled' : 'page-item'}>
           <a
             className='page-link'
