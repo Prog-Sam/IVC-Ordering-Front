@@ -1,5 +1,6 @@
 import _ from 'lodash';
-import formatter from './formatter';
+import { formatter } from './formatter';
+import { toast } from 'react-toastify';
 
 export function getColorName(code, colors) {
   const colorCode = code.slice(0, 4);
@@ -31,4 +32,33 @@ export function getStringifyColorId(cdNames, colors) {
     stringKeys.push(getColorName(name, colors));
   }
   return JSON.stringify(stringKeys);
+}
+
+export function handleColor(sign, list, colorDay = {}) {
+  let localList = list;
+  if (sign === '-') {
+    if (localList.length > 0) {
+      localList.pop();
+      toast.error('Item has been Removed');
+      return localList;
+    }
+    toast.error('No items to remove!');
+    return localList;
+  }
+
+  if (localList.length == 25) {
+    toast.error('Item List already full');
+    return localList;
+  }
+  if (!duplicateColor(colorDay, list)) {
+    localList.push(colorDay);
+    toast('Item has been Added');
+    return localList;
+  }
+  toast.error('Item already in the list');
+  return localList;
+}
+
+function duplicateColor(colorDay, list) {
+  return _.includes(list, colorDay);
 }

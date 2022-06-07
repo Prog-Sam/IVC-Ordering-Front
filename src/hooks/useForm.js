@@ -3,6 +3,9 @@ import Input from './../common/input';
 import Select from '../common/select';
 import _ from 'lodash';
 import Joi from 'joi-browser';
+import ColorDaySelector from '../common/colorDaySelector';
+import { handleColor } from '../utils/ColorIndex';
+import { toast } from 'react-toastify';
 
 const useForm = (
   schema,
@@ -112,6 +115,17 @@ const useForm = (
     setErrors(localErrors);
   };
 
+  const handleColorSelect = (name, sign, value = {}) => {
+    let localState = { ...state };
+    let newColors = handleColor(
+      sign,
+      JSON.parse(localState[name] || '[]'),
+      value
+    );
+    localState[name] = JSON.stringify(newColors);
+    setState({ ...localState });
+  };
+
   const renderButton = (label) => {
     return (
       <button
@@ -161,6 +175,20 @@ const useForm = (
     );
   };
 
+  const renderColorDaySelector = (name, label, options, isDisabled = false) => {
+    return (
+      <ColorDaySelector
+        name={name}
+        label={label}
+        options={getSelectOptions(options)}
+        isDisabled={isDisabled}
+        error={errors[name]}
+        value={state[name]}
+        onChange={handleSelectChange}
+        handleColorSelect={handleColorSelect}
+      />
+    );
+  };
   return [
     state,
     setState,
@@ -171,6 +199,7 @@ const useForm = (
     renderSelect,
     mapToViewModel,
     getSelectedOption,
+    renderColorDaySelector,
   ];
 };
 
