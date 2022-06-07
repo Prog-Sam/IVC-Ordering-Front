@@ -3,6 +3,7 @@ import config from '../config.json';
 import { getStringifyColorId, getStringifyName } from '../utils/ColorIndex';
 import { getColorDays } from './colorDayService';
 import _ from 'lodash';
+import ColorDay from './../components/colorDay';
 
 export async function getLensParams() {
   const color = await getColorDays();
@@ -16,15 +17,15 @@ export async function getLensParams() {
   return { data: localData };
 }
 
-export async function getLensParam(id, colorDays = []) {
+export async function getLensParam(id) {
   const lensParam = await http.get(`${config.apiEndpoint}/lensParams/${id}`);
+  const colorDays = await getColorDays();
   let localLensParam = { ...lensParam };
-  if (colorDays.length > 0) {
-    localLensParam.data.cdKeys = getStringifyName(
-      lensParam.data.cdKeys,
-      colorDays
-    );
-  }
+
+  localLensParam.data.cdKeys = getStringifyName(
+    lensParam.data.cdKeys,
+    colorDays.data
+  );
   return localLensParam;
 }
 
