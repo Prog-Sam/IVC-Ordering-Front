@@ -1,18 +1,13 @@
 import http from './httpService';
-import config from '../config.json';
 
 export async function getTransactionTypes() {
-  const transactionTypes = await http.get(
-    `${config.apiEndpoint}/transactionTypes`
-  );
+  const transactionTypes = await http.get(`/transactionTypes`);
   // console.log(result);
   return transactionTypes;
 }
 
 export async function getTransactionType(id) {
-  const transactionType = await http.get(
-    `${config.apiEndpoint}/transactionTypes/${id}`
-  );
+  const transactionType = await http.get(`/transactionTypes/${id}`);
   // console.log(result);
   return transactionType;
 }
@@ -22,7 +17,7 @@ export async function saveTransactionType(transactionType) {
   delete localTransactionType['id'];
 
   let transactionTypeInDb = await http.post(
-    `${config.apiEndpoint}/transactionTypes`,
+    `/transactionTypes`,
     localTransactionType
   );
   return transactionTypeInDb;
@@ -33,7 +28,7 @@ export async function updateTransactionType(transactionType) {
   delete localTransactionType['id'];
 
   let transactionTypeInDb = await http.put(
-    `${config.apiEndpoint}/transactionTypes/${transactionType.id}`,
+    `/transactionTypes/${transactionType.id}`,
     localTransactionType
   );
   return transactionTypeInDb;

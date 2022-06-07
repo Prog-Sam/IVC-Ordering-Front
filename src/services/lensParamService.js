@@ -1,5 +1,5 @@
 import http from './httpService';
-import config from '../config.json';
+
 import { getStringifyColorId, getStringifyName } from '../utils/ColorIndex';
 import { getColorDays } from './colorDayService';
 import _ from 'lodash';
@@ -7,7 +7,7 @@ import ColorDay from './../components/colorDay';
 
 export async function getLensParams() {
   const color = await getColorDays();
-  const { data } = await http.get(`${config.apiEndpoint}/lensParams`);
+  const { data } = await http.get(`/lensParams`);
   let localData = [];
   _.forEach(data, (item) => {
     let localItem = { ...item };
@@ -18,7 +18,7 @@ export async function getLensParams() {
 }
 
 export async function getLensParam(id) {
-  const lensParam = await http.get(`${config.apiEndpoint}/lensParams/${id}`);
+  const lensParam = await http.get(`/lensParams/${id}`);
   const colorDays = await getColorDays();
   let localLensParam = { ...lensParam };
 
@@ -38,10 +38,7 @@ export async function saveLensParam(lensParam, colorDays) {
     colorDays
   ).replace(/"/g, '');
 
-  let lensParamInDb = await http.post(
-    `${config.apiEndpoint}/lensParams`,
-    localLensParam
-  );
+  let lensParamInDb = await http.post(`/lensParams`, localLensParam);
   return lensParamInDb;
 }
 
@@ -55,7 +52,7 @@ export async function updateLensParam(lensParam, colorDays) {
   ).replace(/"/g, '');
 
   let lensParamInDb = await http.put(
-    `${config.apiEndpoint}/lensParams/${lensParam.id}`,
+    `/lensParams/${lensParam.id}`,
     localLensParam
   );
   return lensParamInDb;

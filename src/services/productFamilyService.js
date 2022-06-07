@@ -1,18 +1,13 @@
 import http from './httpService';
-import config from '../config.json';
 
 export async function getProductFamilies() {
-  const productFamilies = await http.get(
-    `${config.apiEndpoint}/productFamilies`
-  );
+  const productFamilies = await http.get(`/productFamilies`);
   // console.log(result);
   return productFamilies;
 }
 
 export async function getProductFamily(id) {
-  const productFamily = await http.get(
-    `${config.apiEndpoint}/productFamilies/${id}`
-  );
+  const productFamily = await http.get(`/productFamilies/${id}`);
   // console.log(result);
   return productFamily;
 }
@@ -22,7 +17,7 @@ export async function saveProductFamily(productFamily) {
   delete localProductFamily['id'];
 
   let productFamilyInDb = await http.post(
-    `${config.apiEndpoint}/productFamilies`,
+    `/productFamilies`,
     localProductFamily
   );
   return productFamilyInDb;
@@ -33,7 +28,7 @@ export async function updateProductFamily(productFamily) {
   delete localProductFamily['id'];
 
   let productFamilyInDb = await http.put(
-    `${config.apiEndpoint}/productFamilies/${productFamily.id}`,
+    `/productFamilies/${productFamily.id}`,
     localProductFamily
   );
   return productFamilyInDb;

@@ -1,14 +1,13 @@
 import http from './httpService';
-import config from '../config.json';
 
 export async function getOrderTypes() {
-  const orderTypes = await http.get(`${config.apiEndpoint}/orderTypes`);
+  const orderTypes = await http.get(`/orderTypes`);
   // console.log(result);
   return orderTypes;
 }
 
 export async function getOrderType(id) {
-  const orderType = await http.get(`${config.apiEndpoint}/orderTypes/${id}`);
+  const orderType = await http.get(`/orderTypes/${id}`);
   // console.log(result);
   return orderType;
 }
@@ -17,10 +16,7 @@ export async function saveOrderType(orderType) {
   let localOrderType = { ...orderType };
   delete localOrderType['id'];
 
-  let orderTypeInDb = await http.post(
-    `${config.apiEndpoint}/orderTypes`,
-    localOrderType
-  );
+  let orderTypeInDb = await http.post(`/orderTypes`, localOrderType);
   return orderTypeInDb;
 }
 
@@ -29,7 +25,7 @@ export async function updateOrderType(orderType) {
   delete localOrderType['id'];
 
   let orderTypeInDb = await http.put(
-    `${config.apiEndpoint}/orderTypes/${orderType.id}`,
+    `/orderTypes/${orderType.id}`,
     localOrderType
   );
   return orderTypeInDb;

@@ -1,14 +1,13 @@
 import http from './httpService';
-import config from '../config.json';
 
 export async function getFSCSAModels() {
-  const fscsaModels = await http.get(`${config.apiEndpoint}/fscsaModels`);
+  const fscsaModels = await http.get(`/fscsaModels`);
   // console.log(result);
   return fscsaModels;
 }
 
 export async function getFSCSAModel(id) {
-  const fscsaModel = await http.get(`${config.apiEndpoint}/fscsaModels/${id}`);
+  const fscsaModel = await http.get(`/fscsaModels/${id}`);
   // console.log(result);
   return fscsaModel;
 }
@@ -17,10 +16,7 @@ export async function saveFSCSAModel(fscsaModel) {
   let localFSCSAModel = { ...fscsaModel };
   delete localFSCSAModel['id'];
 
-  let fscsaModelInDb = await http.post(
-    `${config.apiEndpoint}/fscsaModels`,
-    localFSCSAModel
-  );
+  let fscsaModelInDb = await http.post(`/fscsaModels`, localFSCSAModel);
   return fscsaModelInDb;
 }
 
@@ -29,7 +25,7 @@ export async function updateFSCSAModel(fscsaModel) {
   delete localFSCSAModel['id'];
 
   let fscsaModelInDb = await http.put(
-    `${config.apiEndpoint}/fscsaModels/${fscsaModel.id}`,
+    `/fscsaModels/${fscsaModel.id}`,
     localFSCSAModel
   );
   return fscsaModelInDb;
