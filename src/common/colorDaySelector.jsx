@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import RSelect from 'react-select';
 import { formatter } from './../utils/formatter';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 const ColorDaySelector = ({
   name,
@@ -60,6 +61,7 @@ const ColorDaySelector = ({
             <tr>
               <td>
                 <button
+                  type='button'
                   className='btn btn-primary d-flex align-items-left'
                   onClick={() => {
                     if (color.label && day.toString()) {
@@ -80,6 +82,7 @@ const ColorDaySelector = ({
               </td>
               <td>
                 <button
+                  type='button'
                   className='btn btn-danger d-flex align-items-left'
                   onClick={() => {
                     setColor({});
