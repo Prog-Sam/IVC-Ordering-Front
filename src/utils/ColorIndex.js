@@ -11,13 +11,13 @@ export function getColorName(code, colors) {
 
 export function getColorId(name, colors) {
   const colorName = name.slice(0, -2);
-  const days = name.slice(4, 6);
-  const colorCode = _.find(colors, { colorName: Number(colorName) }).id;
+  const days = name.slice(colorName.length, name.length);
+  const colorCode = _.find(colors, { colorName: colorName }).id;
   return formatter(colorCode.toString(), '0000') + days;
 }
 
 export function getStringifyName(cdKeys, colors) {
-  const stringKeys = JSON.parse(cdKeys);
+  const stringKeys = JSON.parse(formatJSON(cdKeys));
   let stringNames = [];
   for (let key of stringKeys) {
     stringNames.push(getColorName(key, colors));
@@ -25,11 +25,23 @@ export function getStringifyName(cdKeys, colors) {
   return JSON.stringify(stringNames);
 }
 
+function formatJSON(cdKeys) {
+  if (!cdKeys.includes(',')) {
+    return `["${cdKeys.slice(1, 7)}"]`;
+  }
+  let cdKeyArray = cdKeys.replace('[', '').replace(']', '').split(',');
+  let newString = '';
+  for (let item of cdKeyArray) {
+    newString += `"${item}",`;
+  }
+  return `[${newString}]`.replace(',]', ']');
+}
+
 export function getStringifyColorId(cdNames, colors) {
   const stringNames = JSON.parse(cdNames);
   let stringKeys = [];
   for (let name of stringNames) {
-    stringKeys.push(getColorName(name, colors));
+    stringKeys.push(getColorId(name, colors));
   }
   return JSON.stringify(stringKeys);
 }
@@ -46,7 +58,7 @@ export function handleColor(sign, list, colorDay = {}) {
     return localList;
   }
 
-  if (localList.length == 25) {
+  if (localList.length == 20) {
     toast.error('Item List already full');
     return localList;
   }

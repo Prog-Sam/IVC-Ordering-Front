@@ -1,21 +1,41 @@
 import http from './httpService';
 import config from '../config.json';
+import { getStringifyColorId, getStringifyName } from '../utils/ColorIndex';
+import { getColorDays } from './colorDayService';
+import _ from 'lodash';
 
 export async function getLensParams() {
-  const lensParams = await http.get(`${config.apiEndpoint}/lensParams`);
-  // console.log(result);
-  return lensParams;
+  const color = await getColorDays();
+  const { data } = await http.get(`${config.apiEndpoint}/lensParams`);
+  let localData = [];
+  _.forEach(data, (item) => {
+    let localItem = { ...item };
+    localItem.cdKeys = getStringifyName(item['cdKeys'], color.data);
+    localData.push(localItem);
+  });
+  return { data: localData };
 }
 
-export async function getLensParam(id) {
+export async function getLensParam(id, colorDays = []) {
   const lensParam = await http.get(`${config.apiEndpoint}/lensParams/${id}`);
-  // console.log(result);
-  return lensParam;
+  let localLensParam = { ...lensParam };
+  if (colorDays.length > 0) {
+    localLensParam.data.cdKeys = getStringifyName(
+      lensParam.data.cdKeys,
+      colorDays
+    );
+  }
+  return localLensParam;
 }
 
-export async function saveLensParam(lensParam) {
+export async function saveLensParam(lensParam, colorDays) {
   let localLensParam = { ...lensParam };
   delete localLensParam['id'];
+
+  localLensParam.cdKeys = getStringifyColorId(
+    localLensParam.cdKeys,
+    colorDays
+  ).replace(/"/g, '');
 
   let lensParamInDb = await http.post(
     `${config.apiEndpoint}/lensParams`,
@@ -24,9 +44,11 @@ export async function saveLensParam(lensParam) {
   return lensParamInDb;
 }
 
-export async function updateLensParam(lensParam) {
+export async function updateLensParam(lensParam, colorDays) {
   let localLensParam = { ...lensParam };
   delete localLensParam['id'];
+
+  localLensParam.cdKeys = getStringifyColorId(localLensParam.cdKeys, colorDays);
 
   let lensParamInDb = await http.put(
     `${config.apiEndpoint}/lensParams/${lensParam.id}`,
