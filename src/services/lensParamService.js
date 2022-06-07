@@ -49,7 +49,10 @@ export async function updateLensParam(lensParam, colorDays) {
   let localLensParam = { ...lensParam };
   delete localLensParam['id'];
 
-  localLensParam.cdKeys = getStringifyColorId(localLensParam.cdKeys, colorDays);
+  localLensParam.cdKeys = getStringifyColorId(
+    localLensParam.cdKeys,
+    colorDays
+  ).replace(/"/g, '');
 
   let lensParamInDb = await http.put(
     `${config.apiEndpoint}/lensParams/${lensParam.id}`,
