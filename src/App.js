@@ -20,6 +20,7 @@ import Mall from './components/mall';
 import Branch from './components/branch';
 import Unit from './components/unit';
 import TransactionType from './components/transactionType';
+import TransactionSeries from './components/transactionSeries';
 import User from './components/user';
 import Home from './components/home';
 
@@ -42,6 +43,7 @@ import MallForm from './components/mallForm';
 import BranchForm from './components/branchForm';
 import UnitForm from './components/unitForm';
 import TransactionTypeForm from './components/transactionTypeForm';
+import TransactionSeriesForm from './components/transactionSeriesForm';
 import UserForm from './components/userForm';
 import NotFound from './components/notFound';
 import SystemSettings from './components/systemSettings';
@@ -114,6 +116,10 @@ function App() {
               path='/transactiontypes/:id'
               component={TransactionTypeForm}
             />
+            <ProtectedRoute
+              path='/transactionSeries/:id'
+              component={TransactionSeriesForm}
+            />
             <ProtectedRoute path='/users/:id' component={UserForm} />
             {/*Routes for Non Form */}
             <Route path='/login' render={(props) => <LoginForm {...props} />} />
@@ -177,6 +183,10 @@ function App() {
             <Route
               path='/transactiontypes'
               render={(props) => <TransactionType {...props} />}
+            />
+            <Route
+              path='/transactionseries'
+              render={(props) => <TransactionSeries {...props} />}
             />
             <Route path='/users' render={(props) => <User {...props} />} />
             <Route
