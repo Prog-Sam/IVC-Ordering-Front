@@ -13,6 +13,9 @@ const SystemSettings = () => {
           <Link to='/transactiontypes'>TRANSACTION TYPES</Link>
         </li>
         <li className='list-group-item'>
+          <Link to='/transactionSeries'>TRANSACTION SERIES</Link>
+        </li>
+        <li className='list-group-item'>
           <Link to='/units'>UNITS</Link>
         </li>
         <li className='list-group-item'>

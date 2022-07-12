@@ -1,4 +1,3 @@
-import userEvent from '@testing-library/user-event';
 import React, { Fragment } from 'react';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';

@@ -49,7 +49,7 @@ const Mall = () => {
     let filtered = malls;
     if (searchQuery)
       filtered = malls.filter((u) =>
-        u.name.toLowerCase().startsWith(searchQuery.toLocaleLowerCase())
+        u.type.toLowerCase().startsWith(searchQuery.toLocaleLowerCase())
       );
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);

@@ -13,6 +13,9 @@ const BranchSettings = () => {
           <Link to='/branchtypes'>BRANCH TYPES</Link>
         </li>
         <li className='list-group-item'>
+          <Link to='/transactionSeries'>TRANSACTION SERIES</Link>
+        </li>
+        <li className='list-group-item'>
           <Link to='/malls'>MALLS</Link>
         </li>
         <li className='list-group-item'>
