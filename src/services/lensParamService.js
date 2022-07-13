@@ -3,7 +3,7 @@ import http from './httpService';
 import { getStringifyColorId, getStringifyName } from '../utils/ColorIndex';
 import { getColorDays } from './colorDayService';
 import _ from 'lodash';
-import ColorDay from './../components/colorDay';
+// import ColorDay from './../components/CRUD/colorDay/colorDay';
 
 export async function getLensParams() {
   const color = await getColorDays();
