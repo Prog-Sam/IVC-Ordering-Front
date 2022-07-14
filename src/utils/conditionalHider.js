@@ -1,11 +1,6 @@
 import _ from 'lodash';
 
-export function protection(
-  component,
-  user = {},
-  inclusion = [],
-  exclusion = []
-) {
+export function showIf(component, user = {}, inclusion = [], exclusion = []) {
   if (!user) return null;
 
   if (inclusion) {
