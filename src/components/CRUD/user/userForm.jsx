@@ -5,9 +5,11 @@ import useForm from '../../../hooks/useForm';
 import { getBranches } from './../../../services/branchService';
 import { getUser, saveUser, updateUser } from './../../../services/userService';
 import { toast } from 'react-toastify';
+import accessConfig from '../../../config/accessConfig.json';
 
 const UserForm = (props) => {
   const [branches, setBranches] = useState([]);
+  const { database } = accessConfig;
 
   const localEnums = {
     status: [
@@ -15,15 +17,7 @@ const UserForm = (props) => {
       { id: 1, name: 'ACTIVE' },
       { id: 2, name: 'DISABLED' },
     ],
-    access: [
-      { id: '0', name: 'DEVELOPER' },
-      { id: '1', name: 'OIC' },
-      { id: '2', name: 'ASSISTANT OIC' },
-      { id: '3', name: 'MANAGEMENT' },
-      { id: '4', name: 'OPTOMETRIST' },
-      { id: '5', name: 'ENCODER' },
-      { id: '6', name: 'SALES' },
-    ],
+    access: [...database],
   };
 
   const schema = {

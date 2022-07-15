@@ -1,4 +1,15 @@
 {
+  "database": [
+    { "id": "0", "name": "DEVELOPER" },
+    { "id": "1", "name": "OIC" },
+    { "id": "2", "name": "ASSISTANT OIC" },
+    { "id": "3", "name": "MANAGEMENT" },
+    { "id": "4", "name": "OPTOMETRIST" },
+    { "id": "5", "name": "ENCODER" },
+    { "id": "6", "name": "SALES" },
+    { "id": "7", "name": "WAREHOUSE PERSONNEL" },
+    { "id": "8", "name": "WAREHOUSE OIC" }
+  ],
   "databaseEmp": [0, 7, 8],
   "databaseManager": [0, 8],
   "branchEmp": [0, 1, 2, 3, 4, 5, 6],
