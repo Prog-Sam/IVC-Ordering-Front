@@ -1,6 +1,7 @@
 {
-  "databaseEmp": [0, 6, 7],
-  "databaseManager": [0, 6],
-  "branch": [0, 1, 2, 3, 4, 5],
-  "management": [0, 1, 2]
+  "databaseEmp": [0, 7, 8],
+  "databaseManager": [0, 8],
+  "branchEmp": [0, 1, 2, 3, 4, 5, 6],
+  "branchManagement": [0, 1, 2],
+  "management": [0]
 }
