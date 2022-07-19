@@ -10,9 +10,9 @@
     { "id": "7", "name": "WAREHOUSE PERSONNEL" },
     { "id": "8", "name": "WAREHOUSE OIC" }
   ],
-  "databaseEmp": [0, 7, 8],
+  "databaseEmp": [0, 7, 8, 3],
   "databaseManager": [0, 8],
   "branchEmp": [0, 1, 2, 3, 4, 5, 6],
-  "branchManagement": [0, 1, 2],
-  "management": [0]
+  "branchManagement": [0, 1, 2, 3],
+  "management": [0, 3]
 }

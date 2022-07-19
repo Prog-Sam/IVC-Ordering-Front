@@ -54,11 +54,13 @@ import LoginForm from './components/CRUD/login/loginForm';
 import UserContext from './context/userContext';
 import { getCurrentUser, logout } from './services/authService';
 import ProtectedRoute from './common/protectedRoute';
+import access from './config/accessConfig.json';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
+  const { databaseEmp } = access;
 
   useEffect(() => {
     let token = localStorage.getItem('token');
@@ -79,48 +81,111 @@ function App() {
         <ToastContainer />
         <main className='container'>
           <Switch>
-            <ProtectedRoute path='/suppliers/:id' component={SupplierForm} />
-            <ProtectedRoute path='/brands/:id' component={BrandForm} />
-            <ProtectedRoute path='/ordertypes/:id' component={OrderTypeForm} />
-            <ProtectedRoute path='/lenstypes/:id' component={LensTypeForm} />
-            <ProtectedRoute path='/indextypes/:id' component={IndexTypeForm} />
+            <ProtectedRoute
+              path='/suppliers/:id'
+              inclusion={databaseEmp}
+              component={SupplierForm}
+            />
+            <ProtectedRoute
+              path='/brands/:id'
+              inclusion={databaseEmp}
+              component={BrandForm}
+            />
+            <ProtectedRoute
+              path='/ordertypes/:id'
+              inclusion={databaseEmp}
+              component={OrderTypeForm}
+            />
+            <ProtectedRoute
+              path='/lenstypes/:id'
+              inclusion={databaseEmp}
+              component={LensTypeForm}
+            />
+            <ProtectedRoute
+              path='/indextypes/:id'
+              inclusion={databaseEmp}
+              component={IndexTypeForm}
+            />
             <ProtectedRoute
               path='/productfamilies/:id'
+              inclusion={databaseEmp}
               component={ProductFamilyForm}
             />
             <ProtectedRoute
               path='/supplycategories/:id'
+              inclusion={databaseEmp}
               component={SupplyCategoryForm}
             />
             <ProtectedRoute
               path='/lensmaterials/:id'
+              inclusion={databaseEmp}
               component={LensMaterialForm}
             />
-            <ProtectedRoute path='/lensItems/:id' component={LensItemForm} />
-            <ProtectedRoute path='/lensparams/:id' component={LensParamForm} />
-            <ProtectedRoute path='/colordays/:id' component={ColorDayForm} />
+            <ProtectedRoute
+              path='/lensItems/:id'
+              inclusion={databaseEmp}
+              component={LensItemForm}
+            />
+            <ProtectedRoute
+              path='/lensparams/:id'
+              inclusion={databaseEmp}
+              component={LensParamForm}
+            />
+            <ProtectedRoute
+              path='/colordays/:id'
+              inclusion={databaseEmp}
+              component={ColorDayForm}
+            />
             <ProtectedRoute
               path='/fscsamodels/:id'
+              inclusion={databaseEmp}
               component={FSCSAModelForm}
             />
-            <ProtectedRoute path='/fsitems/:id' component={FsItemForm} />
-            <ProtectedRoute path='/csaitems/:id' component={CSAItemForm} />
+            <ProtectedRoute
+              path='/fsitems/:id'
+              inclusion={databaseEmp}
+              component={FsItemForm}
+            />
+            <ProtectedRoute
+              path='/csaitems/:id'
+              inclusion={databaseEmp}
+              component={CSAItemForm}
+            />
             <ProtectedRoute
               path='/branchtypes/:id'
+              inclusion={databaseEmp}
               component={BranchTypeForm}
             />
-            <ProtectedRoute path='/malls/:id' component={MallForm} />
-            <ProtectedRoute path='/branches/:id' component={BranchForm} />
-            <ProtectedRoute path='/units/:id' component={UnitForm} />
+            <ProtectedRoute
+              path='/malls/:id'
+              inclusion={databaseEmp}
+              component={MallForm}
+            />
+            <ProtectedRoute
+              path='/branches/:id'
+              inclusion={databaseEmp}
+              component={BranchForm}
+            />
+            <ProtectedRoute
+              path='/units/:id'
+              inclusion={databaseEmp}
+              component={UnitForm}
+            />
             <ProtectedRoute
               path='/transactiontypes/:id'
+              inclusion={databaseEmp}
               component={TransactionTypeForm}
             />
             <ProtectedRoute
               path='/transactionSeries/:id'
+              inclusion={databaseEmp}
               component={TransactionSeriesForm}
             />
-            <ProtectedRoute path='/users/:id' component={UserForm} />
+            <ProtectedRoute
+              path='/users/:id'
+              inclusion={databaseEmp}
+              component={UserForm}
+            />
             {/*Routes for Non Form */}
             <Route path='/login' render={(props) => <LoginForm {...props} />} />
             <Route
