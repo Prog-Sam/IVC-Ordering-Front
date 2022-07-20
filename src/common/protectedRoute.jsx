@@ -12,9 +12,9 @@ const ProtectedRoute = ({
   ...rest
 }) => {
   const isAuthorized = (curUser, inc = [], exc = []) => {
-    console.log(inc);
-    console.log(curUser.access);
-    console.log(whitelisted(inc, curUser));
+    // console.log(inc);
+    // console.log(curUser.access);
+    // console.log(whitelisted(inc, curUser));
     if (!curUser) return false;
     if (inc) return whitelisted(inc, curUser) ? true : false;
     if (exc) return blacklisted(inc, curUser) ? false : true;
