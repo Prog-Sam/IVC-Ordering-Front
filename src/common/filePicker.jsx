@@ -1,31 +1,34 @@
-import { setBreadcrumbCallback } from 'raven-js';
 import React, { Fragment, useState } from 'react';
 import { saveFile } from '../services/fileService';
+import { toast } from 'react-toastify';
 
-const FilePicker = ({ name, label, error, value, ...rest }) => {
+const FilePicker = ({ name, label, error, value, handleUpload, ...rest }) => {
   const [driveUrl, setDriveUrl] = useState('https://drive.google.com/file/d/');
   const [file, setFile] = useState(null);
   const [currentValue, setCurrentValue] = useState('');
 
   const urlAppender = (url) => {
-    let localValue = currentValue == '' ? url : `${currentValue};${url}`;
-    setCurrentValue(localValue);
+    let localValue = value == '' || !value ? url : `${value};${url}`;
+    // setCurrentValue(localValue);
+    handleUpload(localValue, name);
   };
 
   const handleSubmit = async () => {
     if (file) {
       try {
+        toast('Uploading File...');
         const formData = new FormData();
         formData.append('fileUpload', file.data);
         const res = await saveFile(formData);
         setFile(null);
         urlAppender(driveUrl + res.data.response.data.id);
+        toast('File Uploaded Successfully');
       } catch (ex) {
-        console.log(ex);
+        toast.error(ex);
       }
       return;
     }
-    console.log('No file selected');
+    toast.error('No file selected');
   };
 
   const handleFileChange = (e) => {
@@ -72,7 +75,7 @@ const FilePicker = ({ name, label, error, value, ...rest }) => {
         </div>
         <div>
           <h6 className='d-flex align-items-left' name={name}>
-            Links: {currentValue}
+            Links: {value}
           </h6>
         </div>
         {error && <div className='alert alert-danger'>{error}</div>}
