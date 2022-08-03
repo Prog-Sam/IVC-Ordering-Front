@@ -1,27 +1,36 @@
 import http from './httpService';
 import jwtDecode from 'jwt-decode';
+import store from '../utils/store';
 
 const tokenKey = 'token';
+const catalogKey = 'localCatalog';
+const cartKey = 'cart';
 
 http.setJwt(getJwt());
 
 export async function login(user) {
   const auth = await http.post(`/auth`, user);
-  localStorage.setItem(tokenKey, auth.data);
+  store.save(tokenKey, auth.data);
   return auth;
 }
 
 export function getJwt() {
-  return localStorage.getItem(tokenKey);
+  try {
+    return store.get(tokenKey);
+  } catch (er) {
+    console.log(er);
+  }
 }
 
 export function logout() {
-  localStorage.removeItem(tokenKey);
+  store.remove(tokenKey);
+  store.remove(catalogKey);
+  store.remove(cartKey);
 }
 
 export function getCurrentUser() {
   try {
-    const jwt = localStorage.getItem(tokenKey);
+    const jwt = store.get(tokenKey);
     return jwtDecode(jwt);
   } catch (ex) {
     console.log(ex);
