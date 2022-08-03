@@ -1,11 +1,17 @@
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
+import Joi from 'joi-browser';
+import _ from 'lodash';
 import Input from './../common/input';
 import Select from '../common/select';
-import _ from 'lodash';
-import Joi from 'joi-browser';
 import ColorDaySelector from '../common/colorDaySelector';
+import RxField from '../common/rxField';
+import FilePicker from '../common/filePicker';
 import { handleColor } from '../utils/ColorIndex';
-import { toast } from 'react-toastify';
+import {
+  getSelectedOption,
+  getSelectOptions,
+} from '../utils/reactSelectOption';
 
 const useForm = (
   schema,
@@ -25,18 +31,6 @@ const useForm = (
     }
     setState({});
   }, []);
-
-  const getSelectOptions = (options) => {
-    return options.map((opt) => ({
-      label: opt.name || opt.type || opt.colorName || opt.modelName,
-      value: opt.id,
-    }));
-  };
-
-  const getSelectedOption = (id, options) => {
-    const item = _.find(options, { id });
-    return { label: item.name || item.type, label: item.id };
-  };
 
   const checkSubscribers = (name, value, pendingState) => {
     let localState = { ...pendingState };
@@ -99,6 +93,16 @@ const useForm = (
     setErrors(localErrors);
   };
 
+  const handleRxChange = (rxNumber, name) => {
+    setState({ ...state, [name]: rxNumber });
+
+    const localErrors = { ...errors };
+    const errorMessage = validateProperty({ name: name, value: rxNumber });
+    if (errorMessage) localErrors[name] = errorMessage;
+    else delete localErrors[name];
+    setErrors(localErrors);
+  };
+
   const handleSelectChange = ({ value, label }, { name }) => {
     let pendingState = {
       ...state,
@@ -124,6 +128,11 @@ const useForm = (
     );
     localState[name] = JSON.stringify(newColors);
     setState({ ...localState });
+  };
+
+  const handleUpload = (url, name) => {
+    console.log('handleUpload Called');
+    setState({ ...state, [name]: url });
   };
 
   const renderButton = (label) => {
@@ -175,6 +184,22 @@ const useForm = (
     );
   };
 
+  const renderRxField = (name, label) => {
+    return (
+      <RxField
+        name={name}
+        label={label}
+        // options={getSelectOptions(options)}
+        error={errors[name]}
+        orderType={state.orderType}
+        // value={getSelectOptions(options).filter(
+        //   (option) => option.value === state[name]
+        // )}
+        onChange={handleRxChange}
+      />
+    );
+  };
+
   const renderColorDaySelector = (name, label, options, isDisabled = false) => {
     return (
       <ColorDaySelector
@@ -189,6 +214,18 @@ const useForm = (
       />
     );
   };
+
+  const renderFilePicker = (name, label) => {
+    return (
+      <FilePicker
+        name={name}
+        label={label}
+        error={errors[name]}
+        value={state[name]}
+        handleUpload={handleUpload}
+      />
+    );
+  };
   return [
     state,
     setState,
@@ -200,6 +237,8 @@ const useForm = (
     mapToViewModel,
     getSelectedOption,
     renderColorDaySelector,
+    renderRxField,
+    renderFilePicker,
   ];
 };
 
