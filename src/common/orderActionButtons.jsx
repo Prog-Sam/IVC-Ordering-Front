@@ -5,7 +5,7 @@ import _ from 'lodash';
 import CartContext from '../context/cartContext';
 import { getCart, removeOrder } from '../services/cartService';
 
-const OrderActionButtons = ({ orderType, cartNumber, location }) => {
+const OrderActionButtons = ({ orderId, orderType, location }) => {
   const cartContext = useContext(CartContext);
   console.log(orderType);
   return (
@@ -30,7 +30,7 @@ const OrderActionButtons = ({ orderType, cartNumber, location }) => {
               <button
                 className='btn btn-danger'
                 onClick={() => {
-                  removeOrder(orderType, cartNumber);
+                  removeOrder(orderId);
                   return cartContext.setOrdersCount(getCart().length - 1);
                 }}
               >

@@ -6,6 +6,7 @@ import OrderActionButtons from './orderActionButtons';
 
 const OrderTable = ({ orders, localEnums, sortColumn, onSort }) => {
   const columns = [
+    { path: 'id', label: 'ID' },
     { path: 'orderType', label: 'ORDER TYPE' },
     {
       key: 'cartNumber',
@@ -27,7 +28,7 @@ const OrderTable = ({ orders, localEnums, sortColumn, onSort }) => {
       content: (order) => (
         <OrderActionButtons
           orderType={order.orderType}
-          cartNumber={order.cartNumber}
+          orderId={order.id}
           location={'CART'}
         />
       ),
