@@ -21,8 +21,9 @@ const OrderForm = (props) => {
       { id: 'NON-BULK', name: 'NON-BULK' },
     ],
   };
-
+  let isNew = props.match.params.id === 'New';
   const schema = {
+    id: Joi.number().label('ID'),
     orderType: Joi.string().required().label('ORDER TYPE'),
     cartNumber: Joi.string().required().min(1).max(20).label('RX/BO/SO NUMBER'),
     url: Joi.string().required().label('GOOGLE DRIVE URL'),
@@ -106,7 +107,8 @@ const OrderForm = (props) => {
         {props.match.params.id === 'New' ? 'NEW' : 'UPDATE'} ORDER
       </h1>
       <form onSubmit={handleSubmit}>
-        {renderSelect('orderType', 'Order Type', localEnums.orderType)}
+        {renderLabel('ID', props.match.params.id)}
+        {renderSelect('orderType', 'Order Type', localEnums.orderType, !isNew)}
         {renderRxField('cartNumber', 'RX/BO/SO Number')}
         {renderFilePicker('url', 'Google Drive URL')}
         {renderButton('Submit')}
