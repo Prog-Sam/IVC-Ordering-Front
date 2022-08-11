@@ -93,8 +93,13 @@ const useForm = (
     setErrors(localErrors);
   };
 
-  const handleRxChange = (rxNumber, name) => {
-    setState({ ...state, [name]: rxNumber });
+  const handleRxChange = ({ pre, post }, name) => {
+    const rxNumber = `${pre.value || ''}${post}`;
+    setState({
+      ...state,
+      [name]: rxNumber,
+      [`objectVal${name}`]: pre,
+    });
 
     const localErrors = { ...errors };
     const errorMessage = validateProperty({ name: name, value: rxNumber });

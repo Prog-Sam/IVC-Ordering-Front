@@ -8,18 +8,31 @@ import {
 const RxField = ({ name, label, error, orderType, onChange, ...rest }) => {
   const [prefix, setPrefix] = useState({ id: '', value: '' });
   const [postfix, setPostfix] = useState('');
-  const options = [
+  const [options, setOptions] = useState([
     { id: 'A', name: 'A' },
     { id: 'B', name: 'B' },
     { id: 'C', name: 'C' },
     { id: 'D', name: 'D' },
     { id: 'E', name: 'E' },
     { id: 'F', name: 'F' },
-  ];
+  ]);
 
   const appendRx = (pre, post) => {
     if (orderType != 'BULK') return post;
     return pre ? `${pre.value}${post}` : post;
+  };
+
+  const returnRawValue = (pre, post) => {
+    if (orderType != 'BULK') return { pre: '', post: post };
+    return pre ? { pre: pre, post: post } : { pre: '', post: post };
+  };
+
+  const checkBulkPrefix = (orderType) => {
+    if (orderType == 'BULK') {
+      if (!prefix) return false;
+      if (!postfix) return false;
+    }
+    return true;
   };
 
   // if (orderType != 'BULK') setPrefix({ id: '', value: '' });
@@ -45,7 +58,7 @@ const RxField = ({ name, label, error, orderType, onChange, ...rest }) => {
                     className='form-control d-flex align-items-left'
                     onChange={(opt) => {
                       setPrefix(opt);
-                      return onChange(appendRx(opt, postfix), name);
+                      return onChange(returnRawValue(opt, postfix), name);
                     }} // Start Here
                     {...rest}
                   />
@@ -59,7 +72,10 @@ const RxField = ({ name, label, error, orderType, onChange, ...rest }) => {
                     // onChange={(e) => onChange(e, name)}
                     onChange={(e) => {
                       setPostfix(e.target.value);
-                      return onChange(appendRx(prefix, e.target.value), name);
+                      return onChange(
+                        returnRawValue(prefix, e.target.value),
+                        name
+                      );
                     }}
                     className='form-control d-flex align-items-left'
                   />
@@ -77,7 +93,7 @@ const RxField = ({ name, label, error, orderType, onChange, ...rest }) => {
               onChange={(e) => {
                 setPrefix({ id: '', value: '' });
                 setPostfix(e.target.value);
-                return onChange(appendRx(prefix, e.target.value), name);
+                return onChange(returnRawValue(prefix, e.target.value), name);
               }}
               className='form-control d-flex align-items-left'
             />

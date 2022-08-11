@@ -23,7 +23,7 @@ const OrderForm = (props) => {
   };
   let isNew = props.match.params.id === 'New';
   const schema = {
-    id: Joi.number().label('ID'),
+    id: Joi.string().label('ID'),
     orderType: Joi.string().required().label('ORDER TYPE'),
     cartNumber: Joi.string().required().min(1).max(20).label('RX/BO/SO NUMBER'),
     url: Joi.string().required().label('GOOGLE DRIVE URL'),
@@ -35,8 +35,8 @@ const OrderForm = (props) => {
     const orderId = props.match.params.id;
     if (orderId === 'New') return;
 
-    function populateOrder() {
-      let orderInDb = getOrder(orderId);
+    async function populateOrder() {
+      let orderInDb = await getOrder(orderId);
       setOrder(orderInDb);
     }
 
@@ -47,30 +47,23 @@ const OrderForm = (props) => {
   }, []);
 
   const doSubmit = async () => {
-    // try {
-    //   const isNew = props.match.params.id === 'New';
-    //   const result = isNew
-    //     ? await addOrder(mapToViewModel(order))
-    //     : await updateOrder(mapToViewModel(order));
-    //   toast(
-    //     `Order ${order.name} with the id of ${order.id} has been ${
-    //       isNew ? 'added.' : 'updated.'
-    //     }`
-    //   );
-    //   props.history.push('/orders');
-    // } catch (e) {
-    //   console.error(e);
-    //   toast(e);
-    // }
-
     try {
       const isNew = props.match.params.id === 'New';
       const duplicated = await isDuplicate(order, getCurrentUser().branchKey);
-      if (duplicated) {
+      if (duplicated && isNew) {
         toast.error(
           `RX/SO/BO Number already exists on the ${duplicated.location}`
         );
         return;
+      }
+      if (isNew && order.orderType == 'BULK') {
+        if (order.objectValcartNumber.value == '') {
+          toast.error('Please Add Bulk Order Prefix for BO Number.');
+          return;
+        }
+        if (order.cartNumber.length < 2) {
+          toast.error('Please Add Bulk Order Suffix for BO Number.');
+        }
       }
       let localOrder = { ...order, items: [] };
       const result = isNew
@@ -109,7 +102,8 @@ const OrderForm = (props) => {
       <form onSubmit={handleSubmit}>
         {renderLabel('ID', props.match.params.id)}
         {renderSelect('orderType', 'Order Type', localEnums.orderType, !isNew)}
-        {renderRxField('cartNumber', 'RX/BO/SO Number')}
+        {!isNew && renderInput('cartNumber', 'RX/BO/SO Number', 'text', !isNew)}
+        {isNew && renderRxField('cartNumber', 'RX/BO/SO Number')}
         {renderFilePicker('url', 'Google Drive URL')}
         {renderButton('Submit')}
       </form>

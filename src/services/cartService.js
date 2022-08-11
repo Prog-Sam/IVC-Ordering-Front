@@ -1,6 +1,7 @@
 import httpService from './httpService';
 import store from '../utils/store';
 import _ from 'lodash';
+import { generateOrderId } from '../utils/idGenerator';
 
 const cartKey = 'cart';
 
@@ -20,25 +21,24 @@ export function removeCart() {
 
 export function addOrder(order) {
   const cart = getCart();
+  let localOrder = { ...order };
+  localOrder['id'] = generateOrderId();
   // let order = _.find(cart, { orderType: orderType, cartNumber: cartNumber });
-  let newCart = [...cart, order];
+  let newCart = [...cart, localOrder];
   store.saveObject(cartKey, newCart);
-  return order;
+  return localOrder;
 }
 
-export function getOrder(cartNumber) {
+export function getOrder(id) {
   const cart = getCart();
-  const order = _.find(cart, { cartNumber: cartNumber });
+  const order = _.find(cart, { id: id });
   return order;
 }
 
-export function removeOrder(orderType, cartNumber) {
+export function removeOrder(id) {
   const cart = getCart();
   //   const order = _.find(cart, { orderType: orderType, cartNumber: cartNumber });
-  const newCart = _.filter(
-    cart,
-    (o) => o.orderType !== orderType || o.cartNumber !== cartNumber
-  );
+  const newCart = _.filter(cart, (o) => o.id != id);
   store.saveObject(cartKey, newCart);
   // console.log(newCart);
   return newCart;
@@ -47,11 +47,11 @@ export function removeOrder(orderType, cartNumber) {
 export function updateOrder(order) {
   const cart = getCart();
   const orderOnCart = _.find(cart, {
-    orderType: order.orderType,
-    cartNumber: order.cartNumber,
+    id: order.id,
   });
-  let newCart = removeOrder(orderOnCart);
+  let newCart = removeOrder(order.id);
   newCart.push(order);
+  store.saveObject(cartKey, newCart);
   return order;
 }
 
