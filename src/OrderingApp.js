@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import Home from './components/CRUD/menu/home';
 import Order from './components/Ordering/orders/order';
 import OrderForm from './components/Ordering/orders/orderForm';
+import OrderItemForm from './components/Ordering/catalog/orderItemForm';
 
 import NotFound from './components/CRUD/menu/notFound';
 import Navigation from './components/Ordering/navigation/navigation';
@@ -67,6 +68,7 @@ function OrderingApp() {
             <Switch>
               <ProtectedRoute path='/orders/:id' component={OrderForm} />
               <ProtectedRoute path='/orders' component={Order} />
+              <ProtectedRoute path='/catalog' component={OrderItemForm} />
               <Route
                 path='/login'
                 render={(props) => <LoginForm {...props} />}
