@@ -35,6 +35,12 @@ export function getOrder(id) {
   return order;
 }
 
+export function getOrderWithCn(cartNumber) {
+  const cart = getCart();
+  const order = _.find(cart, { cartNumber: cartNumber });
+  return order;
+}
+
 export function removeOrder(id) {
   const cart = getCart();
   //   const order = _.find(cart, { orderType: orderType, cartNumber: cartNumber });
