@@ -1,0 +1,16 @@
+{
+  "database": [
+    { "id": 1, "name": "CL", "desc": "CONTACT LENS" },
+    { "id": 2, "name": "LN", "desc": "LENS" },
+    { "id": 3, "name": "FR", "desc": "FRAMES" },
+    { "id": 4, "name": "SN", "desc": "SUNGLASSES" },
+    { "id": 5, "name": "SL", "desc": "SOLUTIONS" },
+    { "id": 6, "name": "AC", "desc": "ACCESSORIES" }
+  ],
+  "A": [1, 2],
+  "B": [0],
+  "C": [0],
+  "D": [0],
+  "E": [0],
+  "F": [3, 4, 5, 6]
+}
