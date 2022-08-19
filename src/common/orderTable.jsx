@@ -11,9 +11,7 @@ const OrderTable = ({ orders, localEnums, sortColumn, onSort }) => {
     {
       key: 'cartNumber',
       content: (order) => (
-        <Link to={'/orders/' + order.cartNumber + '?' + order.orderType}>
-          {order.cartNumber}
-        </Link>
+        <Link to={'/orders/' + order.id}>{order.cartNumber}</Link>
       ),
       label: 'RX/BO/SO NUMBER',
     },
