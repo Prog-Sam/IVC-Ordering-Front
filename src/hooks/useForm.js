@@ -22,6 +22,7 @@ const useForm = (
   const [state, setState] = useState({});
   const [errors, setErrors] = useState({});
   const [subscribers, setSubscribers] = useState([]);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   useEffect(() => {
     setSubscribers(subscriberSchema);
@@ -78,7 +79,9 @@ const useForm = (
     setErrors(errors || {});
     if (errors) return;
 
+    setIsDisabled(true);
     submitCallback();
+    setIsDisabled(false);
   };
 
   const handleChange = (e) => {
@@ -143,7 +146,7 @@ const useForm = (
   const renderButton = (label) => {
     return (
       <button
-        disabled={validate()}
+        disabled={validate() || isDisabled}
         className='btn btn-primary d-flex align-items-left'
       >
         {label}

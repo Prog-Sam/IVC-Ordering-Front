@@ -12,6 +12,8 @@ import {
   getSelectedOption,
   getSelectOptions,
 } from '../utils/reactSelectOption';
+import { getCurrentUser } from '../services/authService';
+import { generateOrderItemId } from '../utils/idGenerator';
 
 const useCatalogForm = (
   schema,
@@ -26,10 +28,18 @@ const useCatalogForm = (
   useEffect(() => {
     setSubscribers(subscriberSchema);
     if (itemInDb) {
-      setState({ ...itemInDb });
+      setState({
+        ...itemInDb,
+      });
       return;
     }
-    setState({});
+    setState({
+      fromBranchKey: 177,
+      toBranchKey: getCurrentUser().branchKey,
+      userIdKey: getCurrentUser().id,
+      typeName: 'PO',
+      id: generateOrderItemId(),
+    });
   }, []);
 
   const checkSubscribers = (name, value, pendingState) => {
@@ -60,6 +70,7 @@ const useCatalogForm = (
     const localErrors = {};
     for (let item of error.details) localErrors[item.path[0]] = item.message;
 
+    console.log(localErrors);
     return localErrors;
   };
 
