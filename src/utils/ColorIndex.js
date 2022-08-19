@@ -46,6 +46,11 @@ export function getStringifyColorId(cdNames, colors) {
   return JSON.stringify(stringKeys);
 }
 
+// export function getColordaysOptions(cdKeys, colors) {
+//  const stringKeys = JSON.parse(formatJSON(cdKeys));
+
+// }
+
 export function handleColor(sign, list, colorDay = {}) {
   let localList = list;
   if (sign === '-') {
