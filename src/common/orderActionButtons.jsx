@@ -24,7 +24,7 @@ const OrderActionButtons = ({ orderId, orderType, location }) => {
               </button>
             </td>
             <td>
-              <button className='btn btn-warning'>TRUNCATE</button>
+              <button className='btn btn-warning'>OPEN</button>
             </td>
             <td>
               <button
