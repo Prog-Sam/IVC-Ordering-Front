@@ -12,8 +12,8 @@ export function getItems(id) {
 }
 
 export function getItem(orderId, itemId) {
-  const order = getItems(orderId);
-  return _.find(order.items, { id: itemId }) || [];
+  const orderItems = getItems(orderId);
+  return _.find(orderItems, { id: itemId }) || null;
 }
 
 export function saveOrderItem(orderId, item) {
@@ -46,4 +46,10 @@ export function getActiveCartNumbers() {
   return _.map(cart, (o) => {
     return { id: o.cartNumber, name: o.cartNumber };
   });
+}
+
+export function isDuplicate(orderId, itemId) {
+  console.log(getItem(orderId, itemId));
+  if (getItem(orderId, itemId)) return true;
+  return false;
 }
