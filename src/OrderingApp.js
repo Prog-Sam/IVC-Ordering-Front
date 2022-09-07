@@ -68,6 +68,7 @@ function OrderingApp() {
             <Switch>
               <ProtectedRoute path='/orders/:id' component={OrderForm} />
               <ProtectedRoute path='/orders' component={Order} />
+              <ProtectedRoute path='/catalog/:id' component={OrderItemForm} />
               <ProtectedRoute path='/catalog' component={OrderItemForm} />
               <Route
                 path='/login'
