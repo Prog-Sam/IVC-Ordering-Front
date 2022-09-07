@@ -26,13 +26,12 @@ export function getItemCategories(orderType, orderPrefix = '') {
 }
 
 export function getBrands(itemCategory, orderType) {
-  //   return catalog.brands;
   const stringCategory = whatCategory(itemCategory);
   if (stringCategory == 'LNCL') {
     const brIds = _.uniq(
       _.map(
         _.filter(catalog.lensItems, {
-          orderTypeKey: orderType,
+          orderTypeKey: getOrderTypeKey(orderType),
           supplyCategoryKey: itemCategory,
         }),
         (i) => i.brandKey
@@ -116,6 +115,9 @@ export function getColor(id) {
   return _.filter(catalog.colors, { id: id });
 }
 
+export function getLensParam(id) {
+  return _.find(catalog.lensParam, { id: id });
+}
 export function getActiveCartNumbers() {}
 
 // Helper Methods
