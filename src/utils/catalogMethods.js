@@ -115,9 +115,22 @@ export function getColor(id) {
   return _.filter(catalog.colors, { id: id });
 }
 
+export function getLensParams(lensItemKey) {
+  let lensParams = _.filter(catalog.lensParam, { lensItemKey: lensItemKey });
+  console.log(
+    _.map(lensParams, (l) => {
+      return addLpName(l);
+    })
+  );
+  return _.map(lensParams, (l) => {
+    return addLpName(l);
+  });
+}
+
 export function getLensParam(id) {
   return _.find(catalog.lensParam, { id: id });
 }
+
 export function getActiveCartNumbers() {}
 
 // Helper Methods
@@ -146,5 +159,23 @@ export function swapper(item, from, to) {
 export function renamer(item, from, to) {
   let localItem = { ...item, [to]: item[from] };
   delete localItem[from];
+  return localItem;
+}
+
+export function addLpName(item) {
+  const {
+    minSph,
+    maxSph,
+    minCyl,
+    maxCyl,
+    minAdd,
+    maxAdd,
+    fitting,
+    totalPower,
+  } = item;
+  let localItem = {
+    ...item,
+    ['name']: `${minSph}  ${maxSph}|${minCyl}  ${maxCyl}|${minAdd}  ${maxAdd}|${fitting}|${totalPower}`,
+  };
   return localItem;
 }
