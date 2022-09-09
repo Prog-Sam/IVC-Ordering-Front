@@ -25,6 +25,7 @@ import { getLensParams } from './../../../utils/catalogMethods';
 const OrderItemForm = (props) => {
   const [order, setOrder] = useState({});
   const [items, setItems] = useState([]);
+  const orderItemId = props.match.params.id;
   const localEnums = {};
 
   const schema = {
@@ -39,8 +40,6 @@ const OrderItemForm = (props) => {
   };
 
   useEffect(() => {
-    const orderItemId = props.match.params.id;
-    console.log(orderItemId);
     if (orderItemId === 'New') {
       setItems([
         {
@@ -129,7 +128,7 @@ const OrderItemForm = (props) => {
       setOrder((await getOrderWithCn(orderItem.rxNumber)) || {});
     }
     populateOrder();
-    console.log(orderItem);
+    // console.log(orderItem);
   }, [orderItem]);
 
   return (
@@ -191,8 +190,8 @@ const OrderItemForm = (props) => {
         )}
         {orderItem.lensParamKey &&
           renderSelect(
-            'colorDay',
-            'Color - Day',
+            'cdKey',
+            'Color - Days',
             getColorDays(orderItem.lensParamKey)
           )}
         {renderGradeDetails('grades', orderItem.orderTypeKey)}

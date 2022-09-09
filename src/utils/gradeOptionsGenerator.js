@@ -3,11 +3,13 @@ import { getLensParam } from './catalogMethods';
 import { formatter } from './formatter';
 
 export function getGradeOptions(lensParamKey) {
+  if (!lensParamKey) return { sph: [], cyl: [], add: [] };
   const { minSph, maxSph, minCyl, maxCyl, minAdd, maxAdd } =
     getLensParam(lensParamKey);
   let result = {
     sph: generateGradeOption(minSph, maxSph),
     cyl: generateGradeOption(minCyl, maxCyl),
+    axis: generateNumberOption(0, 180, 1),
     add: generateGradeOption(minAdd, maxAdd),
   };
 
@@ -21,14 +23,24 @@ export function generateGradeOption(min, max, stepBy = 0.25) {
   for (let i = parseFloat(min); i <= parseFloat(max); i += parseFloat(stepBy)) {
     result.push(
       i == 0
-        ? { id: 'PLANO', name: 'PLANO' }
+        ? { label: 'PLANO', value: 'PLANO' }
         : {
-            id: i.toFixed(2).toString(),
-            name: i.toFixed(2).toString(),
+            label: i.toFixed(2).toString(),
+            value: i.toFixed(2).toString(),
           }
     );
   }
   return result || [];
+}
+
+export function generateNumberOption(min, max, stepBy) {
+  let result = [];
+
+  for (let i = min; i <= max; i += stepBy) {
+    result.push({ label: i, value: i });
+  }
+
+  return result;
 }
 
 export function isTotalPowerValid(totalPower, lensParamKey) {

@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import Select from './select';
-import Input from './input';
 import JOGradeDetailsTable from './joGradeDetailTable';
+import { getGradeOptions } from './../utils/gradeOptionsGenerator';
 
-const GradeDetails = ({ name, orderType, gDetails }) => {
+const GradeDetails = ({
+  name,
+  orderType,
+  lpKey,
+  handleGradeChange,
+  gDetails,
+}) => {
   const [grades, setGrades] = useState([]);
   const [bulkGrades, setBulkGrades] = useState([]);
 
@@ -75,8 +80,17 @@ const GradeDetails = ({ name, orderType, gDetails }) => {
   }, []);
   return (
     <div>
-      <h5>GRADE DETAILS</h5>
-      <JOGradeDetailsTable gDetails={grades} />
+      {orderType == 1 && (
+        <div>
+          <h5>GRADE DETAILS</h5>
+          <JOGradeDetailsTable
+            name={name}
+            gradeOptions={getGradeOptions(lpKey)}
+            handleGradeChange={handleGradeChange}
+            gDetails={gDetails}
+          />
+        </div>
+      )}
     </div>
   );
 };
