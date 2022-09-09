@@ -25,7 +25,7 @@ export function getStringifyName(cdKeys, colors) {
   return JSON.stringify(stringNames);
 }
 
-function formatJSON(cdKeys) {
+export function formatJSON(cdKeys) {
   if (!cdKeys.includes(',')) {
     return `["${cdKeys.slice(1, 7)}"]`;
   }
@@ -78,4 +78,11 @@ export function handleColor(sign, list, colorDay = {}) {
 
 function duplicateColor(colorDay, list) {
   return _.includes(list, colorDay);
+}
+
+export function destructureCdKey(cdKey) {
+  return {
+    key: parseInt(cdKey.substring(0, 4)),
+    days: cdKey.substring(4, 6),
+  };
 }
