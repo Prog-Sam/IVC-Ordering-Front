@@ -15,6 +15,7 @@ import {
   getModels,
   isBulk,
   getColorsFromBarcode,
+  getColorDays,
 } from '../../../utils/catalogMethods';
 import { toast } from 'react-toastify';
 import { getOrderTypes } from '../../../utils/catalogMethods';
@@ -188,6 +189,12 @@ const OrderItemForm = (props) => {
           'Lens Parameters [SPH|CYL|ADD|FITTING|TOTAL POWER]',
           getLensParams(orderItem.itemKey)
         )}
+        {orderItem.lensParamKey &&
+          renderSelect(
+            'colorDay',
+            'Color - Day',
+            getColorDays(orderItem.lensParamKey)
+          )}
         {renderGradeDetails('grades', orderItem.orderTypeKey)}
         {order.orderType &&
           order.orderType != 'BULK' &&

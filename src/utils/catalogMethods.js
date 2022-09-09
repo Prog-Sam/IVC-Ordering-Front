@@ -1,6 +1,6 @@
 import { getCatalog } from './../services/localCatalogService';
 import supplyCategoryConfig from './../config/supplyCategoryConfig.json';
-import { getColorName } from './ColorIndex';
+import { formatJSON, destructureCdKey } from './ColorIndex';
 import _ from 'lodash';
 
 const catalog = getCatalog();
@@ -109,19 +109,28 @@ export function getColors(cdKeys = []) {
   return _.map(_.filter(catalog.colors, (c) => _.includes(cdKeys, c.id)));
 }
 
-export function getColorDays(cdKeys) {}
+export function getColorDays(lpKey) {
+  const lensParam = getLensParam(lpKey);
+  if (!lensParam) return [];
+  // console.log(lensParam);
+  const cdKeys = JSON.parse(formatJSON(lensParam.cdKeys));
+
+  return _.map(cdKeys, (c) => {
+    const destructuredKey = destructureCdKey(c);
+    const color = getColor(destructuredKey.key);
+    console.log(color);
+    return { id: c, name: `${color.colorName} - ${destructuredKey.days} days` };
+  });
+}
 
 export function getColor(id) {
-  return _.filter(catalog.colors, { id: id });
+  return _.find(catalog.colors, { id: id });
 }
 
 export function getLensParams(lensItemKey) {
-  let lensParams = _.filter(catalog.lensParam, { lensItemKey: lensItemKey });
-  console.log(
-    _.map(lensParams, (l) => {
-      return addLpName(l);
-    })
-  );
+  let lensParams = _.filter(catalog.lensParam, {
+    lensItemKey: lensItemKey || '',
+  });
   return _.map(lensParams, (l) => {
     return addLpName(l);
   });
