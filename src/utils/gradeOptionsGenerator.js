@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import { getLensParam } from './catalogMethods';
+import { getSelectOptions } from './reactSelectOption';
 import { formatter } from './formatter';
 
 export function getGradeOptions(lensParamKey) {
@@ -7,37 +8,60 @@ export function getGradeOptions(lensParamKey) {
   const { minSph, maxSph, minCyl, maxCyl, minAdd, maxAdd } =
     getLensParam(lensParamKey);
   let result = {
-    sph: generateGradeOption(minSph, maxSph),
-    cyl: generateGradeOption(minCyl, maxCyl),
-    axis: generateNumberOption(0, 180, 1),
-    add: generateGradeOption(minAdd, maxAdd),
+    sph: getSelectOptions(generateGradeOption(minSph, maxSph)),
+    cyl: getSelectOptions(generateGradeOption(minCyl, maxCyl)),
+    axis: getSelectOptions(generateNumberOption(0, 180, 1)),
+    add: getSelectOptions(generateGradeOption(minAdd, maxAdd)),
   };
 
   return result;
 }
 
 export function generateGradeOption(min, max, stepBy = 0.25) {
-  let result = [];
-  if (min == '0.00' && max == '0.00') return [];
+  let result = [{ name: 'N/A', id: '' }];
+  if (min == '0.00' && max == '0.00') return [{ name: 'N/A', id: '' }];
 
-  for (let i = parseFloat(min); i <= parseFloat(max); i += parseFloat(stepBy)) {
-    result.push(
-      i == 0
-        ? { label: 'PLANO', value: 'PLANO' }
-        : {
-            label: i.toFixed(2).toString(),
-            value: i.toFixed(2).toString(),
-          }
-    );
+  if (parseFloat(min) < parseFloat(max)) {
+    for (
+      let i = parseFloat(min);
+      i <= parseFloat(max);
+      i += parseFloat(stepBy)
+    ) {
+      result.push(
+        i == 0
+          ? { name: 'PLANO', id: 'PLANO' }
+          : {
+              name: i.toFixed(2).toString(),
+              id: i.toFixed(2).toString(),
+            }
+      );
+    }
   }
-  return result || [];
+  if (parseFloat(max) < parseFloat(min)) {
+    for (
+      let i = parseFloat(max);
+      i <= parseFloat(min);
+      i += parseFloat(stepBy)
+    ) {
+      result.push(
+        i == 0
+          ? { name: 'PLANO', id: 'PLANO' }
+          : {
+              name: i.toFixed(2).toString(),
+              id: i.toFixed(2).toString(),
+            }
+      );
+    }
+  }
+
+  return result || [{ name: 'N/A', id: '' }];
 }
 
 export function generateNumberOption(min, max, stepBy) {
-  let result = [];
+  let result = [{ name: 'N/A', id: '' }];
 
   for (let i = min; i <= max; i += stepBy) {
-    result.push({ label: i, value: i });
+    result.push({ name: i, id: i });
   }
 
   return result;
