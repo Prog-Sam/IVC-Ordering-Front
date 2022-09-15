@@ -95,9 +95,7 @@ export function getColorsFromBarcode(barcode, itemCategoryKey) {
     return item ? getColors([item.cdKey]) : [];
   }
   if (stringCategory == 'SA') {
-    console.log('SA Called');
     const item = _.find(catalog.csaItems, { id: barcode });
-    console.log(item);
     return item ? getColors([item.cdKey]) : [];
   }
   return [];
@@ -112,13 +110,11 @@ export function getColors(cdKeys = []) {
 export function getColorDays(lpKey) {
   const lensParam = getLensParam(lpKey);
   if (!lensParam) return [];
-  // console.log(lensParam);
   const cdKeys = JSON.parse(formatJSON(lensParam.cdKeys));
 
   return _.map(cdKeys, (c) => {
     const destructuredKey = destructureCdKey(c);
     const color = getColor(destructuredKey.key);
-    console.log(color);
     return { id: c, name: `${color.colorName} - ${destructuredKey.days} days` };
   });
 }
