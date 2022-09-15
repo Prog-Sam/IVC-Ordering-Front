@@ -2,8 +2,9 @@ import React from 'react';
 import RSelect from 'react-select';
 
 const JOGradeDetailsTable = ({ gradeOptions, gDetails, handleGradeChange }) => {
+  // console.log(gradeOptions);
   const handleSelectChange = (opt, field, id) => {
-    handleGradeChange(opt, field, id);
+    handleGradeChange(opt.value, field, id);
   };
   const handleInputChange = (value, field, id) => {
     handleGradeChange(value, field, id);
@@ -36,7 +37,11 @@ const JOGradeDetailsTable = ({ gradeOptions, gDetails, handleGradeChange }) => {
                 name={'sph'}
                 inputId={'sph'}
                 onChange={(opt) => handleSelectChange(opt, 'sph', g.id)}
-                value={g.sph}
+                // value={g.sph}
+                value={gradeOptions.sph.filter(
+                  (option) => option.value === g.sph
+                )}
+                defaultvalue={{ label: '', value: '' }}
               />
             </td>
             <td>
@@ -45,7 +50,10 @@ const JOGradeDetailsTable = ({ gradeOptions, gDetails, handleGradeChange }) => {
                 name={'cyl'}
                 inputId={'cyl'}
                 onChange={(opt) => handleSelectChange(opt, 'cyl', g.id)}
-                value={g.cyl}
+                value={gradeOptions.cyl.filter(
+                  (option) => option.value === g.cyl
+                )}
+                defaultvalue={{ label: '', value: '' }}
               />
             </td>
             <td>
@@ -54,7 +62,10 @@ const JOGradeDetailsTable = ({ gradeOptions, gDetails, handleGradeChange }) => {
                 name={'axis'}
                 inputId={'axis'}
                 onChange={(opt) => handleSelectChange(opt, 'axis', g.id)}
-                value={g.axis}
+                value={gradeOptions.axis.filter(
+                  (option) => option.value === g.axis
+                )}
+                defaultvalue={{ label: '', value: '' }}
               />
             </td>
             <td>
@@ -63,7 +74,10 @@ const JOGradeDetailsTable = ({ gradeOptions, gDetails, handleGradeChange }) => {
                 name={'add'}
                 inputId={'add'}
                 onChange={(opt) => handleSelectChange(opt, 'add', g.id)}
-                value={g.add}
+                value={gradeOptions.add.filter(
+                  (option) => option.value === g.add
+                )}
+                defaultvalue={{ label: '', value: '' }}
               />
             </td>
             <td>

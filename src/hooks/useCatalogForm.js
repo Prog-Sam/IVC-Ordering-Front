@@ -14,6 +14,7 @@ import {
 } from '../utils/reactSelectOption';
 import { getCurrentUser } from '../services/authService';
 import { generateOrderItemId } from '../utils/idGenerator';
+import GradeDetails from './../common/gradeDetails';
 
 const useCatalogForm = (
   schema,
@@ -27,7 +28,7 @@ const useCatalogForm = (
 
   useEffect(() => {
     setSubscribers(subscriberSchema);
-    if (itemInDb) {
+    if (itemInDb.id) {
       setState({
         ...itemInDb,
       });
@@ -39,6 +40,26 @@ const useCatalogForm = (
       userIdKey: getCurrentUser().id,
       typeName: 'PO',
       id: generateOrderItemId(),
+      grades: [
+        {
+          id: 'OD',
+          sph: '',
+          cyl: '',
+          axis: '',
+          add: '',
+          pd: '',
+          qty: '',
+        },
+        {
+          id: 'OS',
+          sph: '',
+          cyl: '',
+          axis: '',
+          add: '',
+          pd: '',
+          qty: '',
+        },
+      ],
     });
   }, []);
 
@@ -53,8 +74,6 @@ const useCatalogForm = (
       }
     }
     setState({ ...pendingState, ...localState });
-    // console.log({ ...localState });
-    // console.log({ ...state });
   };
 
   const mapToViewModel = (data) => {
@@ -70,7 +89,6 @@ const useCatalogForm = (
     const localErrors = {};
     for (let item of error.details) localErrors[item.path[0]] = item.message;
 
-    console.log(localErrors);
     return localErrors;
   };
 
@@ -149,6 +167,15 @@ const useCatalogForm = (
   const handleUpload = (url, name) => {
     console.log('handleUpload Called');
     setState({ ...state, [name]: url });
+  };
+
+  const handleGradeChange = (value, field, id) => {
+    let index = _.findIndex(state.grades, { id: id });
+    let grade = { ...state.grades[index], [field]: value };
+    let localGrades = [...state['grades']];
+    localGrades.splice(index, 1, grade);
+    let localState = { ...state, ['grades']: localGrades };
+    setState(localState);
   };
 
   const renderButton = (label) => {
@@ -242,6 +269,19 @@ const useCatalogForm = (
       />
     );
   };
+
+  const renderGradeDetails = (name, orderType) => {
+    return (
+      <GradeDetails
+        name={name}
+        orderType={orderType}
+        lpKey={state.lensParamKey}
+        gDetails={state[name]}
+        handleGradeChange={handleGradeChange}
+      />
+    );
+  };
+
   return [
     state,
     setState,
@@ -255,6 +295,7 @@ const useCatalogForm = (
     renderColorDaySelector,
     renderRxField,
     renderFilePicker,
+    renderGradeDetails,
   ];
 };
 
