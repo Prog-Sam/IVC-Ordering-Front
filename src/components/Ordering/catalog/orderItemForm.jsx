@@ -16,15 +16,16 @@ import {
   isBulk,
   getColorsFromBarcode,
   getColorDays,
+  getLensParam,
 } from '../../../utils/catalogMethods';
 import { toast } from 'react-toastify';
 import { getOrderTypes } from '../../../utils/catalogMethods';
 import { isDuplicate } from './../../../services/orderItemService';
 import { getLensParams } from './../../../utils/catalogMethods';
+import { validateGrade } from './../../../utils/gradeMethods';
 
 const OrderItemForm = (props) => {
   const [order, setOrder] = useState({});
-  const [items, setItems] = useState([]);
   const orderItemId = props.match.params.id;
   const localEnums = {};
 
@@ -40,34 +41,7 @@ const OrderItemForm = (props) => {
   };
 
   useEffect(() => {
-    if (orderItemId === 'New') {
-      setItems([
-        {
-          id: 'OD',
-          lensParamKey: '',
-          lensItemKey: '',
-          cdKey: '',
-          sph: '',
-          cyl: '',
-          axis: '',
-          add: '',
-          pd: '',
-          qty: '',
-        },
-        {
-          id: 'OS',
-          lensParamKey: '',
-          lensItemKey: '',
-          cdKey: '',
-          sph: '',
-          cyl: '',
-          axis: '',
-          add: '',
-          pd: '',
-          qty: '',
-        },
-      ]);
-    }
+    if (orderItemId === 'New') return;
 
     // async function populateOrderItem() {
     //   let { data } = await getOrderItem(orderItemId);
@@ -82,6 +56,7 @@ const OrderItemForm = (props) => {
   }, []);
 
   const doSubmit = async () => {
+    const lp = getLensParam(orderItem.lensParamKey);
     // try {
     //   const isNew = props.match.params.id === 'New';
     //   const result = isNew
@@ -98,6 +73,10 @@ const OrderItemForm = (props) => {
     //   toast(e);
     // }
     console.log(orderItem);
+
+    for (let i of orderItem.grades) {
+      console.log(validateGrade(i, lp.totalPower));
+    }
 
     if (orderItem.supplyCategoryKey != 1 && orderItem.supplyCategoryKey != 2) {
       // saveOrderItem(order.id, orderItem);
@@ -127,6 +106,7 @@ const OrderItemForm = (props) => {
     async function populateOrder() {
       setOrder((await getOrderWithCn(orderItem.rxNumber)) || {});
     }
+
     populateOrder();
     // console.log(orderItem);
   }, [orderItem]);
