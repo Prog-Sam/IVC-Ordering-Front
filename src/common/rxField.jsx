@@ -49,7 +49,7 @@ const RxField = ({ name, label, error, orderType, onChange, ...rest }) => {
           <div>
             <table className='justify-content'>
               <tr>
-                <td>
+                <td style={{ width: '10%' }}>
                   <RSelect
                     options={getSelectOptions(options)}
                     name={name}
@@ -63,7 +63,7 @@ const RxField = ({ name, label, error, orderType, onChange, ...rest }) => {
                     {...rest}
                   />
                 </td>
-                <td>
+                <td style={{ width: '90%' }}>
                   <input
                     {...rest}
                     id={name}
