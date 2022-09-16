@@ -4,7 +4,7 @@ import { getSelectOptions } from './reactSelectOption';
 import { formatter } from './formatter';
 
 export function getGradeOptions(lensParamKey) {
-  if (!lensParamKey) return { sph: [], cyl: [], add: [] };
+  if (!lensParamKey) return { sph: [], cyl: [], axis: [], add: [] };
   const { minSph, maxSph, minCyl, maxCyl, minAdd, maxAdd } =
     getLensParam(lensParamKey);
   let result = {
