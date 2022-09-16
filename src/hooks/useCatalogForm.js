@@ -15,6 +15,7 @@ import {
 import { getCurrentUser } from '../services/authService';
 import { generateOrderItemId } from '../utils/idGenerator';
 import GradeDetails from './../common/gradeDetails';
+import catDep from '../config/catalogDependencies.json';
 
 const useCatalogForm = (
   schema,
@@ -73,7 +74,25 @@ const useCatalogForm = (
         localState[subscriber.path] = subscriber.value;
       }
     }
+
+    localState = { ...updateDependence(pendingState, name) };
+
     setState({ ...pendingState, ...localState });
+  };
+
+  const updateDependence = (sentState, name) => {
+    let localState = { ...sentState };
+    const dependencies = !state.orderTypeKey
+      ? { ...catDep['default'] }
+      : { ...catDep[state.orderTypeKey.toString()] };
+
+    let dependencyArray = dependencies[name];
+    if (!dependencyArray) return sentState;
+    for (let d of dependencyArray) {
+      localState = { ...localState, [d.name]: d.value };
+    }
+
+    return localState;
   };
 
   const mapToViewModel = (data) => {

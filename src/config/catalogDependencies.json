@@ -2,12 +2,14 @@
   "1": {
     "rxNumber": [{ "name": "orderTypeKey", "value": "" }],
     "orderTypeKey": [{ "name": "supplyCategoryKey", "value": "" }],
-    "supplyCategoryKey": [{ "name": "itemKey", "value": "" }],
+    "supplyCategoryKey": [{ "name": "brandKey", "value": "" }],
+    "brandKey": [{ "name": "itemKey", "value": "" }],
     "itemKey": [
       { "name": "cdKey", "value": "" },
       { "name": "lensParamKey", "value": "" }
     ],
     "lensParamKey": [
+      { "name": "cdKey", "value": "" },
       {
         "name": "grades",
         "value": [
@@ -67,5 +69,25 @@
       }
     ]
   },
-  "2": {}
+  "2": {
+    "rxNumber": [{ "name": "orderTypeKey", "value": "" }],
+    "orderTypeKey": [{ "name": "supplyCategoryKey", "value": "" }],
+    "supplyCategoryKey": [{ "name": "brandKey", "value": "" }],
+    "brandKey": [{ "name": "itemKey", "value": "" }],
+    "itemKey": [
+      { "name": "cdKey", "value": "" },
+      { "name": "lensParamKey", "value": "" }
+    ],
+    "lensParamKey": [
+      { "name": "cdKey", "value": "" },
+      {
+        "name": "grades",
+        "value": []
+      }
+    ]
+  },
+  "default": {
+    "rxNumber": [{ "name": "orderTypeKey", "value": "" }],
+    "orderTypeKey": [{ "name": "supplyCategoryKey", "value": "" }]
+  }
 }
