@@ -1,0 +1,71 @@
+{
+  "1": {
+    "rxNumber": [{ "name": "orderTypeKey", "value": "" }],
+    "orderTypeKey": [{ "name": "supplyCategoryKey", "value": "" }],
+    "supplyCategoryKey": [{ "name": "itemKey", "value": "" }],
+    "itemKey": [
+      { "name": "cdKey", "value": "" },
+      { "name": "lensParamKey", "value": "" }
+    ],
+    "lensParamKey": [
+      {
+        "name": "grades",
+        "value": [
+          {
+            "id": "OD",
+            "sph": "",
+            "cyl": "",
+            "axis": "",
+            "add": "",
+            "pd": "",
+            "qty": ""
+          },
+          {
+            "id": "OS",
+            "sph": "",
+            "cyl": "",
+            "axis": "",
+            "add": "",
+            "pd": "",
+            "qty": ""
+          }
+        ]
+      }
+    ]
+  },
+  "3": {
+    "rxNumber": [{ "name": "orderTypeKey", "value": "" }],
+    "orderTypeKey": [{ "name": "supplyCategoryKey", "value": "" }],
+    "supplyCategoryKey": [{ "name": "itemKey", "value": "" }],
+    "itemKey": [
+      { "name": "cdKey", "value": "" },
+      { "name": "lensParamKey", "value": "" }
+    ],
+    "lensParamKey": [
+      {
+        "name": "grades",
+        "value": [
+          {
+            "id": "OD",
+            "sph": "",
+            "cyl": "",
+            "axis": "",
+            "add": "",
+            "pd": "",
+            "qty": ""
+          },
+          {
+            "id": "OS",
+            "sph": "",
+            "cyl": "",
+            "axis": "",
+            "add": "",
+            "pd": "",
+            "qty": ""
+          }
+        ]
+      }
+    ]
+  },
+  "2": {}
+}
