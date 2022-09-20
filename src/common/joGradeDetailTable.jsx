@@ -2,7 +2,6 @@ import React from 'react';
 import RSelect from 'react-select';
 
 const JOGradeDetailsTable = ({ gradeOptions, gDetails, handleGradeChange }) => {
-  // console.log(gradeOptions);
   const handleSelectChange = (opt, field, id) => {
     handleGradeChange(opt.value, field, id);
   };
@@ -37,7 +36,6 @@ const JOGradeDetailsTable = ({ gradeOptions, gDetails, handleGradeChange }) => {
                 name={'sph'}
                 inputId={'sph'}
                 onChange={(opt) => handleSelectChange(opt, 'sph', g.id)}
-                // value={g.sph}
                 value={gradeOptions.sph.filter(
                   (option) => option.value === g.sph
                 )}
@@ -62,9 +60,11 @@ const JOGradeDetailsTable = ({ gradeOptions, gDetails, handleGradeChange }) => {
                 name={'axis'}
                 inputId={'axis'}
                 onChange={(opt) => handleSelectChange(opt, 'axis', g.id)}
-                value={gradeOptions.axis.filter(
-                  (option) => option.value === g.axis
-                )}
+                value={
+                  gradeOptions.axis.filter(
+                    (option) => option.value === g.axis
+                  ) || []
+                }
                 defaultvalue={{ label: '', value: '' }}
               />
             </td>
