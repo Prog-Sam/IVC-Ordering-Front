@@ -5,6 +5,7 @@ import Home from './components/CRUD/menu/home';
 import Order from './components/Ordering/orders/order';
 import OrderForm from './components/Ordering/orders/orderForm';
 import OrderItemForm from './components/Ordering/catalog/orderItemForm';
+import OrderItem from './components/Ordering/orders/orderItem';
 
 import NotFound from './components/CRUD/menu/notFound';
 import Navigation from './components/Ordering/navigation/navigation';
@@ -68,6 +69,7 @@ function OrderingApp() {
             <Switch>
               <ProtectedRoute path='/orders/:id' component={OrderForm} />
               <ProtectedRoute path='/orders' component={Order} />
+              <ProtectedRoute path='/orderItems/:id' component={OrderItem} />
               <ProtectedRoute path='/catalog/:id' component={OrderItemForm} />
               <ProtectedRoute path='/catalog' component={OrderItemForm} />
               <Route
