@@ -22,7 +22,7 @@ import { toast } from 'react-toastify';
 import { getOrderTypes } from '../../../utils/catalogMethods';
 import { isDuplicate } from './../../../services/orderItemService';
 import { getLensParams } from './../../../utils/catalogMethods';
-import { validateGrade } from './../../../utils/gradeMethods';
+import { validateGrade, getTotalQty } from './../../../utils/gradeMethods';
 
 const OrderItemForm = (props) => {
   const [order, setOrder] = useState({});
@@ -73,9 +73,9 @@ const OrderItemForm = (props) => {
     //   toast(e);
     // }
     console.log(orderItem);
-
-    for (let i of orderItem.grades) {
-      console.log(validateGrade(i, lp.totalPower));
+    if (!orderItem.cdKey || orderItem.cdKey == '') {
+      toast.error('Please Select Color');
+      return;
     }
 
     if (orderItem.supplyCategoryKey != 1 && orderItem.supplyCategoryKey != 2) {
@@ -83,7 +83,42 @@ const OrderItemForm = (props) => {
       console.log(isDuplicate(order.id, orderItem.itemDescription));
       toast('Item Added to Cart...');
     }
-    return console.log('Lens');
+    if (orderItem.supplyCategoryKey == 1 || orderItem.supplyCategoryKey == 2) {
+      for (let i of orderItem.grades) {
+        let item = validateGrade(i);
+        delete item['id'];
+        let keys = Object.keys(item);
+        if (keys.length == 0) continue;
+        for (let k of keys) {
+          toast.error(item[k]);
+        }
+        return;
+      }
+
+      if (getTotalQty(orderItem.grades) == 0) {
+        toast.error(`Atleast one(1) quantity of item is needed.`);
+        return;
+      }
+
+      if (orderItem.orderTypeKey == 1) {
+        if (!orderItem.pxName || orderItem.pxName == '') {
+          toast.error('Please provide Patient Name');
+          return;
+        }
+        saveOrderItem(order.id, orderItem);
+        toast('Item Added to Cart...');
+      }
+      if (orderItem.orderTypeKey == 3) {
+        if (!orderItem.pxName || orderItem.pxName == '') {
+          toast.error('Please provide Patient Name');
+          return;
+        }
+        console.log('SO');
+      }
+      if (orderItem.orderTypeKey == 2) {
+        console.log('BO');
+      }
+    }
   };
 
   const [
