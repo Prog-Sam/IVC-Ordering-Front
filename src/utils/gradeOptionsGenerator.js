@@ -19,7 +19,11 @@ export function getGradeOptions(lensParamKey) {
 
 export function generateGradeOption(min, max, stepBy = 0.25) {
   let result = [{ name: 'N/A', id: '' }];
-  if (min == '0.00' && max == '0.00') return [{ name: 'N/A', id: '' }];
+  if (min == '0.00' && max == '0.00')
+    return [
+      { name: 'N/A', id: '' },
+      { name: '0.00', id: '0.00' },
+    ];
 
   if (parseFloat(min) < parseFloat(max)) {
     for (
@@ -61,7 +65,7 @@ export function generateNumberOption(min, max, stepBy) {
   let result = [{ name: 'N/A', id: '' }];
 
   for (let i = min; i <= max; i += stepBy) {
-    result.push({ name: i, id: i });
+    result.push({ name: i.toString(), id: i });
   }
 
   return result;
