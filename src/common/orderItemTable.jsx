@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import Table from './table';
+import { removeItem, getItems } from '../services/orderItemService';
 
 const OrderItemTable = ({
   orderItems,
@@ -9,22 +10,33 @@ const OrderItemTable = ({
   sortColumn,
   onSort,
   orderType,
-  cartNumber,
+  orderId,
+  setOrderItems,
 }) => {
   const columns = [
-    { path: 'itemId', label: 'ID' },
+    { path: 'id', label: 'ID' },
+    { path: 'objectVal-supplyCategoryKey.label', label: 'Item Type' },
     {
       key: 'model',
       content: (orderItem) => (
-        <Link to={'/orderItems/' + orderItem.id}>{orderItem.type}</Link>
+        <Link to={'/orderItems/' + orderItem.id}>
+          {orderItem['objectVal-itemKey'].label}
+        </Link>
       ),
-      label: 'Name',
+      label: 'Item Name',
     },
-    { path: 'supplyCategory', label: 'Item Type' },
     {
-      path: 'itemId',
+      path: 'id',
       content: (orderItem) => (
-        <Link to={'/orderItems/' + orderItem.id}>{orderItem.type}</Link>
+        <button
+          className='btn btn-danger'
+          onClick={() => {
+            removeItem(orderId, orderItem.id);
+            setOrderItems(getItems(orderId));
+          }}
+        >
+          DELETE
+        </button>
       ),
     },
   ];
