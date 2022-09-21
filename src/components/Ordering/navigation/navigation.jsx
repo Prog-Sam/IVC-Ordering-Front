@@ -21,7 +21,7 @@ const Navigation = ({ currentUser, onLogout, ordersCount }) => {
                 <span class='badge badge-danger'>{ordersCount}</span>
               )}
             </Link>
-            <Link to='/catalog' className='nav-link'>
+            <Link to='/catalog/New' className='nav-link'>
               CATALOG
             </Link>
             <Link to='/status' className='nav-link'>
