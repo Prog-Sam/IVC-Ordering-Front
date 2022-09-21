@@ -24,7 +24,17 @@ const OrderActionButtons = ({ orderId, orderType, location }) => {
               </button>
             </td>
             <td>
-              <button className='btn btn-warning'>OPEN</button>
+              {/* <button
+                className='btn btn-warning'
+                onClick={() => {
+                  console.log(orderId, orderType, location);
+                }}
+              >
+                OPEN
+              </button> */}
+              <Link to={`/orderItems/${orderId}`} className='btn btn-warning'>
+                OPEN
+              </Link>
             </td>
             <td>
               <button
