@@ -32,6 +32,15 @@ export function validateTp(sph, cyl, add, tp) {
   if (tp) return Math.abs(sph + cyl + add) <= tp;
 }
 
+export function getTotalQty(grades) {
+  let qty = 0;
+  for (let grade of grades) {
+    qty += isNaN(parseFloat(grade.qty)) ? 0 : parseFloat(grade.qty);
+    // qty += parseFloat(grade.qty);
+  }
+  return qty;
+}
+
 export function isGradeDuplicate(grade1, grade2) {
   const add1 = !grade1.add.value ? 0 : parseFloat(grade1.add.value);
   const axis1 = !grade1.axis.value ? '' : parseFloat(grade1.axis.value);
