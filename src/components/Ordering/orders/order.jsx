@@ -50,9 +50,10 @@ const Order = () => {
 
   const getPagedData = () => {
     let filtered = orders;
+    console.log(filtered);
     if (searchQuery)
       filtered = orders.filter((u) =>
-        u.type.toLowerCase().startsWith(searchQuery.toLocaleLowerCase())
+        u.cartNumber.toLowerCase().startsWith(searchQuery.toLocaleLowerCase())
       );
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
