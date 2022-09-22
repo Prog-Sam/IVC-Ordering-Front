@@ -9,5 +9,6 @@ export function getSelectOptions(options) {
 
 export function getSelectedOption(id, options) {
   const item = _.find(options, { id });
-  return { label: item.name || item.type, label: item.id };
+  // console.log({ label: item.name || item.type, value: item.id });
+  return { label: item.name || item.type, value: item.id };
 }
