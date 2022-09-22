@@ -5,6 +5,7 @@ import { getItems } from '../../../services/orderItemService';
 import Pagination from '../../../common/pagination';
 import { paginate } from '../../../utils/paginate';
 import OrderItemTable from '../../../common/orderItemTable';
+import { Link } from 'react-router-dom';
 import MenuHeader from '../../../common/menuHeader';
 
 const OrderItem = (props) => {
@@ -63,13 +64,8 @@ const OrderItem = (props) => {
     <div className='row'>
       {/* <div className='col-2'><ListGroup items={ }/></div> */}
       <div className='col'>
-        <MenuHeader
-          path='orderItems'
-          header={'ORDER ITEMS'}
-          buttonLabel='OrderItem'
-          onSearch={handleSearch}
-          searchQuery={searchQuery}
-        />
+        <h1 className='d-flex align-items-left'>ITEMS</h1>
+        <h4 className='d-flex align-items-left'>{`ORDER ID: ${props.match.params.id}`}</h4>
         <OrderItemTable
           orderItems={getPagedData().paginated}
           localEnums={localEnums}
@@ -84,6 +80,9 @@ const OrderItem = (props) => {
           onPageChange={handlePageChange}
           currentPage={currentPage}
         />
+        <Link to={`/orders`} className='btn btn-warning'>
+          CLOSE
+        </Link>
       </div>
     </div>
   );
