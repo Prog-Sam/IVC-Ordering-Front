@@ -27,17 +27,21 @@ export function saveOrderItem(orderId, item) {
 
 export function updateOrderItem(orderId, item) {
   let order = getOrder(orderId);
-  const localItem = { ...item, id: generateOrderItemId() };
-  let newOrderItems = removeItem(orderId, item.id);
-  order.items = { ...newOrderItems, localItem };
+  let orderItems = [...order.items];
+  const index = _.findIndex(order.items, { id: item.id });
+  orderItems.splice(index, 1, item);
+  // const localItem = { ...item };
+  // let newOrderItems = removeItem(orderId, item.id);
+  order.items = [...orderItems];
   updateOrder(order);
+  // console.log(orderItems);
   return order.items;
 }
 
 export function removeItem(orderId, itemId) {
   let order = getOrder(orderId);
   let updatedItems = _.filter(order.items, (i) => i.id != itemId);
-  order.items = { ...updatedItems };
+  order.items = [...updatedItems];
   updateOrder(order);
   return order.items;
 }
@@ -67,4 +71,10 @@ export function isSimilar(item1, item2) {
   if (item1.pxName != item2.pxName) return false;
   if (!isGradeDuplicate(item1.grade, item2.grade)) return false;
   return true;
+}
+
+export function isLens(supplyCategory) {
+  if (!supplyCategory) return false;
+  if (supplyCategory <= 2) return true;
+  return false;
 }
