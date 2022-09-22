@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import JOGradeDetailsTable from './joGradeDetailTable';
+import NonBulkGradeDetailTable from './nonBulkGradeDetailTable';
 import { getGradeOptions } from './../utils/gradeOptionsGenerator';
 
 const GradeDetails = ({
@@ -80,10 +80,10 @@ const GradeDetails = ({
   }, []);
   return (
     <div>
-      {orderType == 1 && (
+      {(orderType == 1 || orderType == 3) && (
         <div>
           <h5>GRADE DETAILS</h5>
-          <JOGradeDetailsTable
+          <NonBulkGradeDetailTable
             name={name}
             gradeOptions={getGradeOptions(lpKey)}
             handleGradeChange={handleGradeChange}

@@ -1,7 +1,11 @@
 import React from 'react';
 import RSelect from 'react-select';
 
-const JOGradeDetailsTable = ({ gradeOptions, gDetails, handleGradeChange }) => {
+const NonBulkGradeDetailTable = ({
+  gradeOptions,
+  gDetails,
+  handleGradeChange,
+}) => {
   const handleSelectChange = (opt, field, id) => {
     handleGradeChange(opt.value, field, id);
   };
@@ -105,4 +109,4 @@ const JOGradeDetailsTable = ({ gradeOptions, gDetails, handleGradeChange }) => {
   );
 };
 
-export default JOGradeDetailsTable;
+export default NonBulkGradeDetailTable;
