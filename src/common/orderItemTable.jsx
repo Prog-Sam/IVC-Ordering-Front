@@ -19,7 +19,7 @@ const OrderItemTable = ({
     {
       key: 'model',
       content: (orderItem) => (
-        <Link to={'/orderItems/' + orderItem.id}>
+        <Link to={'/catalog/' + `${orderId}|${orderItem.id}`}>
           {orderItem['objectVal-itemKey'].label}
         </Link>
       ),

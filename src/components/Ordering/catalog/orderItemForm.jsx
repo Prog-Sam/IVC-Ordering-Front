@@ -7,6 +7,7 @@ import {
   saveOrderItem,
   updateOrderItem,
   getActiveCartNumbers,
+  getItem,
 } from '../../../services/orderItemService';
 import { getOrderWithCn } from '../../../services/cartService';
 import {
@@ -20,14 +21,17 @@ import {
 } from '../../../utils/catalogMethods';
 import { toast } from 'react-toastify';
 import { getOrderTypes } from '../../../utils/catalogMethods';
-import { isDuplicate } from './../../../services/orderItemService';
+import { isDuplicate, isLens } from './../../../services/orderItemService';
 import { getLensParams } from './../../../utils/catalogMethods';
 import { validateGrade, getTotalQty } from './../../../utils/gradeMethods';
 
 const OrderItemForm = (props) => {
   const [order, setOrder] = useState({});
-  const orderItemId = props.match.params.id;
   const localEnums = {};
+  const propId = props.match.params.id;
+  let orderId = '';
+  let orderItemId = '';
+  let isNew = propId == 'New';
 
   const schema = {
     typeName: Joi.string().required().min(1).max(4).label('Transaction Type'),
@@ -41,14 +45,17 @@ const OrderItemForm = (props) => {
   };
 
   useEffect(() => {
-    if (orderItemId === 'New') return;
+    console.log(propId);
+    if (propId === 'New') return;
+    orderId = propId.split('|')[0];
+    orderItemId = propId.split('|')[1];
 
-    // async function populateOrderItem() {
-    //   let { data } = await getOrderItem(orderItemId);
-    //   setOrderItem(data);
-    // }
+    async function populateOrderItem() {
+      let data = await getItem(orderId, orderItemId);
+      setOrderItem(data);
+    }
 
-    // populateOrderItem();
+    populateOrderItem();
 
     if (!orderItem) return props.history.replace('/not-found');
 
@@ -57,67 +64,72 @@ const OrderItemForm = (props) => {
 
   const doSubmit = async () => {
     const lp = getLensParam(orderItem.lensParamKey);
-    // try {
-    //   const isNew = props.match.params.id === 'New';
-    //   const result = isNew
-    //     ? await saveOrderItem(mapToViewModel(orderItem))
-    //     : await updateOrderItem(mapToViewModel(orderItem));
-    //   toast(
-    //     `OrderItem ${orderItem.name} with the id of ${orderItem.id} has been ${
-    //       isNew ? 'added.' : 'updated.'
-    //     }`
-    //   );
-    //   props.history.push('/orderItems');
-    // } catch (e) {
-    //   console.error(e);
-    //   toast(e);
-    // }
+
     console.log(orderItem);
-    if (!orderItem.cdKey || orderItem.cdKey == '') {
-      toast.error('Please Select Color');
-      return;
-    }
-
-    if (orderItem.supplyCategoryKey != 1 && orderItem.supplyCategoryKey != 2) {
-      // saveOrderItem(order.id, orderItem);
-      console.log(isDuplicate(order.id, orderItem.itemDescription));
-      toast('Item Added to Cart...');
-    }
-    if (orderItem.supplyCategoryKey == 1 || orderItem.supplyCategoryKey == 2) {
-      for (let i of orderItem.grades) {
-        let item = validateGrade(i);
-        delete item['id'];
-        let keys = Object.keys(item);
-        if (keys.length == 0) continue;
-        for (let k of keys) {
-          toast.error(item[k]);
-        }
+    try {
+      if (!orderItem.cdKey || orderItem.cdKey == '') {
+        toast.error('Please Select Color');
         return;
       }
 
-      if (getTotalQty(orderItem.grades) == 0) {
-        toast.error(`Atleast one(1) quantity of item is needed.`);
-        return;
+      if (!isLens(orderItem.supplyCategoryKey)) {
+        if (isNew) {
+          saveOrderItem(order.id, orderItem);
+          console.log(isDuplicate(order.id, orderItem.itemDescription));
+          toast('Item Added to Cart...');
+        }
+        if (!isNew) {
+          updateOrderItem(order.id, orderItem);
+          toast('Item Updated...');
+        }
       }
+      if (isLens(orderItem.supplyCategoryKey)) {
+        for (let i of orderItem.grades) {
+          let item = validateGrade(i);
+          delete item['id'];
+          let keys = Object.keys(item);
+          if (keys.length == 0) continue;
+          for (let k of keys) {
+            toast.error(item[k]);
+          }
+          return;
+        }
 
-      if (orderItem.orderTypeKey == 1) {
-        if (!orderItem.pxName || orderItem.pxName == '') {
-          toast.error('Please provide Patient Name');
+        if (getTotalQty(orderItem.grades) == 0) {
+          toast.error(`Atleast one(1) quantity of item is needed.`);
           return;
         }
-        saveOrderItem(order.id, orderItem);
-        toast('Item Added to Cart...');
-      }
-      if (orderItem.orderTypeKey == 3) {
-        if (!orderItem.pxName || orderItem.pxName == '') {
-          toast.error('Please provide Patient Name');
-          return;
+
+        if (orderItem.orderTypeKey == 1) {
+          if (!orderItem.pxName || orderItem.pxName == '') {
+            toast.error('Please provide Patient Name');
+            return;
+          }
+          if (isNew) {
+            saveOrderItem(order.id, orderItem);
+            toast('Item Added to Cart...');
+          }
+          if (!isNew) {
+            updateOrderItem(order.id, orderItem);
+            toast('Item Updated...');
+          }
         }
-        console.log('SO');
+        if (orderItem.orderTypeKey == 3) {
+          if (!orderItem.pxName || orderItem.pxName == '') {
+            toast.error('Please provide Patient Name');
+            return;
+          }
+          console.log('SO');
+        }
+        if (orderItem.orderTypeKey == 2) {
+          console.log('BO');
+        }
       }
-      if (orderItem.orderTypeKey == 2) {
-        console.log('BO');
-      }
+    } catch (e) {
+      console.error(e);
+      toast.error(
+        'Something went wrong with the cart. Please Contact IT Dept.'
+      );
     }
   };
 
@@ -151,11 +163,17 @@ const OrderItemForm = (props) => {
       <h1 className='d-flex align-items-left'>CATALOG</h1>
       <form onSubmit={handleSubmit}>
         {renderLabel('Google Drive URL', order.url || 'NONE')}
-        {renderSelect('rxNumber', 'RX/SO/BO Number', getActiveCartNumbers())}
+        {renderSelect(
+          'rxNumber',
+          'RX/SO/BO Number',
+          getActiveCartNumbers(),
+          !isNew
+        )}
         {renderSelect(
           'orderTypeKey',
           'Order Type',
-          getOrderTypes(order.orderType)
+          getOrderTypes(order.orderType),
+          !isNew
         )}
         {renderSelect(
           'supplyCategoryKey',
@@ -167,12 +185,14 @@ const OrderItemForm = (props) => {
                 order.orderType,
                 order.objectValcartNumber.value
               )
-            : getItemCategories(order.orderType)
+            : getItemCategories(order.orderType),
+          !isNew
         )}
         {renderSelect(
           'brandKey',
           'Brand',
-          getBrands(orderItem.supplyCategoryKey, orderItem.orderTypeKey)
+          getBrands(orderItem.supplyCategoryKey, orderItem.orderTypeKey),
+          !isNew
         )}
         {renderSelect(
           'itemKey',
@@ -184,36 +204,36 @@ const OrderItemForm = (props) => {
           )
         )}
         {renderInput('itemDescription', 'Item Description')}
-        {orderItem.supplyCategoryKey != 1 &&
-          orderItem.supplyCategoryKey != 2 &&
+        {!isLens(orderItem.supplyCategoryKey) &&
           renderSelect(
             'cdKey',
             'Color',
             getColorsFromBarcode(orderItem.itemKey, orderItem.supplyCategoryKey)
           )}
-        {orderItem.supplyCategoryKey != 1 &&
-          orderItem.supplyCategoryKey != 2 &&
+        {!isLens(orderItem.supplyCategoryKey) &&
           renderInput('nonLensQty', 'Non Lens Quantity')}
-        {orderItem.supplyCategoryKey != 1 &&
-          orderItem.supplyCategoryKey != 2 &&
+        {!isLens(orderItem.supplyCategoryKey) &&
           renderInput('additionalInstruction', 'Additional Instruction')}
         {/* Add here Middle Part */}
-        {renderSelect(
-          'lensParamKey',
-          'Lens Parameters [SPH|CYL|ADD|FITTING|TOTAL POWER]',
-          getLensParams(orderItem.itemKey)
-        )}
-        {orderItem.lensParamKey &&
+        {isLens(orderItem.supplyCategoryKey) &&
+          renderSelect(
+            'lensParamKey',
+            'Lens Parameters [SPH|CYL|ADD|FITTING|TOTAL POWER]',
+            getLensParams(orderItem.itemKey)
+          )}
+        {isLens(orderItem.supplyCategoryKey) &&
+          orderItem.lensParamKey &&
           renderSelect(
             'cdKey',
             'Color - Days',
             getColorDays(orderItem.lensParamKey)
           )}
-        {renderGradeDetails('grades', orderItem.orderTypeKey)}
+        {isLens(orderItem.supplyCategoryKey) &&
+          renderGradeDetails('grades', orderItem.orderTypeKey)}
         {order.orderType &&
           order.orderType != 'BULK' &&
           renderInput('pxName', 'Patient Name')}
-        {renderButton('Add to Cart')}
+        {renderButton(isNew ? 'Add to Cart' : 'Update Item')}
       </form>
     </div>
   );
