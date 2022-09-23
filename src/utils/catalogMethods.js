@@ -136,6 +136,20 @@ export function getLensParam(id) {
   return _.find(catalog.lensParam, { id: id });
 }
 
+export function getFrameTypes() {
+  let frameTypes = _.filter(catalog.generalEnums, { type: 1 });
+  return _.map(frameTypes, (f) => {
+    return renamer(f, 'desc', 'name');
+  });
+}
+
+export function getFrameShapes() {
+  let frameShapes = _.filter(catalog.generalEnums, { type: 0 });
+  return _.map(frameShapes, (f) => {
+    return renamer(f, 'desc', 'name');
+  });
+}
+
 export function getActiveCartNumbers() {}
 
 // Helper Methods
