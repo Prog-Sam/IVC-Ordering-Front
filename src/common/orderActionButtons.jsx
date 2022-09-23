@@ -41,7 +41,7 @@ const OrderActionButtons = ({ orderId, orderType, location }) => {
                 className='btn btn-danger'
                 onClick={() => {
                   removeOrder(orderId);
-                  return cartContext.setOrdersCount(getCart().length - 1);
+                  return cartContext.setOrdersCount(getCart().length);
                 }}
               >
                 DELETE
