@@ -16,6 +16,7 @@ import { getCurrentUser } from '../services/authService';
 import { generateOrderItemId } from '../utils/idGenerator';
 import GradeDetails from './../common/gradeDetails';
 import catDep from '../config/catalogDependencies.json';
+import SoDetails from './../common/soDetail';
 
 const useCatalogForm = (
   schema,
@@ -197,6 +198,12 @@ const useCatalogForm = (
     setState(localState);
   };
 
+  const handleSoChange = (value, field) => {
+    let soDetail = { ...state.soDetails, [field]: value };
+    let localState = { ...state, ['soDetails']: soDetail };
+    setState(localState);
+  };
+
   const renderButton = (label) => {
     return (
       <button
@@ -301,6 +308,16 @@ const useCatalogForm = (
     );
   };
 
+  const renderSoDetails = (name) => {
+    return (
+      <SoDetails
+        name={name}
+        soDetails={state[name]}
+        handleSoChange={handleSoChange}
+      />
+    );
+  };
+
   return [
     state,
     setState,
@@ -315,6 +332,7 @@ const useCatalogForm = (
     renderRxField,
     renderFilePicker,
     renderGradeDetails,
+    renderSoDetails,
   ];
 };
 
