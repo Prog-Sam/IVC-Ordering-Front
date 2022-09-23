@@ -23,7 +23,11 @@ import { toast } from 'react-toastify';
 import { getOrderTypes } from '../../../utils/catalogMethods';
 import { isDuplicate, isLens } from './../../../services/orderItemService';
 import { getLensParams } from './../../../utils/catalogMethods';
-import { validateGrade, getTotalQty } from './../../../utils/gradeMethods';
+import {
+  validateGrade,
+  getTotalQty,
+  validateSo,
+} from './../../../utils/gradeMethods';
 
 const OrderItemForm = (props) => {
   const [order, setOrder] = useState({});
@@ -45,7 +49,6 @@ const OrderItemForm = (props) => {
   };
 
   useEffect(() => {
-    console.log(propId);
     if (propId === 'New') return;
     orderId = propId.split('|')[0];
     orderItemId = propId.split('|')[1];
@@ -119,12 +122,32 @@ const OrderItemForm = (props) => {
             toast.error('Please provide Patient Name');
             return;
           }
-          console.log('SO');
+
+          let item = validateSo(orderItem.soDetails);
+          let keys = Object.keys(item);
+          if (keys.length != 0) {
+            for (let k of keys) {
+              toast.error(item[k]);
+            }
+            return;
+          }
+
+          if (isNew) {
+            saveOrderItem(order.id, orderItem);
+            toast('Item Added to Cart...');
+          }
+          if (!isNew) {
+            updateOrderItem(order.id, orderItem);
+            toast('Item Updated...');
+          }
         }
         if (orderItem.orderTypeKey == 2) {
           console.log('BO');
         }
       }
+      if (propId != 'New')
+        props.history.push('/orderItems/' + propId.split('|')[0]);
+      props.history.push('/orderItems/' + order.id);
     } catch (e) {
       console.error(e);
       toast.error(
@@ -147,6 +170,7 @@ const OrderItemForm = (props) => {
     renderRxField,
     renderFilePicker,
     renderGradeDetails,
+    renderSoDetails,
   ] = useCatalogForm(schema, doSubmit);
 
   useEffect(() => {
@@ -230,6 +254,9 @@ const OrderItemForm = (props) => {
           )}
         {isLens(orderItem.supplyCategoryKey) &&
           renderGradeDetails('grades', orderItem.orderTypeKey)}
+        {isLens(orderItem.supplyCategoryKey) &&
+          orderItem.orderTypeKey == 3 &&
+          renderSoDetails('soDetails')}
         {order.orderType &&
           order.orderType != 'BULK' &&
           renderInput('pxName', 'Patient Name')}

@@ -1,9 +1,9 @@
 export function validateGrade(grade, stringTp) {
   const id = grade.id;
-  const add = !grade.add ? 0 : parseFloat(grade.add.value);
-  const axis = !grade.axis ? '' : parseFloat(grade.axis.value);
-  const cyl = !grade.cyl ? 0 : parseFloat(grade.cyl.value);
-  const sph = !grade.sph ? 0 : parseFloat(grade.sph.value);
+  const add = !grade.add ? 0 : parseFloat(grade.add);
+  const axis = !grade.axis ? '' : parseFloat(grade.axis);
+  const cyl = !grade.cyl ? 0 : parseFloat(grade.cyl);
+  const sph = !grade.sph ? 0 : parseFloat(grade.sph);
   const pd = isNaN(parseFloat(grade.pd)) ? 0 : parseFloat(grade.pd);
   const qty = isNaN(parseFloat(grade.qty)) ? 0 : parseFloat(grade.qty);
   const tp = isNaN(parseFloat(stringTp)) ? 0 : parseFloat(stringTp);
@@ -23,6 +23,28 @@ export function validateGrade(grade, stringTp) {
   if (validateTp(sph, cyl, add, tp)) {
     result.tp = `Please Check the Total Power and grade of the item with id: ${id}`;
   }
+
+  return result;
+}
+
+export function validateSo(soDetails) {
+  if (!soDetails) return { overall: 'Please fill up SO Details' };
+  const horizontal = !soDetails.horizontal
+    ? ''
+    : parseFloat(soDetails.horizontal);
+  const vertical = !soDetails.vertical ? '' : parseFloat(soDetails.vertical);
+  const bridge = !soDetails.bridge ? '' : parseFloat(soDetails.bridge);
+  const frameType = !soDetails.frameType ? 0 : parseFloat(soDetails.frameType);
+  const frameShape = !soDetails.frameShape
+    ? 0
+    : parseFloat(soDetails.frameShape);
+  let result = {};
+
+  if (horizontal == '') result.horizontal = `Horizontal Should have a value`;
+  if (vertical == '') result.vertical = `Vertical Should have a value`;
+  if (bridge == '') result.bridge = `Bridge Should have a value`;
+  if (frameType == '') result.frameType = `Please select Frame Type`;
+  if (frameShape == '') result.frameShape = `Please select Frame Shape`;
 
   return result;
 }
