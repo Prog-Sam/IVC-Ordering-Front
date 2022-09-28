@@ -150,6 +150,22 @@ export function getFrameShapes() {
   });
 }
 
+export function addNewGrade(grades) {
+  let localGrades = [...grades];
+  let idArray = _.map(localGrades, (g) => parseInt(g.id)) || [];
+  let emptyGrade = {
+    id: generateNewGradeId(idArray),
+    sph: '',
+    cyl: '',
+    axis: '',
+    add: '',
+    pd: '',
+    qty: '',
+  };
+  localGrades.push(emptyGrade);
+  return localGrades;
+}
+
 export function getActiveCartNumbers() {}
 
 // Helper Methods
@@ -197,4 +213,10 @@ export function addLpName(item) {
     ['name']: `${minSph}  ${maxSph}|${minCyl}  ${maxCyl}|${minAdd}  ${maxAdd}|${fitting}|${totalPower}`,
   };
   return localItem;
+}
+
+export function generateNewGradeId(gradeArray) {
+  if (gradeArray.length < 1) return 1;
+  let localGradeArray = _.sortBy([...gradeArray]);
+  return localGradeArray[localGradeArray.length - 1] + 1;
 }

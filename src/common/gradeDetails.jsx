@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import NonBulkGradeDetailTable from './nonBulkGradeDetailTable';
+import BulkGradeDetailTable from './bulkGradeDetailTable';
 import { getGradeOptions } from './../utils/gradeOptionsGenerator';
 
 const GradeDetails = ({
@@ -7,77 +8,10 @@ const GradeDetails = ({
   orderType,
   lpKey,
   handleGradeChange,
-  gDetails,
+  gDetails = [],
+  handleDelete,
+  handleAddGrade,
 }) => {
-  const [grades, setGrades] = useState([]);
-  const [bulkGrades, setBulkGrades] = useState([]);
-
-  useEffect(() => {
-    setGrades([
-      {
-        id: 'OD',
-        lensParamKey: '0000000101',
-        lensItemKey: '010001000101000310019002',
-        cdKey: '002202',
-        sph: '',
-        cyl: '',
-        axis: '',
-        add: '',
-        pd: '',
-        qty: '',
-      },
-      {
-        id: 'OS',
-        lensParamKey: '0000000101',
-        lensItemKey: '010001000101000310019002',
-        cdKey: '002202',
-        sph: '',
-        cyl: '',
-        axis: '',
-        add: '',
-        pd: '',
-        qty: '',
-      },
-    ]);
-    setBulkGrades([
-      {
-        id: '1',
-        lensParamKey: '0000000101',
-        lensItemKey: '010001000101000310019002',
-        cdKey: '002202',
-        sph: '',
-        cyl: '',
-        axis: '',
-        add: '',
-        pd: '',
-        qty: '',
-      },
-      {
-        id: '2',
-        lensParamKey: '0000000101',
-        lensItemKey: '010001000101000310019002',
-        cdKey: '002202',
-        sph: '',
-        cyl: '',
-        axis: '',
-        add: '',
-        pd: '',
-        qty: '',
-      },
-      {
-        id: '3',
-        lensParamKey: '0000000101',
-        lensItemKey: '010001000101000310019002',
-        cdKey: '002202',
-        sph: '',
-        cyl: '',
-        axis: '',
-        add: '',
-        pd: '',
-        qty: '',
-      },
-    ]);
-  }, []);
   return (
     <div>
       {(orderType == 1 || orderType == 3) && (
@@ -89,6 +23,26 @@ const GradeDetails = ({
             handleGradeChange={handleGradeChange}
             gDetails={gDetails}
           />
+        </div>
+      )}
+      {orderType == 2 && (
+        <div>
+          <h5>GRADE DETAILS</h5>
+          <BulkGradeDetailTable
+            name={name}
+            gradeOptions={getGradeOptions(lpKey)}
+            handleGradeChange={handleGradeChange}
+            gDetails={gDetails}
+            handleDelete={handleDelete}
+          />
+          <button
+            type='button'
+            className='btn btn-success'
+            style={{ marginBottom: '20px' }}
+            onClick={handleAddGrade}
+          >
+            Add Grade
+          </button>
         </div>
       )}
     </div>

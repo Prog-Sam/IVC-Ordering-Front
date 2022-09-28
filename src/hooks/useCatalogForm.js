@@ -17,6 +17,7 @@ import { generateOrderItemId } from '../utils/idGenerator';
 import GradeDetails from './../common/gradeDetails';
 import catDep from '../config/catalogDependencies.json';
 import SoDetails from './../common/soDetail';
+import { addNewGrade } from './../utils/catalogMethods';
 
 const useCatalogForm = (
   schema,
@@ -42,26 +43,7 @@ const useCatalogForm = (
       userIdKey: getCurrentUser().id,
       typeName: 'PO',
       id: generateOrderItemId(),
-      grades: [
-        {
-          id: 'OD',
-          sph: '',
-          cyl: '',
-          axis: '',
-          add: '',
-          pd: '',
-          qty: '',
-        },
-        {
-          id: 'OS',
-          sph: '',
-          cyl: '',
-          axis: '',
-          add: '',
-          pd: '',
-          qty: '',
-        },
-      ],
+      orderTypeKey: 2,
     });
   }, []);
 
@@ -109,6 +91,7 @@ const useCatalogForm = (
     const localErrors = {};
     for (let item of error.details) localErrors[item.path[0]] = item.message;
 
+    // console.log(localErrors);
     return localErrors;
   };
 
@@ -194,6 +177,20 @@ const useCatalogForm = (
     let grade = { ...state.grades[index], [field]: value };
     let localGrades = [...state['grades']];
     localGrades.splice(index, 1, grade);
+    let localState = { ...state, ['grades']: localGrades };
+    setState(localState);
+  };
+
+  const handleGradeDelete = (id) => {
+    let index = _.findIndex(state.grades, { id: id });
+    let localGrades = [...state['grades']];
+    localGrades.splice(index, 1);
+    let localState = { ...state, ['grades']: localGrades };
+    setState(localState);
+  };
+
+  const handleAddGrade = () => {
+    let localGrades = addNewGrade([...state['grades']]);
     let localState = { ...state, ['grades']: localGrades };
     setState(localState);
   };
@@ -304,6 +301,8 @@ const useCatalogForm = (
         lpKey={state.lensParamKey}
         gDetails={state[name]}
         handleGradeChange={handleGradeChange}
+        handleDelete={handleGradeDelete}
+        handleAddGrade={handleAddGrade}
       />
     );
   };
