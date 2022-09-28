@@ -18,6 +18,7 @@ import GradeDetails from './../common/gradeDetails';
 import catDep from '../config/catalogDependencies.json';
 import SoDetails from './../common/soDetail';
 import { addNewGrade } from './../utils/catalogMethods';
+import { mapToSchema } from '../utils/itemizer';
 
 const useCatalogForm = (
   schema,
@@ -79,8 +80,7 @@ const useCatalogForm = (
   };
 
   const mapToViewModel = (data) => {
-    let paths = Object.keys(schema);
-    return _.pick(data, [...paths]);
+    return mapToSchema(data, schema);
   };
 
   const validate = () => {
