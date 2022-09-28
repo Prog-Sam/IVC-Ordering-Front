@@ -1,4 +1,4 @@
-export function validateGrade(grade, stringTp) {
+export function validateGrade(grade, stringTp, mode = 'normal') {
   const id = grade.id;
   const add = !grade.add ? 0 : parseFloat(grade.add);
   const axis = !grade.axis ? '' : parseFloat(grade.axis);
@@ -9,19 +9,23 @@ export function validateGrade(grade, stringTp) {
   const tp = isNaN(parseFloat(stringTp)) ? 0 : parseFloat(stringTp);
   let result = { id };
 
-  if (qty == 0) return result;
+  if (qty == 0 && mode == 'normal') return result;
+
+  if (qty == 0 && mode == 'strict')
+    result.qty = `Please check Qty of ID: ${id}`;
 
   if (sph != 0) {
     if (qty == 0)
-      result.qty = `Quantity of id: ${id} can't be empty while SPH has a value`;
+      result.qty = `Quantity of ID: ${id} can't be empty while SPH has a value`;
   }
   if (cyl != 0) {
     if (axis == '')
-      result.axis = `Axis of id: ${id} can't be empty while CYL has a value`;
+      result.axis = `Axis of ID: ${id} can't be empty while CYL has a value`;
   }
 
-  if (validateTp(sph, cyl, add, tp)) {
-    result.tp = `Please Check the Total Power and grade of the item with id: ${id}`;
+  console.log(!validateTp(sph, cyl, add, tp));
+  if (!validateTp(sph, cyl, add, tp)) {
+    result.tp = `Please Check the Total Power and grade of the item with ID: ${id}`;
   }
 
   return result;
@@ -50,8 +54,8 @@ export function validateSo(soDetails) {
 }
 
 export function validateTp(sph, cyl, add, tp) {
-  if (tp == 0) return false;
-  if (tp) return Math.abs(sph + cyl + add) <= tp;
+  if (tp == 0) return true;
+  if (tp) return Math.abs(sph + cyl + add) <= Math.abs(tp);
 }
 
 export function getTotalQty(grades) {
