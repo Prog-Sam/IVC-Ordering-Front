@@ -12,6 +12,7 @@ import {
   getSelectedOption,
   getSelectOptions,
 } from '../utils/reactSelectOption';
+import { mapToSchema } from '../utils/itemizer';
 
 const useForm = (
   schema,
@@ -44,13 +45,10 @@ const useForm = (
       }
     }
     setState({ ...pendingState, ...localState });
-    // console.log({ ...localState });
-    // console.log({ ...state });
   };
 
   const mapToViewModel = (data) => {
-    let paths = Object.keys(schema);
-    return _.pick(data, [...paths]);
+    return mapToSchema(data, schema);
   };
 
   const validate = () => {
