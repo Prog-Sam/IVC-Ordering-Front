@@ -1,9 +1,9 @@
 export function validateGrade(grade, stringTp, mode = 'normal') {
   const id = grade.id;
-  const add = !grade.add ? 0 : parseFloat(grade.add);
-  const axis = !grade.axis ? '' : parseFloat(grade.axis);
-  const cyl = !grade.cyl ? 0 : parseFloat(grade.cyl);
-  const sph = !grade.sph ? 0 : parseFloat(grade.sph);
+  const add = isNaN(parseFloat(grade.add)) ? '' : parseFloat(grade.add);
+  const axis = isNaN(parseFloat(grade.axis)) ? '' : parseFloat(grade.axis);
+  const cyl = isNaN(parseFloat(grade.cyl)) ? '' : parseFloat(grade.cyl);
+  const sph = isNaN(parseFloat(grade.sph)) ? '' : parseFloat(grade.sph);
   const pd = isNaN(parseFloat(grade.pd)) ? 0 : parseFloat(grade.pd);
   const qty = isNaN(parseFloat(grade.qty)) ? 0 : parseFloat(grade.qty);
   const tp = isNaN(parseFloat(stringTp)) ? 0 : parseFloat(stringTp);
@@ -14,21 +14,52 @@ export function validateGrade(grade, stringTp, mode = 'normal') {
   if (qty == 0 && mode == 'strict')
     result.qty = `Please check Qty of ID: ${id}`;
 
-  if (sph != 0) {
+  if (sph != '') {
     if (qty == 0)
       result.qty = `Quantity of ID: ${id} can't be empty while SPH has a value`;
   }
-  if (cyl != 0) {
+  if (cyl != '' || cyl != 0) {
     if (axis == '')
       result.axis = `Axis of ID: ${id} can't be empty while CYL has a value`;
   }
 
-  console.log(!validateTp(sph, cyl, add, tp));
   if (!validateTp(sph, cyl, add, tp)) {
     result.tp = `Please Check the Total Power and grade of the item with ID: ${id}`;
   }
 
   return result;
+}
+
+export function generateGradeString(grade) {
+  const { add, axis, cyl, sph, pd, qty } = grade;
+  if (qty == '' || qty == '0' || isNaN(parseFloat(qty))) return '|||||';
+  return `${sph}|${cyl}|${axis}|${add}|${pd}|${qty}`;
+}
+
+export function generateGradeObject(grade, id) {
+  if (grade == '|||||' || grade == '0|0|0|0|0|0' || grade == '')
+    return {
+      id,
+      sph: '',
+      cyl: '',
+      axis: '',
+      add: '',
+      pd: '',
+      qty: '',
+    };
+
+  const gradeArray = grade.split('|');
+  let gradeObject = {
+    id,
+    sph: gradeArray[0],
+    cyl: gradeArray[1],
+    axis: gradeArray[2],
+    add: gradeArray[3],
+    pd: gradeArray[4],
+    qty: gradeArray[5],
+  };
+
+  return gradeObject;
 }
 
 export function validateSo(soDetails) {
@@ -54,8 +85,11 @@ export function validateSo(soDetails) {
 }
 
 export function validateTp(sph, cyl, add, tp) {
+  const lAdd = isNaN(parseFloat(add)) ? 0 : add;
+  const lCyl = isNaN(parseFloat(cyl)) ? 0 : cyl;
+  const lSph = isNaN(parseFloat(sph)) ? 0 : sph;
   if (tp == 0) return true;
-  if (tp) return Math.abs(sph + cyl + add) <= Math.abs(tp);
+  if (tp) return Math.abs(lSph + lCyl + lAdd) <= Math.abs(tp);
 }
 
 export function getTotalQty(grades) {
