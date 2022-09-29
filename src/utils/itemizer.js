@@ -11,5 +11,9 @@ export function getNameById(id, items) {
 
 export function mapToSchema(data, schema) {
   let paths = Object.keys(schema);
-  return _.pick(data, [...paths]);
+  return mapToPathArray(data, paths);
+}
+
+export function mapToPathArray(data, pathArray) {
+  return _.pick(data, [...pathArray]);
 }
