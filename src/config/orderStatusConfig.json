@@ -1,0 +1,12 @@
+{
+  "forApproval": "FOR APPROVAL",
+  "approved": "APPROVED",
+  "received": "RECEIVED",
+  "rejected": "REJECTED",
+  "processing": "PROCESSING",
+  "forSupplier": "FOR SUPPLIER",
+  "dispatched": "DISPATCHED",
+  "delivered": "DELIVERED",
+  "pickedUp": "PICKED-UP",
+  "closed": "CLOSED"
+}
