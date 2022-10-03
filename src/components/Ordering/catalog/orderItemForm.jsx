@@ -277,8 +277,6 @@ const OrderItemForm = (props) => {
           )}
         {!isLens(orderItem.supplyCategoryKey) &&
           renderInput('nonLensQty', 'Non Lens Quantity')}
-        {!isLens(orderItem.supplyCategoryKey) &&
-          renderInput('additionalInstruction', 'Additional Instruction')}
         {/* Add here Middle Part */}
         {isLens(orderItem.supplyCategoryKey) &&
           renderSelect(
@@ -298,6 +296,7 @@ const OrderItemForm = (props) => {
         {isLens(orderItem.supplyCategoryKey) &&
           orderItem.orderTypeKey == 3 &&
           renderSoDetails('soDetails')}
+        {renderInput('additionalInstruction', 'Additional Instruction')}
         {order.orderType &&
           order.orderType != 'BULK' &&
           renderInput('pxName', 'Patient Name')}
