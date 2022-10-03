@@ -13,6 +13,10 @@ export function getOrderTypes(orderType) {
     : _.filter(orderTypes, (o) => o.id != 2);
 }
 
+export function getAllOrderTypes() {
+  return [...catalog.orderTypes];
+}
+
 export function getItemCategories(orderType, orderPrefix = '') {
   const supplyCategories = catalog.supplyCategories;
   if (isBulk(orderType)) {
@@ -171,6 +175,7 @@ export function getActiveCartNumbers() {}
 // Helper Methods
 export function isBulk(orderType) {
   if (orderType == 'BULK') return true;
+  if (orderType == 'BULK ORDER') return true;
   if (orderType == 2) return true;
   return false;
 }

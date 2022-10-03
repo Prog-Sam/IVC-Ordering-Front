@@ -18,7 +18,8 @@ const OrderForm = (props) => {
   const localEnums = {
     orderType: [
       { id: 'BULK', name: 'BULK' },
-      { id: 'NON-BULK', name: 'NON-BULK' },
+      { id: 'JOB ORDER', name: 'JOB ORDER' },
+      { id: 'SPECIAL ORDER', name: 'SPECIAL ORDER' },
     ],
   };
   let isNew = props.match.params.id === 'New';
@@ -49,7 +50,10 @@ const OrderForm = (props) => {
   const doSubmit = async () => {
     try {
       const isNew = props.match.params.id === 'New';
-      const duplicated = await isDuplicate(order, getCurrentUser().branchKey);
+      const duplicated = await isDuplicate(
+        addNonBulkRxPrefix(order),
+        getCurrentUser().branchKey
+      );
       if (duplicated && isNew) {
         toast.error(
           `RX/SO/BO Number already exists on the ${duplicated.location}`
@@ -65,7 +69,8 @@ const OrderForm = (props) => {
           toast.error('Please Add Bulk Order Suffix for BO Number.');
         }
       }
-      let localOrder = { ...order, items: [] };
+      let localOrder = { ...addNonBulkRxPrefix(order), items: [] };
+
       const result = isNew
         ? await addOrder(localOrder)
         : await updateOrder(localOrder);
@@ -78,6 +83,15 @@ const OrderForm = (props) => {
       toast.error('Order Failed');
     }
   };
+
+  function addNonBulkRxPrefix(order) {
+    let localOrder = { ...order };
+    if (order.orderType == 'JOB ORDER')
+      localOrder.cartNumber = 'J' + order.cartNumber;
+    if (order.orderType == 'SPECIAL ORDER')
+      localOrder.cartNumber = 'S' + order.cartNumber;
+    return localOrder;
+  }
 
   const [
     order,
@@ -105,7 +119,7 @@ const OrderForm = (props) => {
         {!isNew && renderInput('cartNumber', 'RX/BO/SO Number', 'text', !isNew)}
         {isNew && renderRxField('cartNumber', 'RX/BO/SO Number')}
         {renderFilePicker('url', 'Google Drive URL')}
-        {renderButton('Submit')}
+        {renderButton(isNew ? 'Submit' : 'Update')}
       </form>
     </div>
   );

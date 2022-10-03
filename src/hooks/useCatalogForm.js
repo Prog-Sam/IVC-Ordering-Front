@@ -19,6 +19,7 @@ import catDep from '../config/catalogDependencies.json';
 import SoDetails from './../common/soDetail';
 import { addNewGrade } from './../utils/catalogMethods';
 import { mapToSchema } from '../utils/itemizer';
+import { getOrderWithCn } from '../services/cartService';
 
 const useCatalogForm = (
   schema,
@@ -47,6 +48,16 @@ const useCatalogForm = (
       orderTypeKey: 2,
     });
   }, []);
+
+  useEffect(() => {
+    const order = getOrderWithCn(state.rxNumber) || {};
+    let localOrderTypeKey = 0;
+    if (order.orderType == 'BULK') localOrderTypeKey = 2;
+    if (order.orderType == 'JOB ORDER') localOrderTypeKey = 1;
+    if (order.orderType == 'SPECIAL ORDER') localOrderTypeKey = 3;
+
+    setState({ ...state, ['orderTypeKey']: localOrderTypeKey });
+  }, [state.rxNumber]);
 
   const checkSubscribers = (name, value, pendingState) => {
     let localState = { ...pendingState };

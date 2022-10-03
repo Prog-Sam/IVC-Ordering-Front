@@ -85,18 +85,29 @@ const RxField = ({ name, label, error, orderType, onChange, ...rest }) => {
           </div>
         ) : (
           <div>
-            <input
-              {...rest}
-              id={name}
-              name={name}
-              value={postfix}
-              onChange={(e) => {
-                setPrefix({ id: '', value: '' });
-                setPostfix(e.target.value);
-                return onChange(returnRawValue(prefix, e.target.value), name);
-              }}
-              className='form-control d-flex align-items-left'
-            />
+            <tr>
+              <td style={{ width: '10%' }}>
+                {orderType && <h5>{orderType == 'JOB ORDER' ? 'J' : 'S'}</h5>}
+              </td>
+              <td style={{ width: '90%' }}>
+                <input
+                  {...rest}
+                  type='number'
+                  id={name}
+                  name={name}
+                  value={postfix}
+                  onChange={(e) => {
+                    setPrefix({ id: '', value: '' });
+                    setPostfix(e.target.value);
+                    return onChange(
+                      returnRawValue(prefix, e.target.value),
+                      name
+                    );
+                  }}
+                  className='form-control d-flex align-items-left'
+                />
+              </td>
+            </tr>
           </div>
         )}
         {error && <div className='alert alert-danger'>{error}</div>}

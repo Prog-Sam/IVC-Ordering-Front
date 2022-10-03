@@ -20,7 +20,7 @@ import {
   getLensParam,
 } from '../../../utils/catalogMethods';
 import { toast } from 'react-toastify';
-import { getOrderTypes } from '../../../utils/catalogMethods';
+import { getAllOrderTypes } from '../../../utils/catalogMethods';
 import { isDuplicate, isLens } from './../../../services/orderItemService';
 import { getLensParams } from './../../../utils/catalogMethods';
 import {
@@ -67,8 +67,8 @@ const OrderItemForm = (props) => {
 
   const doSubmit = async () => {
     const lp = getLensParam(orderItem.lensParamKey);
+    const validationMode = orderItem.orderTypeKey == 2 ? 'strict' : 'normal';
 
-    console.log(orderItem);
     try {
       if (!orderItem.cdKey || orderItem.cdKey == '') {
         toast.error('Please Select Color');
@@ -88,7 +88,7 @@ const OrderItemForm = (props) => {
       }
       if (isLens(orderItem.supplyCategoryKey)) {
         for (let i of orderItem.grades) {
-          let item = validateGrade(i);
+          let item = validateGrade(i, lp.totalPower, validationMode);
           delete item['id'];
           let keys = Object.keys(item);
           if (keys.length == 0) continue;
@@ -142,7 +142,14 @@ const OrderItemForm = (props) => {
           }
         }
         if (orderItem.orderTypeKey == 2) {
-          console.log('BO');
+          if (isNew) {
+            saveOrderItem(order.id, orderItem);
+            toast('Item Added to Cart...');
+          }
+          if (!isNew) {
+            updateOrderItem(order.id, orderItem);
+            toast('Item Updated...');
+          }
         }
       }
       if (propId != 'New')
@@ -177,10 +184,49 @@ const OrderItemForm = (props) => {
     async function populateOrder() {
       setOrder((await getOrderWithCn(orderItem.rxNumber)) || {});
     }
-
     populateOrder();
-    // console.log(orderItem);
   }, [orderItem]);
+
+  useEffect(() => {
+    const initialGrade =
+      orderItem.orderTypeKey != 2
+        ? [
+            {
+              id: 'OD',
+              sph: '',
+              cyl: '',
+              axis: '',
+              add: '',
+              pd: '',
+              qty: '',
+            },
+            {
+              id: 'OS',
+              sph: '',
+              cyl: '',
+              axis: '',
+              add: '',
+              pd: '',
+              qty: '',
+            },
+          ]
+        : [];
+
+    if (propId == 'New' && isLens(orderItem.supplyCategoryKey)) {
+      console.log(orderItem);
+      setOrderItem({ ...orderItem, ['grades']: initialGrade });
+    }
+  }, [orderItem.orderTypeKey]);
+
+  // useEffect(() => {
+  //   let localOrderTypeKey = 0;
+  //   if (order.orderType == 'BULK') localOrderTypeKey = 2;
+  //   if (order.orderType == 'JOB ORDER') localOrderTypeKey = 1;
+  //   if (order.orderType == 'SPECIAL ORDER') localOrderTypeKey = 3;
+
+  //   setOrderItem({ ...orderItem, ['orderTypeKey']: localOrderTypeKey });
+  //   console.log('Here');
+  // }, [orderItem.rxNumber]);
 
   return (
     <div>
@@ -193,12 +239,7 @@ const OrderItemForm = (props) => {
           getActiveCartNumbers(),
           !isNew
         )}
-        {renderSelect(
-          'orderTypeKey',
-          'Order Type',
-          getOrderTypes(order.orderType),
-          !isNew
-        )}
+        {renderSelect('orderTypeKey', 'Order Type', getAllOrderTypes(), true)}
         {renderSelect(
           'supplyCategoryKey',
           'Item Category',
