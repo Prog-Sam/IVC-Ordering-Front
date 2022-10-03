@@ -52,9 +52,27 @@ const useCatalogForm = (
   useEffect(() => {
     const order = getOrderWithCn(state.rxNumber) || {};
     let localOrderTypeKey = 0;
+
     if (order.orderType == 'BULK') localOrderTypeKey = 2;
     if (order.orderType == 'JOB ORDER') localOrderTypeKey = 1;
     if (order.orderType == 'SPECIAL ORDER') localOrderTypeKey = 3;
+
+    if (itemInDb.id) {
+      setState({ ...itemInDb, ['orderTypeKey']: localOrderTypeKey });
+      return;
+    }
+
+    if (!state.rxNumber) {
+      setState({
+        fromBranchKey: 177,
+        toBranchKey: getCurrentUser().branchKey,
+        userIdKey: getCurrentUser().id,
+        typeName: 'PO',
+        id: generateOrderItemId(),
+        orderTypeKey: localOrderTypeKey,
+      });
+      return;
+    }
 
     setState({ ...state, ['orderTypeKey']: localOrderTypeKey });
   }, [state.rxNumber]);
