@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import Table from './table';
 import { removeItem, getItems } from '../services/orderItemService';
+import { getNameById } from '../utils/itemizer';
+import { getItemCategories } from '../utils/catalogMethods';
 
 const OrderItemTable = ({
   orderItems,
@@ -15,7 +17,14 @@ const OrderItemTable = ({
 }) => {
   const columns = [
     { path: 'id', label: 'ID' },
-    { path: 'objectVal-supplyCategoryKey.label', label: 'Item Type' },
+    {
+      key: 'supplyCategoryKey',
+      content: (orderItem) =>
+        getNameById(
+          orderItem.supplyCategoryKey,
+          getItemCategories(orderItem.orderType)
+        ),
+    },
     {
       key: 'model',
       content: (orderItem) => (
