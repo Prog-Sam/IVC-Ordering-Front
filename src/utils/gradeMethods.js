@@ -31,9 +31,12 @@ export function validateGrade(grade, stringTp, mode = 'normal') {
 }
 
 export function generateGradeString(grade) {
+  if (!grade) return '0|0|0|0|0|0';
   const { add, axis, cyl, sph, pd, qty } = grade;
-  if (qty == '' || qty == '0' || isNaN(parseFloat(qty))) return '|||||';
-  return `${sph}|${cyl}|${axis}|${add}|${pd}|${qty}`;
+  if (qty == '' || qty == '0' || isNaN(parseFloat(qty))) return '0|0|0|0|0|0';
+  return `${sph || 0}|${cyl || 0}|${axis || 0}|${add || 0}|${pd || 0}|${
+    qty || 0
+  }`;
 }
 
 export function generateGradeObject(grade, id) {
@@ -82,6 +85,42 @@ export function validateSo(soDetails) {
   if (frameShape == '') result.frameShape = `Please select Frame Shape`;
 
   return result;
+}
+
+export function generateSoString(so) {
+  if (!so) return '0|0|0|0|0';
+  const { horizontal, vertical, bridge, frameType, frameShape } = so;
+  if (
+    isNaN(parseFloat(horizontal)) ||
+    isNaN(parseFloat(vertical)) ||
+    isNaN(parseFloat(bridge)) ||
+    isNaN(parseFloat(frameType)) ||
+    isNaN(parseFloat(frameShape))
+  )
+    return '0|0|0|0|0';
+  return `${horizontal}|${vertical}|${bridge}|${frameType}|${frameShape}`;
+}
+
+export function generateSoObject(so) {
+  if (so == '||||' || so == '0|0|0|0|0' || so == '')
+    return {
+      horizontal: '',
+      vertical: '',
+      bridge: '',
+      frameType: '',
+      frameShape: '',
+    };
+
+  const soArray = so.split('|');
+  let soObject = {
+    horizontal: soArray[0],
+    vertical: soArray[1],
+    bridge: soArray[2],
+    frameType: soArray[3],
+    frameShape: soArray[4],
+  };
+
+  return soObject;
 }
 
 export function validateTp(sph, cyl, add, tp) {
