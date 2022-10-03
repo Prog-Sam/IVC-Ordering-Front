@@ -1,12 +1,12 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import _ from 'lodash';
-import { getItems } from '../../../services/orderItemService';
-import Pagination from '../../../common/pagination';
-import { paginate } from '../../../utils/paginate';
-import OrderItemTable from '../../../common/orderItemTable';
 import { Link } from 'react-router-dom';
-import MenuHeader from '../../../common/menuHeader';
+import { getItems } from '../../../services/orderItemService';
+import { paginate } from '../../../utils/paginate';
+import { submitForApproval } from '../../../utils/orderMethods';
+import Pagination from '../../../common/pagination';
+import OrderItemTable from '../../../common/orderItemTable';
 
 const OrderItem = (props) => {
   const [orderItems, setOrderItems] = useState([]);
@@ -80,6 +80,15 @@ const OrderItem = (props) => {
           onPageChange={handlePageChange}
           currentPage={currentPage}
         />
+        <button
+          type='button'
+          className='btn btn-primary'
+          onClick={() => {
+            submitForApproval(props.match.params.id);
+          }}
+        >
+          SUBMIT
+        </button>
         <Link to={`/orders`} className='btn btn-warning'>
           CLOSE
         </Link>
