@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
+import { submitForApproval } from '../utils/orderMethods';
 
 import CartContext from '../context/cartContext';
 import { getCart, removeOrder } from '../services/cartService';
 
 const OrderActionButtons = ({ orderId, orderType, location }) => {
   const cartContext = useContext(CartContext);
-  console.log(orderType);
   return (
     <div>
       {location == 'CART' && (
@@ -15,29 +15,24 @@ const OrderActionButtons = ({ orderId, orderType, location }) => {
           <tr>
             <td>
               <button
+                type='button'
                 className='btn btn-primary'
                 onClick={() => {
-                  console.log(orderType);
+                  submitForApproval(orderId);
+                  return cartContext.setOrdersCount(getCart().length);
                 }}
               >
                 SUBMIT
               </button>
             </td>
             <td>
-              {/* <button
-                className='btn btn-warning'
-                onClick={() => {
-                  console.log(orderId, orderType, location);
-                }}
-              >
-                OPEN
-              </button> */}
               <Link to={`/orderItems/${orderId}`} className='btn btn-warning'>
                 OPEN
               </Link>
             </td>
             <td>
               <button
+                type='button'
                 className='btn btn-danger'
                 onClick={() => {
                   removeOrder(orderId);
@@ -54,10 +49,14 @@ const OrderActionButtons = ({ orderId, orderType, location }) => {
         <table>
           <tr>
             <td>
-              <button className='btn btn-primary'>APPROVE</button>
+              <button type='button' className='btn btn-primary'>
+                APPROVE
+              </button>
             </td>
             <td>
-              <button className='btn btn-warning'>REJECT</button>
+              <button type='button' className='btn btn-warning'>
+                REJECT
+              </button>
             </td>
           </tr>
         </table>
