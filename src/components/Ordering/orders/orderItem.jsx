@@ -1,14 +1,18 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { getItems } from '../../../services/orderItemService';
+import { getCart } from '../../../services/cartService';
 import { paginate } from '../../../utils/paginate';
 import { submitForApproval } from '../../../utils/orderMethods';
 import Pagination from '../../../common/pagination';
 import OrderItemTable from '../../../common/orderItemTable';
+import CartContext from '../../../context/cartContext';
 
 const OrderItem = (props) => {
+  const cartContext = useContext(CartContext);
   const [orderItems, setOrderItems] = useState([]);
   const [pageSize, setPageSize] = useState(25);
   const [searchQuery, setSearchQuery] = useState('');
@@ -83,8 +87,19 @@ const OrderItem = (props) => {
         <button
           type='button'
           className='btn btn-primary'
+          style={{ marginRight: '10px' }}
           onClick={() => {
-            submitForApproval(props.match.params.id);
+            try {
+              if (!submitForApproval(props.match.params.id)) {
+                return;
+              }
+              cartContext.setOrdersCount(getCart().length);
+              console.log(getCart().length);
+              props.history.push('/orders');
+            } catch (ex) {
+              console.error(ex);
+              toast.error('Something went wrong...');
+            }
           }}
         >
           SUBMIT
