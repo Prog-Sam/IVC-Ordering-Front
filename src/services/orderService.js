@@ -1,18 +1,23 @@
 import http from './httpService';
 import { transactionize } from '../utils/itemizer';
 import { getOrder } from './cartService';
+import { getCurrentUser } from './authService';
 
-// export async function getOrders() {
-//   const orders = await http.get(`/orders`);
-//   // console.log(result);
-//   return orders;
-// }
+export async function getOrdersFromDb(query = '') {
+  const orders = await http.get(
+    `/orders/?branchId=${getCurrentUser().branchKey}${query}`
+  );
+  // console.log(orders);
+  return orders;
+}
 
-// export async function getOrder(id) {
-//   const order = await http.get(`/orders/${id}`);
-//   // console.log(result);
-//   return order;
-// }
+export async function getOrderFromDb(id, query = '') {
+  const order = await http.get(
+    `/orders/${id}?branchId=${getCurrentUser().branchKey}${query}`
+  );
+  // console.log(result);
+  return order;
+}
 
 export async function saveOrder(orderId, status) {
   // let localOrder = { ...order };
