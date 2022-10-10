@@ -88,6 +88,33 @@ export function getModels(itemCategoryKey, orderTypeKey, brandKey) {
   return _.map(items, (i) => renamer(i, 'description', 'name'));
 }
 
+export function getNoBrandModels(itemCategoryKey, orderTypeKey) {
+  const stringCategory = whatCategory(itemCategoryKey);
+  if (stringCategory == 'LNCL') {
+    return _.filter(catalog.lensItems, {
+      orderTypeKey: getOrderTypeKey(orderTypeKey),
+    });
+  }
+  if (stringCategory == 'FSSG') {
+    const items = [...catalog.fsItems];
+    const newItems = _.map(items, (i) => {
+      return {
+        ...i,
+        name: _.find(catalog.fscsaModels, { id: i.fsModelKey })
+          .modelDescription,
+      };
+    });
+    return newItems;
+  }
+  const items = [...catalog.csaItems];
+  return _.map(items, (i) => renamer(i, 'description', 'name'));
+}
+
+export function getModel(itemCategoryKey, orderTypeKey, itemKey) {
+  const models = getNoBrandModels(itemCategoryKey, orderTypeKey);
+  return _.find(models, { id: itemKey });
+}
+
 export function getColorsFromBarcode(barcode, itemCategoryKey) {
   const stringCategory = whatCategory(itemCategoryKey);
   if (stringCategory == 'LNCL') {
@@ -156,7 +183,7 @@ export function getFrameShapes() {
 
 export function addNewGrade(grades) {
   let localGrades = [...grades];
-  let idArray = _.map(localGrades, (g) => parseInt(g.id)) || [];
+  let idArray = generateIdArray(localGrades);
   let emptyGrade = {
     id: generateNewGradeId(idArray),
     sph: '',
@@ -168,6 +195,10 @@ export function addNewGrade(grades) {
   };
   localGrades.push(emptyGrade);
   return localGrades;
+}
+
+export function generateIdArray(items) {
+  return _.map(items, (i) => parseInt(i.id)) || [];
 }
 
 export function getActiveCartNumbers() {}

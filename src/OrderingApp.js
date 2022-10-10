@@ -6,6 +6,8 @@ import Order from './components/Ordering/orders/order';
 import OrderForm from './components/Ordering/orders/orderForm';
 import OrderItemForm from './components/Ordering/catalog/orderItemForm';
 import OrderItem from './components/Ordering/orders/orderItem';
+import Status from './components/Ordering/status/status';
+import StatusItem from './components/Ordering/status/statusItem';
 
 import NotFound from './components/CRUD/menu/notFound';
 import Navigation from './components/Ordering/navigation/navigation';
@@ -70,6 +72,8 @@ function OrderingApp() {
               <ProtectedRoute path='/orders/:id' component={OrderForm} />
               <ProtectedRoute path='/orders' component={Order} />
               <ProtectedRoute path='/orderItems/:id' component={OrderItem} />
+              <ProtectedRoute path='/status' component={Status} />
+              <ProtectedRoute path='/statusItems/:id' component={StatusItem} />
               <ProtectedRoute path='/catalog/:id' component={OrderItemForm} />
               <ProtectedRoute path='/catalog' component={OrderItemForm} />
               <Route

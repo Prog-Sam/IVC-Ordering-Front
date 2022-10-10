@@ -102,7 +102,7 @@ export function generateSoString(so) {
 }
 
 export function generateSoObject(so) {
-  if (so == '||||' || so == '0|0|0|0|0' || so == '')
+  if (so == '||||' || so == '0|0|0|0|0' || so == '' || !so)
     return {
       horizontal: '',
       vertical: '',

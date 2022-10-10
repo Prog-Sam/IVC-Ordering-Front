@@ -6,7 +6,13 @@ import {
   generateSoString,
 } from './gradeMethods';
 import { isLens } from './../services/orderItemService';
-import { isBulk } from './catalogMethods';
+import {
+  generateNewGradeId,
+  getNoBrandModels,
+  isBulk,
+  getModel,
+  generateIdArray,
+} from './catalogMethods';
 
 export function transactionize(order, status) {
   if (order.items.length == 0) return false;
@@ -84,22 +90,43 @@ export function localizeOrder(order) {
   let result = [];
 
   if (isBulk(order.orderType) && isLens(order.items[0].supplyCategoryKey)) {
+    let idArray = _.map(result, (g) => parseInt(g.id)) || [];
+    const orderItemArray = extractOrderItems(order.items);
+    for (let orderItem of orderItemArray) {
+      const items = _.filter(order.items, { ...orderItem });
+      let localItem = {
+        ...items[0],
+        ['id']: generateNewGradeId(idArray),
+        ['soDetails']: { ...generateSoObject(orderItem.soDetails) },
+        ['grades']: generateBulkGradeObjects(items),
+        ['brandKey']: getModel(
+          items[0].supplyCategoryKey,
+          items[0].orderTypeKey,
+          items[0].itemKey
+        ).brandKey,
+      };
+      result.push(localItem);
+    }
+    return { ...order, ['items']: result };
   }
 
   for (let i of order.items) {
+    let idArray = _.map(result, (g) => parseInt(g.id)) || [];
     let localItem = {
       ...i,
+      ['id']: generateNewGradeId(idArray),
       ['grades']: [
         generateGradeObject(i.odDetails, 'OD'),
         generateGradeObject(i.osDetails, 'OS'),
       ],
       ['soDetails']: { ...generateSoObject(i.soDetails) },
+      ['brandKey']: getModel(i.supplyCategoryKey, i.orderTypeKey, i.itemKey)
+        .brandKey,
     };
     result.push(localItem);
   }
 
-  console.log(result);
-  return result;
+  return { ...order, ['items']: result };
 }
 
 function fitToTransactionItemTemplate(
@@ -164,4 +191,40 @@ export function mapToPathArray(data, pathArray) {
 export function cleanGrades(data) {
   const items = _.filter(data, (u) => u.qty != '' || u.qty != '0');
   return items;
+}
+
+export function extractOrderItems(items) {
+  return _.uniqWith(
+    _.map(items, (i) => ({
+      itemKey: i.itemKey,
+      itemDescription: i.itemDescription,
+      lensParamKey: i.lensParamKey,
+      cdKey: i.cdKey,
+      additionalInstruction: i.additionalInstruction,
+    })),
+    _.isEqual
+  );
+}
+
+export function generateBulkGradeObjects(grades) {
+  let result = [];
+  const gradeStringArray = _.map(grades, (i) => ({
+    odDetails: i.odDetails,
+    osDetails: i.osDetails,
+  }));
+  for (let i of gradeStringArray) {
+    result.push(
+      generateGradeObject(
+        i.odDetails,
+        generateNewGradeId(generateIdArray(result))
+      )
+    );
+    result.push(
+      generateGradeObject(
+        i.osDetails,
+        generateNewGradeId(generateIdArray(result))
+      )
+    );
+  }
+  return result;
 }

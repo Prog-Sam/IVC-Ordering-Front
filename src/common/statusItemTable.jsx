@@ -2,18 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import Table from './table';
-import { removeItem, getItems } from '../services/orderItemService';
+// import { removeItem, getItems } from '../services/orderItemService';
 import { getNameById } from '../utils/itemizer';
-import { getItemCategories, isBulk } from '../utils/catalogMethods';
+import { getItemCategories } from '../utils/catalogMethods';
+import { getModels, isBulk } from './../utils/catalogMethods';
 
-const OrderItemTable = ({
-  orderItems,
+const StatusItemTable = ({
+  statusItems,
   localEnums,
   sortColumn,
   onSort,
   orderType,
   orderId,
-  setOrderItems,
+  setStatusItems,
 }) => {
   const columns = [
     { path: 'id', label: 'ID' },
@@ -32,28 +33,33 @@ const OrderItemTable = ({
       key: 'model',
       content: (orderItem) => (
         <Link to={'/catalog/' + `${orderId}|${orderItem.id}`}>
-          {orderItem['objectVal-itemKey'].label}
+          {getNameById(
+            orderItem['itemKey'],
+            getModels(
+              orderItem.supplyCategoryKey,
+              orderItem.orderTypeKey,
+              orderItem.brandKey
+            )
+          )}
         </Link>
       ),
       label: 'Item Name',
     },
-    {
-      path: 'id',
-      content: (orderItem) => (
-        <button
-          className='btn btn-danger'
-          onClick={() => {
-            removeItem(orderId, orderItem.id);
-            setOrderItems(getItems(orderId));
-          }}
-        >
-          DELETE
-        </button>
-      ),
-    },
+    // {
+    //   path: 'id',
+    //   content: (orderItem) => (
+    //     <button
+    //       className='btn btn-danger'
+    //       onClick={() => {
+    //         removeItem(orderId, orderItem.id);
+    //         setStatusItems(getItems(orderId));
+    //       }}
+    //     >
+    //       DELETE
+    //     </button>
+    //   ),
+    // },
   ];
-
-  console.log(orderItems);
 
   return (
     <Table
@@ -61,9 +67,9 @@ const OrderItemTable = ({
       sortColumn={sortColumn}
       onSort={onSort}
       localEnums={localEnums}
-      data={orderItems}
+      data={statusItems}
     />
   );
 };
 
-export default OrderItemTable;
+export default StatusItemTable;

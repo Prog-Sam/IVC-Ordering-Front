@@ -3,9 +3,16 @@ import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import Table from './table';
 import OrderActionButtons from './orderActionButtons';
+import { getAllOrderTypes } from '../utils/catalogMethods';
 
-const OrderTable = ({ orders, localEnums, sortColumn, onSort }) => {
-  const columns = [
+const OrderTable = ({
+  orders,
+  localEnums,
+  sortColumn,
+  onSort,
+  location = 'CART',
+}) => {
+  const cartColumns = [
     { path: 'id', label: 'ID' },
     { path: 'orderType', label: 'ORDER TYPE' },
     {
@@ -27,11 +34,51 @@ const OrderTable = ({ orders, localEnums, sortColumn, onSort }) => {
         <OrderActionButtons
           orderType={order.orderType}
           orderId={order.id}
-          location={'CART'}
+          location={location}
         />
       ),
     },
   ];
+
+  const statusColumns = [
+    { path: 'id', label: 'Transaction Number' },
+    {
+      key: 'orderType',
+      label: 'ORDER TYPE',
+      content: (order) =>
+        _.find(getAllOrderTypes(), { id: order.orderType }).typeDesc,
+    },
+    {
+      key: 'cartNumber',
+      content: (order) => (
+        <Link to={'/statusItems/' + order.cartNumber}>{order.cartNumber}</Link>
+      ),
+      label: 'RX/BO/SO NUMBER',
+    },
+    { path: 'url', label: 'GDRIVE URL' },
+    // {
+    //   key: 'items',
+    //   content: (order) => order.items.length || 0,
+    //   label: 'ITEMS',
+    // },
+    {
+      path: 'status',
+      label: 'STATUS',
+    },
+    {
+      key: 'cartNumber',
+      content: (order) => (
+        <OrderActionButtons
+          orderType={order.orderType}
+          orderId={order.id}
+          location={location}
+          status={order.status}
+        />
+      ),
+    },
+  ];
+
+  const columns = location == 'CART' ? [...cartColumns] : [...statusColumns];
 
   return (
     <Table
