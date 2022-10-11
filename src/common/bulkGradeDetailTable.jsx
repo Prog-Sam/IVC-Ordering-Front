@@ -6,6 +6,7 @@ const BulkGradeDetailTable = ({
   gDetails,
   handleGradeChange,
   handleDelete,
+  isDisabled,
 }) => {
   const handleSelectChange = (opt, field, id) => {
     handleGradeChange(opt.value, field, id);
@@ -46,6 +47,7 @@ const BulkGradeDetailTable = ({
                   (option) => option.value === g.sph
                 )}
                 defaultvalue={{ label: '', value: '' }}
+                isDisabled={isDisabled}
               />
             </td>
             <td>
@@ -58,6 +60,7 @@ const BulkGradeDetailTable = ({
                   (option) => option.value === g.cyl
                 )}
                 defaultvalue={{ label: '', value: '' }}
+                isDisabled={isDisabled}
               />
             </td>
             <td>
@@ -72,6 +75,7 @@ const BulkGradeDetailTable = ({
                   ) || []
                 }
                 defaultvalue={{ label: '', value: '' }}
+                isDisabled={isDisabled}
               />
             </td>
             <td>
@@ -84,6 +88,7 @@ const BulkGradeDetailTable = ({
                   (option) => option.value === g.add
                 )}
                 defaultvalue={{ label: '', value: '' }}
+                isDisabled={isDisabled}
               />
             </td>
             <td>
@@ -93,6 +98,7 @@ const BulkGradeDetailTable = ({
                 className='form-control d-flex align-items-left'
                 onChange={(e) => handleInputChange(e.target.value, 'pd', g.id)}
                 value={g.pd}
+                readOnly={isDisabled}
               />
             </td>
             <td>
@@ -102,6 +108,7 @@ const BulkGradeDetailTable = ({
                 className='form-control d-flex align-items-left'
                 onChange={(e) => handleInputChange(e.target.value, 'qty', g.id)}
                 value={g.qty}
+                readOnly={isDisabled}
               />
             </td>
             <td>
@@ -111,6 +118,7 @@ const BulkGradeDetailTable = ({
                 name={'qty'}
                 className='form-control d-flex align-items-left btn btn-danger'
                 onClick={() => handleDelete(g.id)}
+                disabled={isDisabled}
               >
                 Remove
               </button>

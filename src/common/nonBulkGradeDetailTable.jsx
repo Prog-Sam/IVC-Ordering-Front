@@ -5,6 +5,7 @@ const NonBulkGradeDetailTable = ({
   gradeOptions,
   gDetails,
   handleGradeChange,
+  isDisabled,
 }) => {
   const handleSelectChange = (opt, field, id) => {
     handleGradeChange(opt.value, field, id);
@@ -44,6 +45,7 @@ const NonBulkGradeDetailTable = ({
                   (option) => option.value === g.sph
                 )}
                 defaultvalue={{ label: '', value: '' }}
+                isDisabled={isDisabled}
               />
             </td>
             <td>
@@ -56,6 +58,7 @@ const NonBulkGradeDetailTable = ({
                   (option) => option.value === g.cyl
                 )}
                 defaultvalue={{ label: '', value: '' }}
+                isDisabled={isDisabled}
               />
             </td>
             <td>
@@ -70,6 +73,7 @@ const NonBulkGradeDetailTable = ({
                   ) || []
                 }
                 defaultvalue={{ label: '', value: '' }}
+                isDisabled={isDisabled}
               />
             </td>
             <td>
@@ -82,6 +86,7 @@ const NonBulkGradeDetailTable = ({
                   (option) => option.value === g.add
                 )}
                 defaultvalue={{ label: '', value: '' }}
+                isDisabled={isDisabled}
               />
             </td>
             <td>
@@ -91,6 +96,7 @@ const NonBulkGradeDetailTable = ({
                 className='form-control d-flex align-items-left'
                 onChange={(e) => handleInputChange(e.target.value, 'pd', g.id)}
                 value={g.pd}
+                readOnly={isDisabled}
               />
             </td>
             <td>
@@ -100,6 +106,7 @@ const NonBulkGradeDetailTable = ({
                 className='form-control d-flex align-items-left'
                 onChange={(e) => handleInputChange(e.target.value, 'qty', g.id)}
                 value={g.qty}
+                readOnly={isDisabled}
               />
             </td>
           </tr>

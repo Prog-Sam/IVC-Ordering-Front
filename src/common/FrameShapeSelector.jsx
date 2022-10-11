@@ -2,7 +2,13 @@ import React, { useState, useEffect } from 'react';
 import RSelect from 'react-select';
 import ImageButton from './imageButton';
 
-const FrameShapeSelector = ({ name, frameShapes, handleClick, ...rest }) => {
+const FrameShapeSelector = ({
+  name,
+  frameShapes,
+  handleClick,
+  disabled,
+  ...rest
+}) => {
   return (
     <div
       className='row'
@@ -30,6 +36,7 @@ const FrameShapeSelector = ({ name, frameShapes, handleClick, ...rest }) => {
                   handleClick={handleClick}
                   label={f.label}
                   value={f.value}
+                  isDisabled={disabled}
                 />
               ))}
             </div>

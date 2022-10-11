@@ -11,6 +11,7 @@ const GradeDetails = ({
   gDetails = [],
   handleDelete,
   handleAddGrade,
+  isDisabled,
 }) => {
   return (
     <div>
@@ -22,6 +23,7 @@ const GradeDetails = ({
             gradeOptions={getGradeOptions(lpKey)}
             handleGradeChange={handleGradeChange}
             gDetails={gDetails}
+            isDisabled={isDisabled}
           />
         </div>
       )}
@@ -34,12 +36,14 @@ const GradeDetails = ({
             handleGradeChange={handleGradeChange}
             gDetails={gDetails}
             handleDelete={handleDelete}
+            isDisabled={isDisabled}
           />
           <button
             type='button'
             className='btn btn-success'
             style={{ marginBottom: '20px' }}
             onClick={handleAddGrade}
+            disabled={isDisabled}
           >
             Add Grade
           </button>

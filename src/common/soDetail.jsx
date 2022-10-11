@@ -14,6 +14,7 @@ const SoDetails = ({
     frameType: '',
     frameShape: '',
   },
+  isDisabled,
 }) => {
   const handleSelectChange = (opt, field) => {
     handleSoChange(opt.value, field);
@@ -41,6 +42,7 @@ const SoDetails = ({
             className='form-control d-flex align-items-left'
             onChange={(e) => handleInputChange(e.target.value, 'horizontal')}
             value={soDetails.horizontal || ''}
+            readOnly={isDisabled}
           />
         </div>
         <div className='col-md-4' style={{ userSelect: 'auto' }}>
@@ -54,6 +56,7 @@ const SoDetails = ({
             className='form-control d-flex align-items-left'
             onChange={(e) => handleInputChange(e.target.value, 'vertical')}
             value={soDetails.vertical || ''}
+            readOnly={isDisabled}
           />
         </div>
         <div className='col-md-4' style={{ userSelect: 'auto' }}>
@@ -67,6 +70,7 @@ const SoDetails = ({
             className='form-control d-flex align-items-left'
             onChange={(e) => handleInputChange(e.target.value, 'bridge')}
             value={soDetails.bridge || ''}
+            readOnly={isDisabled}
           />
         </div>
       </div>
@@ -84,6 +88,7 @@ const SoDetails = ({
               (option) => option.value === soDetails.frameType
             )}
             defaultvalue={{ label: '', value: '' }}
+            isDisabled={isDisabled}
           />
         </div>
       </div>
@@ -94,6 +99,7 @@ const SoDetails = ({
         value={getSelectOptions(getFrameShapes()).filter(
           (option) => option.value === soDetails.frameShape
         )}
+        disabled={isDisabled}
       />
     </div>
   );

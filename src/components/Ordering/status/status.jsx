@@ -30,7 +30,6 @@ const Status = () => {
 
     async function getData() {
       const { data } = await getOrdersFromDb('');
-      console.log(data);
       setOrders(data || []);
     }
 
@@ -52,7 +51,6 @@ const Status = () => {
 
   const getPagedData = () => {
     let filtered = orders;
-    console.log(filtered);
     if (searchQuery)
       filtered = orders.filter((u) =>
         u.cartNumber.toLowerCase().startsWith(searchQuery.toLocaleLowerCase())

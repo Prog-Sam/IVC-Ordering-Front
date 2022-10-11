@@ -322,7 +322,7 @@ const useCatalogForm = (
     );
   };
 
-  const renderGradeDetails = (name, orderType) => {
+  const renderGradeDetails = (name, orderType, isDisabled = false) => {
     return (
       <GradeDetails
         name={name}
@@ -332,16 +332,18 @@ const useCatalogForm = (
         handleGradeChange={handleGradeChange}
         handleDelete={handleGradeDelete}
         handleAddGrade={handleAddGrade}
+        isDisabled={isDisabled}
       />
     );
   };
 
-  const renderSoDetails = (name) => {
+  const renderSoDetails = (name, isDisabled = false) => {
     return (
       <SoDetails
         name={name}
         soDetails={state[name]}
         handleSoChange={handleSoChange}
+        isDisabled={isDisabled}
       />
     );
   };
