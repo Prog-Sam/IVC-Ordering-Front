@@ -6,56 +6,57 @@ import { getCart, getOrder, updateOrder } from './cartService';
 import { isGradeDuplicate } from '../utils/gradeMethods';
 
 const cartKey = 'cart';
+const tempCartKey = 'temp-cart';
 
-export function getItems(id) {
-  const order = getOrder(id);
+export function getItems(id, temp = false) {
+  const order = getOrder(id, temp);
   return order.items || [];
 }
 
-export function getItem(orderId, itemId) {
-  const orderItems = getItems(orderId);
+export function getItem(orderId, itemId, temp = false) {
+  const orderItems = getItems(orderId, temp);
   return _.find(orderItems, { id: itemId }) || null;
 }
 
-export function saveOrderItem(orderId, item) {
-  let order = getOrder(orderId);
+export function saveOrderItem(orderId, item, temp = false) {
+  let order = getOrder(orderId, temp);
   const localItem = { ...item, id: generateOrderItemId() };
   order.items.push(localItem);
-  updateOrder(order);
+  updateOrder(order, temp);
   return order.items;
 }
 
-export function updateOrderItem(orderId, item) {
-  let order = getOrder(orderId);
+export function updateOrderItem(orderId, item, temp = false) {
+  let order = getOrder(orderId, temp);
   let orderItems = [...order.items];
   const index = _.findIndex(order.items, { id: item.id });
   orderItems.splice(index, 1, item);
   // const localItem = { ...item };
   // let newOrderItems = removeItem(orderId, item.id);
   order.items = [...orderItems];
-  updateOrder(order);
+  updateOrder(order, temp);
   // console.log(orderItems);
   return order.items;
 }
 
-export function removeItem(orderId, itemId) {
-  let order = getOrder(orderId);
+export function removeItem(orderId, itemId, temp = false) {
+  let order = getOrder(orderId, temp);
   let updatedItems = _.filter(order.items, (i) => i.id != itemId);
   order.items = [...updatedItems];
-  updateOrder(order);
+  updateOrder(order, temp);
   return order.items;
 }
 
-export function getActiveCartNumbers() {
-  const cart = getCart();
+export function getActiveCartNumbers(temp = false) {
+  const cart = getCart(temp);
   return _.map(cart, (o) => {
     return { id: o.cartNumber, name: o.cartNumber };
   });
 }
 
-export function isDuplicate(orderId, itemId) {
-  console.log(getItem(orderId, itemId));
-  if (getItem(orderId, itemId)) return true;
+export function isDuplicate(orderId, itemId, temp = false) {
+  console.log(getItem(orderId, itemId, temp));
+  if (getItem(orderId, itemId, temp)) return true;
   return false;
 }
 
