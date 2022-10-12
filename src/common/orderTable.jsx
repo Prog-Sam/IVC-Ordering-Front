@@ -51,7 +51,7 @@ const OrderTable = ({
     {
       key: 'cartNumber',
       content: (order) => (
-        <Link to={'/statusItems/' + order.cartNumber}>{order.cartNumber}</Link>
+        <Link to={'/statusItems/' + order.id}>{order.cartNumber}</Link>
       ),
       label: 'RX/BO/SO NUMBER',
     },

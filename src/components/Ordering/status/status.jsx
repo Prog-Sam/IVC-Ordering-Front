@@ -1,13 +1,14 @@
 import React from 'react';
 import { useState, useEffect, useContext } from 'react';
 import _ from 'lodash';
-import { getCart } from '../../../services/cartService';
 import { getOrdersFromDb } from '../../../services/orderService';
+import { removeCart, storeCart } from './../../../services/cartService';
 import Pagination from '../../../common/pagination';
 import { paginate } from '../../../utils/paginate';
 import OrderTable from '../../../common/orderTable';
 import MenuHeader from '../../../common/menuHeader';
 import CartContext from '../../../context/cartContext';
+import { localizeOrders } from './../../../utils/itemizer';
 
 const Status = () => {
   const [orders, setOrders] = useState([]);
@@ -30,7 +31,10 @@ const Status = () => {
 
     async function getData() {
       const { data } = await getOrdersFromDb('');
-      setOrders(data || []);
+      setOrders(localizeOrders(data) || []);
+
+      removeCart(true);
+      storeCart(localizeOrders(data), true);
     }
 
     getData();

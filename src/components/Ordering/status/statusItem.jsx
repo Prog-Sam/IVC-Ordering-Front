@@ -4,6 +4,7 @@ import _ from 'lodash';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { getOrderFromDb } from '../../../services/orderService';
+import { getItems } from '../../../services/orderItemService';
 import { paginate } from '../../../utils/paginate';
 import Pagination from '../../../common/pagination';
 import CartContext from '../../../context/cartContext';
@@ -30,9 +31,10 @@ const StatusItem = (props) => {
     handlePageChange(0);
 
     async function getData() {
-      const { data } = await getOrderFromDb(orderId);
-      console.log(localizeOrder(data));
-      setStatusItems(localizeOrder(data).items);
+      // const { data } = await getOrderFromDb(orderId);
+      // setStatusItems(localizeOrder(data).items);
+      const data = await getItems(orderId, true);
+      setStatusItems(data);
     }
 
     getData();
