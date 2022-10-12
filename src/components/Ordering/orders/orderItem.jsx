@@ -94,7 +94,6 @@ const OrderItem = (props) => {
                 return;
               }
               cartContext.setOrdersCount(getCart().length);
-              console.log(getCart().length);
               props.history.push('/orders');
             } catch (ex) {
               console.error(ex);
