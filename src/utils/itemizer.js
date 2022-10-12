@@ -129,6 +129,10 @@ export function localizeOrder(order) {
   return { ...order, ['items']: result };
 }
 
+export function localizeOrders(orders) {
+  return _.map(orders, (o) => localizeOrder(o));
+}
+
 function fitToTransactionItemTemplate(
   item,
   odDetails,
