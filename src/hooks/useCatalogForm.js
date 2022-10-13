@@ -25,7 +25,8 @@ const useCatalogForm = (
   schema,
   submitCallback,
   itemInDb = {},
-  subscriberSchema = {}
+  subscriberSchema = {},
+  temp = false
 ) => {
   const [state, setState] = useState({});
   const [errors, setErrors] = useState({});
@@ -50,13 +51,15 @@ const useCatalogForm = (
   }, []);
 
   useEffect(() => {
-    const order = getOrderWithCn(state.rxNumber) || {};
+    const order = getOrderWithCn(state.rxNumber, temp) || {};
     let localOrderTypeKey = 0;
 
     if (order.orderType == 'BULK') localOrderTypeKey = 2;
     if (order.orderType == 'JOB ORDER') localOrderTypeKey = 1;
     if (order.orderType == 'SPECIAL ORDER') localOrderTypeKey = 3;
-
+    if (order.orderType == 2) localOrderTypeKey = 2;
+    if (order.orderType == 1) localOrderTypeKey = 1;
+    if (order.orderType == 3) localOrderTypeKey = 3;
     if (itemInDb.id) {
       setState({ ...itemInDb, ['orderTypeKey']: localOrderTypeKey });
       return;

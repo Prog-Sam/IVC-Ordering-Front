@@ -46,7 +46,7 @@ const OrderTable = ({
       key: 'orderType',
       label: 'ORDER TYPE',
       content: (order) =>
-        _.find(getAllOrderTypes(), { id: order.orderType }).typeDesc,
+        _.find(getAllOrderTypes(), { id: order.orderType }).name,
     },
     {
       key: 'cartNumber',

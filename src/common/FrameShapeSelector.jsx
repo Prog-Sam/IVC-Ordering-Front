@@ -6,7 +6,7 @@ const FrameShapeSelector = ({
   name,
   frameShapes,
   handleClick,
-  disabled,
+  isDisabled,
   ...rest
 }) => {
   return (
@@ -28,18 +28,20 @@ const FrameShapeSelector = ({
                 />
               </div>
             </div>
-            <div className='row' style={{ userSelect: 'auto' }}>
-              {frameShapes.map((f) => (
-                <ImageButton
-                  name={name}
-                  imageSource={require(`../images/${f.label}.jpg`)}
-                  handleClick={handleClick}
-                  label={f.label}
-                  value={f.value}
-                  isDisabled={disabled}
-                />
-              ))}
-            </div>
+            {!isDisabled && (
+              <div className='row' style={{ userSelect: 'auto' }}>
+                {frameShapes.map((f) => (
+                  <ImageButton
+                    name={name}
+                    imageSource={require(`../images/${f.label}.jpg`)}
+                    handleClick={handleClick}
+                    label={f.label}
+                    value={f.value}
+                    disabled={isDisabled}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>

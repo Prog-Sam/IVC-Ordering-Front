@@ -32,7 +32,7 @@ const StatusItemTable = ({
     {
       key: 'model',
       content: (orderItem) => (
-        <Link to={'/catalog/' + `${orderId}|${orderItem.id}`}>
+        <Link to={'/catalogView/' + `${orderId}|${orderItem.id}`}>
           {getNameById(
             orderItem['itemKey'],
             getModels(

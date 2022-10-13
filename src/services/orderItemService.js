@@ -1,12 +1,7 @@
-import httpService from './httpService';
-import store from '../utils/store';
 import _ from 'lodash';
 import { generateOrderId, generateOrderItemId } from '../utils/idGenerator';
 import { getCart, getOrder, updateOrder } from './cartService';
 import { isGradeDuplicate } from '../utils/gradeMethods';
-
-const cartKey = 'cart';
-const tempCartKey = 'temp-cart';
 
 export function getItems(id, temp = false) {
   const order = getOrder(id, temp);
@@ -15,7 +10,7 @@ export function getItems(id, temp = false) {
 
 export function getItem(orderId, itemId, temp = false) {
   const orderItems = getItems(orderId, temp);
-  return _.find(orderItems, { id: itemId }) || null;
+  return _.find(orderItems, { id: temp ? parseInt(itemId) : itemId }) || {};
 }
 
 export function saveOrderItem(orderId, item, temp = false) {
