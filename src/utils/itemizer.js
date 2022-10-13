@@ -217,18 +217,22 @@ export function generateBulkGradeObjects(grades) {
     osDetails: i.osDetails,
   }));
   for (let i of gradeStringArray) {
-    result.push(
-      generateGradeObject(
-        i.odDetails,
-        generateNewGradeId(generateIdArray(result))
-      )
-    );
-    result.push(
-      generateGradeObject(
-        i.osDetails,
-        generateNewGradeId(generateIdArray(result))
-      )
-    );
+    if (i.odDetails != '0|0|0|0|0|0' && i.odDetails != '|||||') {
+      result.push(
+        generateGradeObject(
+          i.odDetails,
+          generateNewGradeId(generateIdArray(result))
+        )
+      );
+    }
+    if (i.osDetails != '0|0|0|0|0|0' && i.osDetails != '|||||') {
+      result.push(
+        generateGradeObject(
+          i.osDetails,
+          generateNewGradeId(generateIdArray(result))
+        )
+      );
+    }
   }
   return result;
 }
