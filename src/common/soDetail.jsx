@@ -99,7 +99,7 @@ const SoDetails = ({
         value={getSelectOptions(getFrameShapes()).filter(
           (option) => option.value === soDetails.frameShape
         )}
-        disabled={isDisabled}
+        isDisabled={isDisabled}
       />
     </div>
   );

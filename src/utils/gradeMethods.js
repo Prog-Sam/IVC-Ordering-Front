@@ -116,8 +116,8 @@ export function generateSoObject(so) {
     horizontal: soArray[0],
     vertical: soArray[1],
     bridge: soArray[2],
-    frameType: soArray[3],
-    frameShape: soArray[4],
+    frameType: parseInt(soArray[3]),
+    frameShape: parseInt(soArray[4]),
   };
 
   return soObject;
