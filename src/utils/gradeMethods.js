@@ -56,7 +56,7 @@ export function generateGradeObject(grade, id) {
     id,
     sph: gradeArray[0],
     cyl: gradeArray[1],
-    axis: gradeArray[2],
+    axis: !gradeArray[2] ? gradeArray[2] : parseInt(gradeArray[2]),
     add: gradeArray[3],
     pd: gradeArray[4],
     qty: gradeArray[5],
