@@ -14,7 +14,13 @@ export function getOrderTypes(orderType) {
 }
 
 export function getAllOrderTypes() {
-  return [...catalog.orderTypes];
+  return _.map(catalog.orderTypes, (o) => swapper(o, 'name', 'typeDesc'));
+}
+
+export function getOrderTypeString(id) {
+  if (id == 1) return 'JOB ORDER';
+  if (id == 2) return 'BULK';
+  return 'SPECIAL ORDER';
 }
 
 export function getItemCategories(orderType, orderPrefix = '') {
