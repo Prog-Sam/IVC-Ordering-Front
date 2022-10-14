@@ -48,14 +48,24 @@ export function removeOrder(id, temp = false) {
   return newCart;
 }
 
+// export function updateOrder(order, temp = false) {
+//   const cart = getCart(temp);
+//   const orderOnCart = _.find(cart, {
+//     id: order.id,
+//   });
+//   let newCart = removeOrder(order.id, temp);
+//   newCart.push(order);
+//   store.saveObject(temp ? tempCartKey : cartKey, newCart);
+//   return order;
+// }
+
 export function updateOrder(order, temp = false) {
-  const cart = getCart(temp);
-  const orderOnCart = _.find(cart, {
+  let cart = getCart(temp);
+  const index = _.findIndex(cart, {
     id: order.id,
   });
-  let newCart = removeOrder(order.id, temp);
-  newCart.push(order);
-  store.saveObject(temp ? tempCartKey : cartKey, newCart);
+  cart.splice(index, 1, order);
+  store.saveObject(temp ? tempCartKey : cartKey, cart);
   return order;
 }
 
