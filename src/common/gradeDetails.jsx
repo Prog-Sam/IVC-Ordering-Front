@@ -38,15 +38,17 @@ const GradeDetails = ({
             handleDelete={handleDelete}
             isDisabled={isDisabled}
           />
-          <button
-            type='button'
-            className='btn btn-success'
-            style={{ marginBottom: '20px' }}
-            onClick={handleAddGrade}
-            disabled={isDisabled}
-          >
-            Add Grade
-          </button>
+          {!isDisabled && (
+            <button
+              type='button'
+              className='btn btn-success'
+              style={{ marginBottom: '20px' }}
+              onClick={handleAddGrade}
+              disabled={isDisabled}
+            >
+              Add Grade
+            </button>
+          )}
         </div>
       )}
     </div>

@@ -192,7 +192,7 @@ const StatusItemForm = (props) => {
         >
           CLOSE
         </Link>
-        {renderButton('Submit')}
+        {/* {renderButton('Submit')} */}
       </form>
     </div>
   );

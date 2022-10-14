@@ -25,7 +25,7 @@ const BulkGradeDetailTable = ({
           <th style={{ width: '15%' }}>ADD</th>
           <th style={{ width: '15%' }}>PD</th>
           <th style={{ width: '15%' }}>QTY</th>
-          <th style={{ width: '15%' }}>ACTION</th>
+          {!isDisabled && <th style={{ width: '15%' }}>ACTION</th>}
         </tr>
       </thead>
       <tbody>
@@ -111,18 +111,20 @@ const BulkGradeDetailTable = ({
                 readOnly={isDisabled}
               />
             </td>
-            <td>
-              <button
-                id={'qty'}
-                type='button'
-                name={'qty'}
-                className='form-control d-flex align-items-left btn btn-danger'
-                onClick={() => handleDelete(g.id)}
-                disabled={isDisabled}
-              >
-                Remove
-              </button>
-            </td>
+            {!isDisabled && (
+              <td>
+                <button
+                  id={'qty'}
+                  type='button'
+                  name={'qty'}
+                  className='form-control d-flex align-items-left btn btn-danger'
+                  onClick={() => handleDelete(g.id)}
+                  disabled={isDisabled}
+                >
+                  Remove
+                </button>
+              </td>
+            )}
           </tr>
         ))}
       </tbody>
