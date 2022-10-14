@@ -11,6 +11,7 @@ const OrderTable = ({
   sortColumn,
   onSort,
   location = 'CART',
+  setOrders,
 }) => {
   const cartColumns = [
     { path: 'id', label: 'ID' },
@@ -73,6 +74,7 @@ const OrderTable = ({
           orderId={order.id}
           location={location}
           status={order.status}
+          setOrders={setOrders}
         />
       ),
     },

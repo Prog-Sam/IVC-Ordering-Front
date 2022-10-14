@@ -38,10 +38,13 @@ export async function saveOrder(orderId, status) {
   return orderInDb;
 }
 
-// export async function updateOrder(order) {
-//   let localOrder = { ...order };
-//   delete localOrder['id'];
+export async function updateOrder(txNumber, updateBody) {
+  let localOrder = {
+    branchId: getCurrentUser().branchKey,
+    updateBody: updateBody,
+  };
+  delete localOrder.updateBody['id'];
 
-//   let orderInDb = await http.put(`/orders/${order.id}`, localOrder);
-//   return orderInDb;
-// }
+  let result = await http.put(`/orders/${txNumber}`, localOrder);
+  return result;
+}

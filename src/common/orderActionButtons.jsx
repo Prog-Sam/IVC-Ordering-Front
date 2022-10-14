@@ -1,13 +1,25 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
-import { submitForApproval } from '../utils/orderMethods';
+import { submitForApproval, updateOrderStatus } from '../utils/orderMethods';
+import statusConfig from '../config/orderStatusConfig.json';
 
 import CartContext from '../context/cartContext';
 import { getCart, removeOrder } from '../services/cartService';
+import orderStatusConfig from '../config/orderStatusConfig.json';
 
-const OrderActionButtons = ({ orderId, orderType, location }) => {
+const OrderActionButtons = ({
+  orderId,
+  orderType,
+  location,
+  status = '',
+  setOrders,
+}) => {
   const cartContext = useContext(CartContext);
+  const isApprovable = () => {
+    if (status != statusConfig.forApproval) return false;
+    return true;
+  };
   return (
     <div>
       {location == 'CART' && (
@@ -49,14 +61,40 @@ const OrderActionButtons = ({ orderId, orderType, location }) => {
         <table>
           <tr>
             <td>
-              <button type='button' className='btn btn-primary'>
-                APPROVE
-              </button>
+              {
+                // isApprovable() &&
+                <button
+                  type='button'
+                  onClick={async () => {
+                    const result = await updateOrderStatus(
+                      orderId,
+                      orderStatusConfig.approved
+                    );
+                    if (result.status == 200) setOrders(getCart(true));
+                  }}
+                  className='btn btn-success'
+                >
+                  APPROVE
+                </button>
+              }
             </td>
             <td>
-              <button type='button' className='btn btn-warning'>
-                REJECT
-              </button>
+              {
+                // isApprovable() &&
+                <button
+                  type='button'
+                  onClick={async () => {
+                    const result = await updateOrderStatus(
+                      orderId,
+                      orderStatusConfig.rejected
+                    );
+                    if (result.status == 200) setOrders(getCart(true));
+                  }}
+                  className='btn btn-danger'
+                >
+                  REJECT
+                </button>
+              }
             </td>
           </tr>
         </table>

@@ -83,6 +83,7 @@ const Status = () => {
           onSort={handleSort}
           sortColumn={sortColumn}
           location={'STATUS'}
+          setOrders={setOrders}
         />
         <Pagination
           totalItems={getPagedData().filtered.length}
