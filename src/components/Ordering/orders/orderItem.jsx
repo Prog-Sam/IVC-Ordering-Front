@@ -88,9 +88,9 @@ const OrderItem = (props) => {
           type='button'
           className='btn btn-primary'
           style={{ marginRight: '10px' }}
-          onClick={() => {
+          onClick={async () => {
             try {
-              if (!submitForApproval(props.match.params.id)) {
+              if (!(await submitForApproval(props.match.params.id))) {
                 return;
               }
               cartContext.setOrdersCount(getCart().length);
