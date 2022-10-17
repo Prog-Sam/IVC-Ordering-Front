@@ -7,6 +7,9 @@ import statusConfig from '../config/orderStatusConfig.json';
 import CartContext from '../context/cartContext';
 import { getCart, removeOrder } from '../services/cartService';
 import orderStatusConfig from '../config/orderStatusConfig.json';
+import { getCurrentUser } from '../services/authService';
+import { whitelisted } from './../utils/protector';
+import access from '../config/accessConfig.json';
 
 const OrderActionButtons = ({
   orderId,
@@ -18,6 +21,7 @@ const OrderActionButtons = ({
   const cartContext = useContext(CartContext);
   const isApprovable = () => {
     if (status != statusConfig.forApproval) return false;
+    if (!whitelisted(access.branchManagement, getCurrentUser())) return false;
     return true;
   };
   return (
@@ -61,8 +65,7 @@ const OrderActionButtons = ({
         <table>
           <tr>
             <td>
-              {
-                // isApprovable() &&
+              {isApprovable() && (
                 <button
                   type='button'
                   onClick={async () => {
@@ -76,11 +79,10 @@ const OrderActionButtons = ({
                 >
                   APPROVE
                 </button>
-              }
+              )}
             </td>
             <td>
-              {
-                // isApprovable() &&
+              {isApprovable() && (
                 <button
                   type='button'
                   onClick={async () => {
@@ -94,7 +96,7 @@ const OrderActionButtons = ({
                 >
                   REJECT
                 </button>
-              }
+              )}
             </td>
           </tr>
         </table>

@@ -1,6 +1,7 @@
 import http from './httpService';
 import jwtDecode from 'jwt-decode';
 import store from '../utils/store';
+import { getLocalCatalog, storeCatalog } from './localCatalogService';
 
 const tokenKey = 'token';
 const catalogKey = 'localCatalog';
@@ -11,6 +12,7 @@ http.setJwt(getJwt());
 export async function login(user) {
   const auth = await http.post(`/auth`, user);
   store.save(tokenKey, auth.data);
+  await populateLocalCatalog();
   return auth;
 }
 
@@ -36,4 +38,9 @@ export function getCurrentUser() {
     console.log(ex);
     return null;
   }
+}
+
+async function populateLocalCatalog() {
+  const { data } = await getLocalCatalog();
+  storeCatalog(data);
 }

@@ -35,10 +35,10 @@ function OrderingApp() {
   useEffect(() => {
     let token = localStorage.getItem('token');
 
-    async function populateLocalCatalog() {
-      const { data } = await getLocalCatalog();
-      storeCatalog(data);
-    }
+    // async function populateLocalCatalog() {
+    //   const { data } = await getLocalCatalog();
+    //   storeCatalog(data);
+    // }
 
     function populateOrdersCount() {
       const cart = getCart();
@@ -47,7 +47,7 @@ function OrderingApp() {
 
     if (token) {
       setCurrentUser(getCurrentUser());
-      if (!getCatalog()) populateLocalCatalog();
+      // if (!getCatalog()) populateLocalCatalog();
       if (!getCart()) storeCart([]);
       populateOrdersCount();
     }

@@ -14,7 +14,8 @@ export function getOrderTypes(orderType) {
 }
 
 export function getAllOrderTypes() {
-  return _.map(catalog.orderTypes, (o) => swapper(o, 'name', 'typeDesc'));
+  if (!catalog) return [];
+  return _.map(catalog.orderTypes, (o) => swapper(o, 'name', 'typeDesc') || []);
 }
 
 export function getOrderTypeString(id) {
@@ -36,6 +37,7 @@ export function getItemCategories(orderType, orderPrefix = '') {
 }
 
 export function getBrands(itemCategory, orderType) {
+  if (!catalog) return [];
   const stringCategory = whatCategory(itemCategory);
   if (stringCategory == 'LNCL') {
     const brIds = _.uniq(
@@ -72,6 +74,7 @@ export function getBrands(itemCategory, orderType) {
 }
 
 export function getModels(itemCategoryKey, orderTypeKey, brandKey) {
+  if (!catalog) return [];
   const stringCategory = whatCategory(itemCategoryKey);
   if (stringCategory == 'LNCL') {
     return _.filter(catalog.lensItems, {
@@ -95,6 +98,7 @@ export function getModels(itemCategoryKey, orderTypeKey, brandKey) {
 }
 
 export function getNoBrandModels(itemCategoryKey, orderTypeKey) {
+  if (!catalog) return [];
   const stringCategory = whatCategory(itemCategoryKey);
   if (stringCategory == 'LNCL') {
     return _.filter(catalog.lensItems, {
