@@ -6,7 +6,7 @@ const Home = () => {
     <div>
       <h1>Home</h1>
       {/* <FilePicker /> */}
-      Welcome to IVC-CRUD...
+      Welcome to IVC-ORDERING...
     </div>
   );
 };

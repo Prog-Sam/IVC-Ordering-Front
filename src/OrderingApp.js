@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import Home from './components/CRUD/menu/home';
+import Home from './components/Ordering/menu/home';
 import Order from './components/Ordering/orders/order';
 import OrderForm from './components/Ordering/orders/orderForm';
 import OrderItemForm from './components/Ordering/catalog/orderItemForm';
