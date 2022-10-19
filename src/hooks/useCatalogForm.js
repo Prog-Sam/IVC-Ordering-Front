@@ -336,6 +336,7 @@ const useCatalogForm = (
         handleDelete={handleGradeDelete}
         handleAddGrade={handleAddGrade}
         isDisabled={isDisabled}
+        supplyCategory={state.supplyCategoryKey}
       />
     );
   };

@@ -7,6 +7,7 @@ const BulkGradeDetailTable = ({
   handleGradeChange,
   handleDelete,
   isDisabled,
+  supplyCategory,
 }) => {
   const handleSelectChange = (opt, field, id) => {
     handleGradeChange(opt.value, field, id);
@@ -22,8 +23,12 @@ const BulkGradeDetailTable = ({
           <th style={{ width: '15%' }}>SPH</th>
           <th style={{ width: '15%' }}>CYL</th>
           <th style={{ width: '15%' }}>AXIS</th>
-          <th style={{ width: '15%' }}>ADD</th>
-          <th style={{ width: '15%' }}>PD</th>
+          <th style={{ width: '15%' }}>
+            {supplyCategory == 2 ? 'ADD' : 'BASE CURVE'}
+          </th>
+          <th style={{ width: '15%' }}>
+            {supplyCategory == 2 ? 'PD' : 'DIAMETER'}
+          </th>
           <th style={{ width: '15%' }}>QTY</th>
           {!isDisabled && <th style={{ width: '15%' }}>ACTION</th>}
         </tr>
@@ -79,20 +84,36 @@ const BulkGradeDetailTable = ({
               />
             </td>
             <td>
-              <RSelect
-                options={gradeOptions.add}
-                name={'add'}
-                inputId={'add'}
-                onChange={(opt) => handleSelectChange(opt, 'add', g.id)}
-                value={gradeOptions.add.filter(
-                  (option) => option.value === g.add
-                )}
-                defaultvalue={{ label: '', value: '' }}
-                isDisabled={isDisabled}
-              />
+              {supplyCategory == 2 && (
+                <RSelect
+                  options={gradeOptions.add}
+                  name={'add'}
+                  inputId={'add'}
+                  onChange={(opt) => handleSelectChange(opt, 'add', g.id)}
+                  value={gradeOptions.add.filter(
+                    (option) => option.value === g.add
+                  )}
+                  defaultvalue={{ label: '', value: '' }}
+                  isDisabled={isDisabled}
+                />
+              )}
+              {supplyCategory == 1 && (
+                <input
+                  type={'number'}
+                  id={'add'}
+                  name={'add'}
+                  className='form-control d-flex align-items-left'
+                  onChange={(e) =>
+                    handleInputChange(e.target.value, 'add', g.id)
+                  }
+                  value={g.add}
+                  readOnly={isDisabled}
+                />
+              )}
             </td>
             <td>
               <input
+                type={'number'}
                 id={'pd'}
                 name={'pd'}
                 className='form-control d-flex align-items-left'
@@ -103,6 +124,7 @@ const BulkGradeDetailTable = ({
             </td>
             <td>
               <input
+                type={'number'}
                 id={'qty'}
                 name={'qty'}
                 className='form-control d-flex align-items-left'

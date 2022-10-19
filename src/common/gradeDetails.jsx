@@ -12,6 +12,7 @@ const GradeDetails = ({
   handleDelete,
   handleAddGrade,
   isDisabled,
+  supplyCategory = 2,
 }) => {
   return (
     <div>
@@ -24,6 +25,7 @@ const GradeDetails = ({
             handleGradeChange={handleGradeChange}
             gDetails={gDetails}
             isDisabled={isDisabled}
+            supplyCategory={supplyCategory}
           />
         </div>
       )}
@@ -37,6 +39,7 @@ const GradeDetails = ({
             gDetails={gDetails}
             handleDelete={handleDelete}
             isDisabled={isDisabled}
+            supplyCategory={supplyCategory}
           />
           {!isDisabled && (
             <button
