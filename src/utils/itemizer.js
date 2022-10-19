@@ -90,9 +90,9 @@ export function localizeOrder(order) {
   let result = [];
 
   if (isBulk(order.orderType) && isLens(order.items[0].supplyCategoryKey)) {
-    let idArray = _.map(result, (g) => parseInt(g.id)) || [];
     const orderItemArray = extractOrderItems(order.items);
     for (let orderItem of orderItemArray) {
+      let idArray = _.map(result, (g) => parseInt(g.id)) || [];
       const items = _.filter(order.items, { ...orderItem });
       let localItem = {
         ...items[0],
