@@ -66,10 +66,10 @@ const RxField = ({ name, label, error, orderType, onChange, ...rest }) => {
                 <td style={{ width: '90%' }}>
                   <input
                     {...rest}
+                    maxLength={19}
                     id={name}
                     name={name}
                     value={postfix}
-                    // onChange={(e) => onChange(e, name)}
                     onChange={(e) => {
                       setPostfix(e.target.value);
                       return onChange(
@@ -92,7 +92,7 @@ const RxField = ({ name, label, error, orderType, onChange, ...rest }) => {
               <td style={{ width: '90%' }}>
                 <input
                   {...rest}
-                  type='number'
+                  maxLength={19}
                   id={name}
                   name={name}
                   value={postfix}
