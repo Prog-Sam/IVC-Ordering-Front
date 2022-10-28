@@ -50,7 +50,6 @@ const Order = () => {
 
   const getPagedData = () => {
     let filtered = orders;
-    console.log(filtered);
     if (searchQuery)
       filtered = orders.filter((u) =>
         u.cartNumber.toLowerCase().startsWith(searchQuery.toLocaleLowerCase())
