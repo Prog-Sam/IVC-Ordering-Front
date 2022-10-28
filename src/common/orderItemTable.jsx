@@ -53,8 +53,6 @@ const OrderItemTable = ({
     },
   ];
 
-  console.log(orderItems);
-
   return (
     <Table
       columns={columns}
