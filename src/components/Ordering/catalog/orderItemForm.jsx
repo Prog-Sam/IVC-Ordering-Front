@@ -88,7 +88,12 @@ const OrderItemForm = (props) => {
       }
       if (isLens(orderItem.supplyCategoryKey)) {
         for (let i of orderItem.grades) {
-          let item = validateGrade(i, lp.totalPower, validationMode);
+          let item = validateGrade(
+            i,
+            lp.totalPower,
+            validationMode,
+            orderItem.supplyCategoryKey == 1
+          );
           delete item['id'];
           let keys = Object.keys(item);
           if (keys.length == 0) continue;
@@ -123,7 +128,10 @@ const OrderItemForm = (props) => {
             return;
           }
 
-          let item = validateSo(orderItem.soDetails);
+          let item =
+            orderItem.supplyCategoryKey == 2
+              ? validateSo(orderItem.soDetails)
+              : {};
           let keys = Object.keys(item);
           if (keys.length != 0) {
             for (let k of keys) {
@@ -293,7 +301,7 @@ const OrderItemForm = (props) => {
           )}
         {isLens(orderItem.supplyCategoryKey) &&
           renderGradeDetails('grades', orderItem.orderTypeKey)}
-        {isLens(orderItem.supplyCategoryKey) &&
+        {orderItem.supplyCategoryKey == 2 &&
           orderItem.orderTypeKey == 3 &&
           renderSoDetails('soDetails')}
         {renderInput('additionalInstruction', 'Additional Instruction')}

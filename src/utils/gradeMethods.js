@@ -1,4 +1,9 @@
-export function validateGrade(grade, stringTp, mode = 'normal') {
+export function validateGrade(
+  grade,
+  stringTp,
+  mode = 'normal',
+  isContactLens = false
+) {
   const id = grade.id;
   const add = isNaN(parseFloat(grade.add)) ? '' : parseFloat(grade.add);
   const axis = isNaN(parseFloat(grade.axis)) ? '' : parseFloat(grade.axis);
@@ -23,7 +28,7 @@ export function validateGrade(grade, stringTp, mode = 'normal') {
       result.axis = `Axis of ID: ${id} can't be empty while CYL has a value`;
   }
 
-  if (!validateTp(sph, cyl, add, tp)) {
+  if (!validateTp(sph, cyl, add, tp, isContactLens)) {
     result.tp = `Please Check the Total Power and grade of the item with ID: ${id}`;
   }
 
@@ -123,11 +128,12 @@ export function generateSoObject(so) {
   return soObject;
 }
 
-export function validateTp(sph, cyl, add, tp) {
+export function validateTp(sph, cyl, add, tp, isContactLens = false) {
   const lAdd = isNaN(parseFloat(add)) ? 0 : add;
   const lCyl = isNaN(parseFloat(cyl)) ? 0 : cyl;
   const lSph = isNaN(parseFloat(sph)) ? 0 : sph;
   if (tp == 0) return true;
+  if (isContactLens && tp) return Math.abs(lSph + lCyl) <= Math.abs(tp);
   if (tp) return Math.abs(lSph + lCyl + lAdd) <= Math.abs(tp);
 }
 
