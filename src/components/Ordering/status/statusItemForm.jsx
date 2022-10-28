@@ -174,7 +174,7 @@ const StatusItemForm = (props) => {
           )}
         {isLens(orderItem.supplyCategoryKey) &&
           renderGradeDetails('grades', orderItem.orderTypeKey, true)}
-        {isLens(orderItem.supplyCategoryKey) &&
+        {orderItem.supplyCategoryKey == 2 &&
           orderItem.orderTypeKey == 3 &&
           renderSoDetails('soDetails', true)}
         {renderInput(
@@ -185,6 +185,7 @@ const StatusItemForm = (props) => {
         )}
         {order.orderType &&
           order.orderType != 'BULK' &&
+          order.orderType != 2 &&
           renderInput('pxName', 'Patient Name', 'text', true)}
         <Link
           className='btn btn-warning'
