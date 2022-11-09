@@ -23,7 +23,7 @@ export function validateGrade(
     if (qty == 0)
       result.qty = `Quantity of ID: ${id} can't be empty while SPH has a value`;
   }
-  if (cyl != '' || cyl != 0) {
+  if (cyl != '') {
     if (axis == '')
       result.axis = `Axis of ID: ${id} can't be empty while CYL has a value`;
   }
