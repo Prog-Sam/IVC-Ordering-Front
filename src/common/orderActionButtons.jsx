@@ -33,8 +33,8 @@ const OrderActionButtons = ({
               <button
                 type='button'
                 className='btn btn-primary'
-                onClick={() => {
-                  submitForApproval(orderId);
+                onClick={async () => {
+                  await submitForApproval(orderId);
                   return cartContext.setOrdersCount(getCart().length);
                 }}
               >

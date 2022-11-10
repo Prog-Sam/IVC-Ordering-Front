@@ -23,14 +23,16 @@ export function validateGrade(
     if (qty == 0)
       result.qty = `Quantity of ID: ${id} can't be empty while SPH has a value`;
   }
+
   if (cyl != '') {
-    if (axis == '')
+    if (axis === '')
       result.axis = `Axis of ID: ${id} can't be empty while CYL has a value`;
   }
 
   if (!validateTp(sph, cyl, add, tp, isContactLens)) {
     result.tp = `Please Check the Total Power and grade of the item with ID: ${id}`;
   }
+  console.log(result);
 
   return result;
 }
