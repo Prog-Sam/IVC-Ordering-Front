@@ -18,6 +18,7 @@ const OrderItem = (props) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [sortColumn, setSortColumn] = useState({});
+  const [disableSubmit, setDisableSubmit] = useState(false);
   const [localEnums, setLocalEnums] = useState({
     status: [
       { id: 0, value: 'TEMPORARY' },
@@ -88,14 +89,17 @@ const OrderItem = (props) => {
           type='button'
           className='btn btn-primary'
           style={{ marginRight: '10px' }}
+          disabled={disableSubmit}
           onClick={async () => {
             try {
+              setDisableSubmit(true);
               if (!(await submitForApproval(props.match.params.id))) {
                 return;
               }
               cartContext.setOrdersCount(getCart().length);
               props.history.push('/orders');
             } catch (ex) {
+              setDisableSubmit(false);
               console.error(ex);
               toast.error('Something went wrong...');
             }

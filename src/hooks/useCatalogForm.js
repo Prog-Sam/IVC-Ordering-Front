@@ -233,10 +233,10 @@ const useCatalogForm = (
     setState(localState);
   };
 
-  const renderButton = (label) => {
+  const renderButton = (label, isDisabled = false) => {
     return (
       <button
-        disabled={validate()}
+        disabled={validate() || isDisabled}
         className='btn btn-primary d-flex align-items-left'
       >
         {label}

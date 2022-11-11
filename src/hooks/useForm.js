@@ -141,7 +141,7 @@ const useForm = (
     setState({ ...state, [name]: url });
   };
 
-  const renderButton = (label) => {
+  const renderButton = (label, isDisabled = false) => {
     return (
       <button
         disabled={validate() || isDisabled}

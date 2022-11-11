@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import { submitForApproval, updateOrderStatus } from '../utils/orderMethods';
@@ -18,6 +18,7 @@ const OrderActionButtons = ({
   status = '',
   setOrders,
 }) => {
+  const [isDisabled, setIsDisabled] = useState(false);
   const cartContext = useContext(CartContext);
   const isApprovable = () => {
     if (status != statusConfig.forApproval) return false;
@@ -32,9 +33,12 @@ const OrderActionButtons = ({
             <td>
               <button
                 type='button'
+                disabled={isDisabled}
                 className='btn btn-primary'
                 onClick={async () => {
-                  await submitForApproval(orderId);
+                  setIsDisabled(true);
+                  const result = await submitForApproval(orderId);
+                  if (!result) setIsDisabled(false);
                   return cartContext.setOrdersCount(getCart().length);
                 }}
               >
@@ -48,10 +52,13 @@ const OrderActionButtons = ({
             </td>
             <td>
               <button
+                disabled={isDisabled}
                 type='button'
                 className='btn btn-danger'
                 onClick={() => {
+                  setIsDisabled(true);
                   removeOrder(orderId);
+                  setIsDisabled(false);
                   return cartContext.setOrdersCount(getCart().length);
                 }}
               >

@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import Joi from 'joi-browser';
 import _ from 'lodash';
 import useForm from '../../../hooks/useForm';
@@ -15,6 +15,7 @@ import { toast } from 'react-toastify';
 import CartContext from './../../../context/cartContext';
 
 const OrderForm = (props) => {
+  const [submitDisabled, setSubmitDisabled] = useState(false);
   const localEnums = {
     orderType: [
       { id: 'BULK', name: 'BULK' },
@@ -49,12 +50,14 @@ const OrderForm = (props) => {
 
   const doSubmit = async () => {
     try {
+      setSubmitDisabled(true);
       const isNew = props.match.params.id === 'New';
       const duplicated = await isDuplicate(
         addNonBulkRxPrefix(order),
         getCurrentUser().branchKey
       );
       if (duplicated && isNew) {
+        setSubmitDisabled(false);
         toast.error(
           `RX/SO/BO Number already exists on the ${duplicated.location}`
         );
@@ -63,9 +66,11 @@ const OrderForm = (props) => {
       if (isNew && order.orderType == 'BULK') {
         if (order.objectValcartNumber.value == '') {
           toast.error('Please Add Bulk Order Prefix for BO Number.');
+          setSubmitDisabled(false);
           return;
         }
         if (order.cartNumber.length < 2) {
+          setSubmitDisabled(false);
           toast.error('Please Add Bulk Order Suffix for BO Number.');
         }
       }
@@ -79,6 +84,7 @@ const OrderForm = (props) => {
       cartContext.setOrdersCount(getOrdersCount());
       props.history.push('/orders');
     } catch (e) {
+      setSubmitDisabled(false);
       console.error(e);
       toast.error('Order Failed');
     }
@@ -119,7 +125,7 @@ const OrderForm = (props) => {
         {!isNew && renderInput('cartNumber', 'RX/BO/SO Number', 'text', !isNew)}
         {isNew && renderRxField('cartNumber', 'RX/BO/SO Number')}
         {renderFilePicker('url', 'Google Drive URL')}
-        {renderButton(isNew ? 'Submit' : 'Update')}
+        {renderButton(isNew ? 'Submit' : 'Update', submitDisabled)}
       </form>
     </div>
   );

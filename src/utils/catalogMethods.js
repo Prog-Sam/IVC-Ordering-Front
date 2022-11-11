@@ -25,12 +25,15 @@ export function getOrderTypeString(id) {
 }
 
 export function getItemCategories(orderType, orderPrefix = '') {
+  // console.log(orderType);
+  // console.log(orderPrefix);
   const supplyCategories = catalog.supplyCategories;
+  // console.log(supplyCategories);
   if (isBulk(orderType)) {
     const sc = _.filter(supplyCategories, (i) =>
       _.includes(supplyCategoryConfig[orderPrefix], i.id)
     );
-
+    // console.log(sc);
     return _.map(sc, (s) => swapper(s, 'name', 'desc'));
   }
   return _.map(supplyCategories, (s) => swapper(s, 'name', 'desc'));
