@@ -47,9 +47,12 @@ const IndexType = () => {
 
   const getPagedData = () => {
     let filtered = indexTypes;
+
     if (searchQuery)
       filtered = indexTypes.filter((u) =>
-        u.name.toLowerCase().startsWith(searchQuery.toLocaleLowerCase())
+        u.name.toLowerCase().indexOf(searchQuery.toLocaleLowerCase()) != -1
+          ? true
+          : false
       );
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);

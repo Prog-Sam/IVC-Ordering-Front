@@ -49,7 +49,9 @@ const ColorDay = () => {
     let filtered = colorDays;
     if (searchQuery)
       filtered = colorDays.filter((u) =>
-        u.name.toLowerCase().startsWith(searchQuery.toLocaleLowerCase())
+        u.colorName.toLowerCase().indexOf(searchQuery.toLocaleLowerCase()) != -1
+          ? true
+          : false
       );
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);

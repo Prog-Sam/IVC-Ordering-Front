@@ -47,11 +47,14 @@ const LensParam = () => {
 
   const getPagedData = () => {
     let filtered = lensParams;
+
     if (searchQuery)
       filtered = lensParams.filter((u) =>
         u.LensItem.name
           .toLowerCase()
-          .startsWith(searchQuery.toLocaleLowerCase())
+          .indexOf(searchQuery.toLocaleLowerCase()) != -1
+          ? true
+          : false
       );
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);

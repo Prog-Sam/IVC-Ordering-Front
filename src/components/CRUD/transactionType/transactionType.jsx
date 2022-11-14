@@ -47,9 +47,12 @@ const TransactionType = () => {
 
   const getPagedData = () => {
     let filtered = transactionTypes;
+
     if (searchQuery)
       filtered = transactionTypes.filter((u) =>
-        u.name.toLowerCase().startsWith(searchQuery.toLocaleLowerCase())
+        u.name.toLowerCase().indexOf(searchQuery.toLocaleLowerCase()) != -1
+          ? true
+          : false
       );
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);

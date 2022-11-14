@@ -46,11 +46,14 @@ const TransactionSeries = () => {
 
   const getPagedData = () => {
     let filtered = transactionSeriess;
+
     if (searchQuery)
       filtered = transactionSeriess.filter((u) =>
         u.BranchDetail.name
           .toLowerCase()
-          .startsWith(searchQuery.toLocaleLowerCase())
+          .indexOf(searchQuery.toLocaleLowerCase()) != -1
+          ? true
+          : false
       );
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);

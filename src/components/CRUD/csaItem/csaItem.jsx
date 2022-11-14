@@ -47,11 +47,14 @@ const CsaItem = () => {
 
   const getPagedData = () => {
     let filtered = csaItems;
+
     if (searchQuery)
       filtered = csaItems.filter((u) =>
         `${u.Brand.name} ${u.FscsaModel.modelName}`
           .toLowerCase()
-          .startsWith(searchQuery.toLocaleLowerCase())
+          .indexOf(searchQuery.toLocaleLowerCase()) != -1
+          ? true
+          : false
       );
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);

@@ -47,9 +47,12 @@ const LensMaterial = () => {
 
   const getPagedData = () => {
     let filtered = lensMaterials;
+
     if (searchQuery)
       filtered = lensMaterials.filter((u) =>
-        u.name.toLowerCase().startsWith(searchQuery.toLocaleLowerCase())
+        u.name.toLowerCase().indexOf(searchQuery.toLocaleLowerCase()) != -1
+          ? true
+          : false
       );
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);

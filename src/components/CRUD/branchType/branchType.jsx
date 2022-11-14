@@ -49,7 +49,9 @@ const BranchType = () => {
     let filtered = branchTypes;
     if (searchQuery)
       filtered = branchTypes.filter((u) =>
-        u.name.toLowerCase().startsWith(searchQuery.toLocaleLowerCase())
+        u.type.toLowerCase().indexOf(searchQuery.toLocaleLowerCase()) != -1
+          ? true
+          : false
       );
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);

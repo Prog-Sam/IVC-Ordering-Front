@@ -47,9 +47,12 @@ const Mall = () => {
 
   const getPagedData = () => {
     let filtered = malls;
+
     if (searchQuery)
       filtered = malls.filter((u) =>
-        u.type.toLowerCase().startsWith(searchQuery.toLocaleLowerCase())
+        u.type.toLowerCase().indexOf(searchQuery.toLocaleLowerCase()) != -1
+          ? true
+          : false
       );
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);

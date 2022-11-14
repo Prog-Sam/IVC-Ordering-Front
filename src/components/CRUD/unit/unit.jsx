@@ -47,9 +47,12 @@ const Unit = () => {
 
   const getPagedData = () => {
     let filtered = units;
+
     if (searchQuery)
       filtered = units.filter((u) =>
-        u.name.toLowerCase().startsWith(searchQuery.toLocaleLowerCase())
+        u.name.toLowerCase().indexOf(searchQuery.toLocaleLowerCase()) != -1
+          ? true
+          : false
       );
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);

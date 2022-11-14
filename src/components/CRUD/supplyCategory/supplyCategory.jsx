@@ -47,9 +47,12 @@ const SupplyCategory = () => {
 
   const getPagedData = () => {
     let filtered = supplyCategories;
+
     if (searchQuery)
       filtered = supplyCategories.filter((u) =>
-        u.name.toLowerCase().startsWith(searchQuery.toLocaleLowerCase())
+        u.name.toLowerCase().indexOf(searchQuery.toLocaleLowerCase()) != -1
+          ? true
+          : false
       );
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);

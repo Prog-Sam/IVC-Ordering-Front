@@ -49,7 +49,9 @@ const FSCSAModel = () => {
     let filtered = fscsaModels;
     if (searchQuery)
       filtered = fscsaModels.filter((u) =>
-        u.name.toLowerCase().startsWith(searchQuery.toLocaleLowerCase())
+        u.modelName.toLowerCase().indexOf(searchQuery.toLocaleLowerCase()) != -1
+          ? true
+          : false
       );
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
