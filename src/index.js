@@ -11,8 +11,8 @@ import 'font-awesome/css/font-awesome.css';
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
-      {/* <OrderingApp /> */}
+      {/* <App /> */}
+      <OrderingApp />
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
