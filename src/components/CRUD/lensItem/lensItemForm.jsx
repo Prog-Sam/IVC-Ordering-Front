@@ -55,7 +55,17 @@ const LensItemForm = (props) => {
       value: '',
       getValue: function (keys) {
         return trim(
-          `${keys.brandKey} ${keys.orderTypeKey} ${keys.typeKey} ${keys.indexTypeKey} ${keys.productFamilyKey} ${keys.materialKey} ${keys.supplyCategoryKey}`
+          `${keys.brandKey + ' '}${keys.orderTypeKey + ' '}${
+            keys.typeKey + ' '
+          }${keys.indexTypeKey + ' '}${
+            keys.productFamilyKey.length === 0 || !keys.productFamilyKey.trim()
+              ? ''
+              : keys.productFamilyKey + ' '
+          }${
+            keys.materialKey.length === 0 || !keys.materialKey.trim()
+              ? ''
+              : keys.materialKey + ' '
+          }${keys.supplyCategoryKey}`
         );
       },
     },
@@ -82,7 +92,8 @@ const LensItemForm = (props) => {
     }
     async function populateProductFamilies() {
       let { data } = await getProductFamilies();
-      setProductFamilies(data);
+      const sorted = _.orderBy(data, ['name'], ['asc']);
+      setProductFamilies(sorted);
     }
     async function populateSupplyCategories() {
       let { data } = await getSupplyCategories();
@@ -90,7 +101,8 @@ const LensItemForm = (props) => {
     }
     async function populateLensMaterials() {
       let { data } = await getLensMaterials();
-      setLensMaterials(data);
+      const sorted = _.orderBy(data, ['name'], ['asc']);
+      setLensMaterials(sorted);
     }
 
     populateOrderTypes();

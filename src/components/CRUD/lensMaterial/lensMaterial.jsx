@@ -26,7 +26,12 @@ const LensMaterial = () => {
 
     async function getData() {
       const { data } = await getLensMaterials();
-      setLensMaterials(data);
+      const refinedLensMaterial = _.map(data, (l) =>
+        l.name.length === 0 || !l.name.trim()
+          ? { ...l, ['name']: '[BLANK]' }
+          : { ...l }
+      );
+      setLensMaterials(refinedLensMaterial);
     }
 
     getData();

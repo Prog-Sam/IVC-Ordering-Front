@@ -26,7 +26,12 @@ const ProductFamily = () => {
 
     async function getData() {
       const { data } = await getProductFamilies();
-      setProductFamilies(data);
+      const refinedProductFamilies = _.map(data, (l) =>
+        l.name.length === 0 || !l.name.trim()
+          ? { ...l, ['name']: '[BLANK]' }
+          : { ...l }
+      );
+      setProductFamilies(refinedProductFamilies);
     }
 
     getData();
