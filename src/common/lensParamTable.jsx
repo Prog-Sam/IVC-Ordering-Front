@@ -5,6 +5,18 @@ import Table from './table';
 
 const LensParamTable = ({ lensParams, localEnums, sortColumn, onSort }) => {
   const columns = [
+    {
+      key: 'name',
+      content: (lensParam) => (
+        <Link
+          className='btn btn-warning'
+          to={'/lensParams/New?lensParamId=' + lensParam.id}
+        >
+          Use as Template
+        </Link>
+      ),
+      label: 'Actions',
+    },
     { path: 'id', label: 'Parameter Key' },
     {
       key: 'LensItem.name',

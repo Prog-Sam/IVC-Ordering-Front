@@ -16,6 +16,11 @@ const LensParamForm = (props) => {
   const [lensItems, setLensItems] = useState([]);
   const localEnums = {};
 
+  const lensParamId = props.match.params.id;
+  let isNew = lensParamId === 'New';
+  const params = new URLSearchParams(props.location.search);
+  const itemId = params.get('lensParamId');
+
   const schema = {
     id: Joi.string().max(10).label('Parameter Code'),
     lensItemKey: Joi.string().required().max(24).label('Lens Item'),
@@ -46,12 +51,16 @@ const LensParamForm = (props) => {
     populateLensItems();
     populateColorDays();
 
-    const lensParamId = props.match.params.id;
-    if (lensParamId === 'New') return;
-
     async function populateLensParam() {
-      let { data } = await getLensParam(lensParamId, colorDays);
+      let { data } = await getLensParam(
+        isNew ? itemId : lensParamId,
+        colorDays
+      );
       setLensParam(data);
+    }
+
+    if (isNew) {
+      if (!itemId) return;
     }
 
     populateLensParam();
@@ -63,19 +72,14 @@ const LensParamForm = (props) => {
 
   const doSubmit = async () => {
     try {
-      const isNew = props.match.params.id === 'New';
       const result = isNew
         ? await saveLensParam(mapToViewModel(lensParam), colorDays)
         : await updateLensParam(mapToViewModel(lensParam), colorDays);
-      toast(
-        `LensParam ${lensParam.name} with the id of ${lensParam.id} has been ${
-          isNew ? 'added.' : 'updated.'
-        }`
-      );
+      toast(`Lens Parameter has been ${isNew ? 'added.' : 'updated.'}`);
       props.history.push('/lensParams');
     } catch (e) {
       console.error(e);
-      toast(e);
+      toast.error(e.message);
     }
   };
 
