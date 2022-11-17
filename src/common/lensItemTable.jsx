@@ -18,6 +18,18 @@ const LensItemTable = ({ lensItems, localEnums, sortColumn, onSort }) => {
     { path: 'IndexType.name', label: 'Index' },
     { path: 'ProductFamily.name', label: 'Product Family' },
     { path: 'LensMaterial.name', label: 'Lens Material' },
+    {
+      key: 'name',
+      content: (lensItem) => (
+        <Link
+          className='btn btn-warning'
+          to={'/lensItems/New?lensItemId=' + lensItem.id}
+        >
+          Use as Template
+        </Link>
+      ),
+      label: 'Actions',
+    },
   ];
 
   return (

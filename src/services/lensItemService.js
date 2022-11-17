@@ -6,9 +6,9 @@ export async function getLensItems() {
   return lensItems;
 }
 
-export async function getLensItem(id) {
-  const lensItem = await http.get(`/lensItems/${id}`);
-  // console.log(result);
+export async function getLensItem(id, eager = false) {
+  const url = eager ? `/lensItems/${id}?eager=true` : `/lensItems/${id}`;
+  const lensItem = await http.get(url);
   return lensItem;
 }
 

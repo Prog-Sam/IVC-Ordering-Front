@@ -245,6 +245,7 @@ const useForm = (
     renderColorDaySelector,
     renderRxField,
     renderFilePicker,
+    setSubscribers,
   ];
 };
 

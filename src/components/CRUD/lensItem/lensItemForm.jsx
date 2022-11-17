@@ -24,9 +24,12 @@ const LensItemForm = (props) => {
   const [productFamilies, setProductFamilies] = useState([]);
   const [supplyCategories, setSupplyCategories] = useState([]);
   const [lensMaterials, setLensMaterials] = useState([]);
+  const [eagerLensItem, setEagerLensItem] = useState({});
 
   const localEnums = {};
   let isNew = props.match.params.id === 'New';
+  const params = new URLSearchParams(props.location.search);
+  const itemId = params.get('lensItemId');
 
   const schema = {
     id: Joi.number().label('ID'),
@@ -39,6 +42,47 @@ const LensItemForm = (props) => {
     supplyCategoryKey: Joi.number().required().label('Supply Category'),
     materialKey: Joi.number().required().label('Lens Material'),
   };
+
+  useEffect(() => {
+    if (isNew && itemId) {
+      async function populateLens(itemId) {
+        const { data } = await getLensItem(itemId, true);
+        setLensItem(data);
+        setSubscribers([
+          {
+            path: 'name',
+            keys: {
+              brandKey: data.Brand.name || '',
+              orderTypeKey: data.OrderType.name || '',
+              typeKey: data.LensType.name || '',
+              indexTypeKey: data.IndexType.name || '',
+              productFamilyKey: data.ProductFamily.name || '',
+              materialKey: data.LensMaterial.name || '',
+              supplyCategoryKey: data.SupplyCategory.name || '',
+            },
+            value: '',
+            getValue: function (keys) {
+              return trim(
+                `${keys.brandKey + ' '}${keys.orderTypeKey + ' '}${
+                  keys.typeKey + ' '
+                }${keys.indexTypeKey + ' '}${
+                  keys.productFamilyKey.length === 0 ||
+                  !keys.productFamilyKey.trim()
+                    ? ''
+                    : keys.productFamilyKey + ' '
+                }${
+                  keys.materialKey.length === 0 || !keys.materialKey.trim()
+                    ? ''
+                    : keys.materialKey + ' '
+                }${keys.supplyCategoryKey}`
+              );
+            },
+          },
+        ]);
+      }
+      populateLens(itemId);
+    }
+  }, []);
 
   const subscriberSchema = [
     {
@@ -113,8 +157,17 @@ const LensItemForm = (props) => {
     populateSupplyCategories();
     populateLensMaterials();
 
+    async function populateLens(itemId) {
+      let { data } = await getLensItem(itemId, true);
+      setLensItem(data);
+    }
+
     isNew = lensItemId === 'New';
-    if (isNew) return;
+    if (isNew) {
+      if (!itemId) return;
+      populateLens(itemId);
+      return;
+    }
 
     async function populateLensItem() {
       let { data } = await getLensItem(lensItemId);
@@ -156,6 +209,10 @@ const LensItemForm = (props) => {
     renderSelect,
     mapToViewModel,
     getSelectedOption,
+    renderColorDaySelector,
+    renderRxField,
+    renderFilePicker,
+    setSubscribers,
   ] = useForm(schema, doSubmit, {}, subscriberSchema);
 
   return (
