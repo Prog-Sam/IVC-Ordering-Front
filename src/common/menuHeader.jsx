@@ -4,7 +4,14 @@ import SearchBox from './searchBox';
 import { showIf } from '../utils/protector';
 import { getCurrentUser } from '../services/authService';
 
-const MenuHeader = ({ path, header, buttonLabel, searchQuery, onSearch }) => {
+const MenuHeader = ({
+  path,
+  header,
+  buttonLabel,
+  searchQuery,
+  onSearch,
+  userLevels = [0, 3],
+}) => {
   return (
     <Fragment>
       <h1 className='d-flex align-items-left'>{header}</h1>
@@ -18,7 +25,7 @@ const MenuHeader = ({ path, header, buttonLabel, searchQuery, onSearch }) => {
             New {buttonLabel}
           </Link>,
           getCurrentUser(),
-          [0, 6, 7]
+          userLevels
         )}
       </div>
       <SearchBox value={searchQuery} onChange={onSearch} />
