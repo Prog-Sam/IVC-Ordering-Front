@@ -60,7 +60,7 @@ import './App.css';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
-  const { databaseEmp } = access;
+  const { databaseEmp, management } = access;
 
   useEffect(() => {
     let token = localStorage.getItem('token');
@@ -83,42 +83,42 @@ function App() {
           <Switch>
             <ProtectedRoute
               path='/suppliers/:id'
-              inclusion={databaseEmp}
+              inclusion={management}
               component={SupplierForm}
             />
             <ProtectedRoute
               path='/brands/:id'
-              inclusion={databaseEmp}
+              inclusion={management}
               component={BrandForm}
             />
             <ProtectedRoute
               path='/ordertypes/:id'
-              inclusion={databaseEmp}
+              inclusion={management}
               component={OrderTypeForm}
             />
             <ProtectedRoute
               path='/lenstypes/:id'
-              inclusion={databaseEmp}
+              inclusion={management}
               component={LensTypeForm}
             />
             <ProtectedRoute
               path='/indextypes/:id'
-              inclusion={databaseEmp}
+              inclusion={management}
               component={IndexTypeForm}
             />
             <ProtectedRoute
               path='/productfamilies/:id'
-              inclusion={databaseEmp}
+              inclusion={management}
               component={ProductFamilyForm}
             />
             <ProtectedRoute
               path='/supplycategories/:id'
-              inclusion={databaseEmp}
+              inclusion={management}
               component={SupplyCategoryForm}
             />
             <ProtectedRoute
               path='/lensmaterials/:id'
-              inclusion={databaseEmp}
+              inclusion={management}
               component={LensMaterialForm}
             />
             <ProtectedRoute
@@ -133,12 +133,12 @@ function App() {
             />
             <ProtectedRoute
               path='/colordays/:id'
-              inclusion={databaseEmp}
+              inclusion={management}
               component={ColorDayForm}
             />
             <ProtectedRoute
               path='/fscsamodels/:id'
-              inclusion={databaseEmp}
+              inclusion={management}
               component={FSCSAModelForm}
             />
             <ProtectedRoute
@@ -153,37 +153,37 @@ function App() {
             />
             <ProtectedRoute
               path='/branchtypes/:id'
-              inclusion={databaseEmp}
+              inclusion={management}
               component={BranchTypeForm}
             />
             <ProtectedRoute
               path='/malls/:id'
-              inclusion={databaseEmp}
+              inclusion={management}
               component={MallForm}
             />
             <ProtectedRoute
               path='/branches/:id'
-              inclusion={databaseEmp}
+              inclusion={management}
               component={BranchForm}
             />
             <ProtectedRoute
               path='/units/:id'
-              inclusion={databaseEmp}
+              inclusion={management}
               component={UnitForm}
             />
             <ProtectedRoute
               path='/transactiontypes/:id'
-              inclusion={databaseEmp}
+              inclusion={management}
               component={TransactionTypeForm}
             />
             <ProtectedRoute
               path='/transactionSeries/:id'
-              inclusion={databaseEmp}
+              inclusion={management}
               component={TransactionSeriesForm}
             />
             <ProtectedRoute
               path='/users/:id'
-              inclusion={databaseEmp}
+              inclusion={management}
               component={UserForm}
             />
             {/*Routes for Non Form */}

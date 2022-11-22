@@ -6,6 +6,7 @@ import Pagination from '../../../common/pagination';
 import { paginate } from '../../../utils/paginate';
 import LensParamTable from '../../../common/lensParamTable';
 import MenuHeader from '../../../common/menuHeader';
+import access from './../../../config/accessConfig.json';
 
 const LensParam = () => {
   const [lensParams, setLensParams] = useState([]);
@@ -20,6 +21,7 @@ const LensParam = () => {
       { id: 2, value: 'DISABLED' },
     ],
   });
+  const { databaseEmp } = access;
 
   useEffect(() => {
     handlePageChange(0);
@@ -73,6 +75,7 @@ const LensParam = () => {
           buttonLabel='Lens Parameter'
           onSearch={handleSearch}
           searchQuery={searchQuery}
+          userLevels={databaseEmp}
         />
         <LensParamTable
           lensParams={getPagedData().paginated}

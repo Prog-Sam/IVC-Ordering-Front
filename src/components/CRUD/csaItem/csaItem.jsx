@@ -6,6 +6,7 @@ import Pagination from '../../../common/pagination';
 import { paginate } from '../../../utils/paginate';
 import CsaItemTable from '../../../common/csaItemTable';
 import MenuHeader from '../../../common/menuHeader';
+import access from './../../../config/accessConfig.json';
 
 const CsaItem = () => {
   const [csaItems, setCsaItems] = useState([]);
@@ -13,6 +14,7 @@ const CsaItem = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [sortColumn, setSortColumn] = useState({});
+  const { databaseEmp } = access;
   const [localEnums, setLocalEnums] = useState({
     status: [
       { id: 0, value: 'TEMPORARY' },
@@ -73,6 +75,7 @@ const CsaItem = () => {
           buttonLabel='CSA'
           onSearch={handleSearch}
           searchQuery={searchQuery}
+          userLevels={databaseEmp}
         />
         <CsaItemTable
           csaItems={getPagedData().paginated}

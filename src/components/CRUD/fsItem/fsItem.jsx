@@ -6,6 +6,7 @@ import Pagination from '../../../common/pagination';
 import { paginate } from '../../../utils/paginate';
 import FsItemTable from '../../../common/fsItemTable';
 import MenuHeader from '../../../common/menuHeader';
+import access from './../../../config/accessConfig.json';
 
 const FsItem = () => {
   const [fsItems, setFsItems] = useState([]);
@@ -20,6 +21,7 @@ const FsItem = () => {
       { id: 2, value: 'DISABLED' },
     ],
   });
+  const { databaseEmp } = access;
 
   useEffect(() => {
     handlePageChange(0);
@@ -73,6 +75,7 @@ const FsItem = () => {
           buttonLabel='Frame'
           onSearch={handleSearch}
           searchQuery={searchQuery}
+          userLevels={databaseEmp}
         />
         <FsItemTable
           fsItems={getPagedData().paginated}

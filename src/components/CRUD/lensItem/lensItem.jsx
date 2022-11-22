@@ -6,6 +6,7 @@ import Pagination from '../../../common/pagination';
 import { paginate } from '../../../utils/paginate';
 import LensItemTable from '../../../common/lensItemTable';
 import MenuHeader from '../../../common/menuHeader';
+import access from './../../../config/accessConfig.json';
 
 const LensItem = () => {
   const [lensItems, setLensItems] = useState([]);
@@ -20,6 +21,7 @@ const LensItem = () => {
       { id: 2, value: 'DISABLED' },
     ],
   });
+  const { databaseEmp } = access;
 
   useEffect(() => {
     handlePageChange(0);
@@ -71,6 +73,7 @@ const LensItem = () => {
           buttonLabel='Lens Item'
           onSearch={handleSearch}
           searchQuery={searchQuery}
+          userLevels={databaseEmp}
         />
         <LensItemTable
           lensItems={getPagedData().paginated}
