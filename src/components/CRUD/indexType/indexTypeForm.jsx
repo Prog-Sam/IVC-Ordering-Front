@@ -48,7 +48,7 @@ const IndexTypeForm = (props) => {
       props.history.push('/indexTypes');
     } catch (e) {
       console.error(e);
-      toast(e);
+      toast.error(e.message);
     }
   };
 
