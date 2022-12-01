@@ -52,7 +52,7 @@ const FSCSAModelForm = (props) => {
       props.history.push('/fscsaModels');
     } catch (e) {
       console.error(e);
-      toast(e);
+      toast.error(e.message);
     }
   };
 
