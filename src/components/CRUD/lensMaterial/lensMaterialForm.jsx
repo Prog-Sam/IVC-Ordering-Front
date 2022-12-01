@@ -47,7 +47,7 @@ const LensMaterialForm = (props) => {
       props.history.push('/lensMaterials');
     } catch (e) {
       console.error(e);
-      toast(e);
+      toast.error(e.message);
     }
   };
 
