@@ -7,14 +7,28 @@ export function getGradeOptions(lensParamKey) {
   if (!lensParamKey) return { sph: [], cyl: [], axis: [], add: [] };
   const { minSph, maxSph, minCyl, maxCyl, minAdd, maxAdd } =
     getLensParam(lensParamKey);
-  let result = {
-    sph: getSelectOptions(generateGradeOption(minSph, maxSph)),
-    cyl: getSelectOptions(generateGradeOption(minCyl, maxCyl)),
-    axis: getSelectOptions(generateNumberOption(0, 180, 1)),
-    add: getSelectOptions(generateGradeOption(minAdd, maxAdd)),
-  };
+  let result = !isDefault(getLensParam(lensParamKey))
+    ? {
+        sph: getSelectOptions(generateGradeOption(minSph, maxSph)),
+        cyl: getSelectOptions(generateGradeOption(minCyl, maxCyl)),
+        axis: getSelectOptions(generateNumberOption(0, 180, 1)),
+        add: getSelectOptions(generateGradeOption(minAdd, maxAdd)),
+      }
+    : {
+        sph: getSelectOptions(generateGradeOption('-4.00', '4.00')),
+        cyl: getSelectOptions(generateGradeOption('0.00', '-4.00')),
+        axis: getSelectOptions(generateNumberOption(0, 180, 1)),
+        add: getSelectOptions(generateGradeOption('0.00', '4.00')),
+      };
 
   return result;
+}
+
+export function isDefault({ minSph, maxSph, minCyl, maxCyl, minAdd, maxAdd }) {
+  if (minSph != '0.00' || maxSph != '0.00') return false;
+  if (minCyl != '0.00' || maxCyl != '0.00') return false;
+  if (minAdd != '0.00' || maxAdd != '0.00') return false;
+  return true;
 }
 
 export function generateGradeOption(min, max, stepBy = 0.25) {
