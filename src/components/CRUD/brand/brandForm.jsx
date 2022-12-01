@@ -57,7 +57,7 @@ const BrandForm = (props) => {
       props.history.push('/brands');
     } catch (e) {
       console.error(e);
-      toast(e);
+      toast.error(e.message);
     }
   };
 

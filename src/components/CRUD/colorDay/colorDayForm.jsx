@@ -47,7 +47,7 @@ const ColorDayForm = (props) => {
       props.history.push('/colorDays');
     } catch (e) {
       console.error(e);
-      toast(e);
+      toast.error(e.message);
     }
   };
 
