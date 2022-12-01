@@ -48,7 +48,7 @@ const ProductFamilyForm = (props) => {
       props.history.push('/productFamilies');
     } catch (e) {
       console.error(e);
-      toast(e);
+      toast.error(e.message);
     }
   };
 
