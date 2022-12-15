@@ -49,9 +49,16 @@ const OrderItemForm = (props) => {
   };
 
   useEffect(() => {
-    if (propId === 'New') return;
-    orderId = propId.split('|')[0];
-    orderItemId = propId.split('|')[1];
+    if (propId === 'New') {
+      const params = new URLSearchParams(props.location.search);
+      const lensItemId = params.get('lensItemId');
+      if (!lensItemId) return;
+      orderId = lensItemId.split('|')[0];
+      orderItemId = lensItemId.split('|')[1];
+    } else {
+      orderId = propId.split('|')[0];
+      orderItemId = propId.split('|')[1];
+    }
 
     async function populateOrderItem() {
       let data = await getItem(orderId, orderItemId);

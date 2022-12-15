@@ -40,15 +40,25 @@ const OrderItemTable = ({
     {
       path: 'id',
       content: (orderItem) => (
-        <button
-          className='btn btn-danger'
-          onClick={() => {
-            removeItem(orderId, orderItem.id);
-            setOrderItems(getItems(orderId));
-          }}
-        >
-          DELETE
-        </button>
+        <div>
+          <Link
+            className='btn btn-warning'
+            to={'/catalog/New?lensItemId=' + `${orderId}|${orderItem.id}`}
+            style={{ 'margin-right': '10px' }}
+          >
+            Use as Template
+          </Link>
+
+          <button
+            className='btn btn-danger'
+            onClick={() => {
+              removeItem(orderId, orderItem.id);
+              setOrderItems(getItems(orderId));
+            }}
+          >
+            DELETE
+          </button>
+        </div>
       ),
     },
   ];
