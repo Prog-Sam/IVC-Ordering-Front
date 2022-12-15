@@ -66,7 +66,7 @@ const Status = () => {
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
 
-    const paginated = paginate(sorted, currentPage, pageSize);
+    const paginated = _.reverse(paginate(sorted, currentPage, pageSize));
     return { paginated, filtered };
   };
 
