@@ -15,10 +15,10 @@ export function getGradeOptions(lensParamKey) {
         add: getSelectOptions(generateGradeOption(minAdd, maxAdd)),
       }
     : {
-        sph: getSelectOptions(generateGradeOption('-4.00', '4.00')),
-        cyl: getSelectOptions(generateGradeOption('0.00', '-4.00')),
+        sph: getSelectOptions(generateGradeOption('-12.00', '12.00')),
+        cyl: getSelectOptions(generateGradeOption('0.00', '-8.00')),
         axis: getSelectOptions(generateNumberOption(0, 180, 1)),
-        add: getSelectOptions(generateGradeOption('0.00', '4.00')),
+        add: getSelectOptions(generateGradeOption('0.00', '12.00')),
       };
 
   return result;
