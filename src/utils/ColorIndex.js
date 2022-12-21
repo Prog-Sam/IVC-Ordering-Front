@@ -16,7 +16,14 @@ export function getColorId(name, colors) {
   return formatter(colorCode.toString(), '0000') + days;
 }
 
+export function getFormattedColors(colors) {
+  return _.map(colors, (c) => {
+    return { id: formatter(c.id.toString(), '0000'), name: c.colorName };
+  });
+}
+
 export function getStringifyName(cdKeys, colors) {
+  if (cdKeys == '[]') return '[]';
   const stringKeys = JSON.parse(formatJSON(cdKeys));
   let stringNames = [];
   for (let key of stringKeys) {

@@ -1,7 +1,8 @@
 import { getCatalog } from './../services/localCatalogService';
 import supplyCategoryConfig from './../config/supplyCategoryConfig.json';
-import { formatJSON, destructureCdKey } from './ColorIndex';
+import { formatJSON, destructureCdKey, getFormattedColors } from './ColorIndex';
 import _ from 'lodash';
+import { formatter } from './formatter';
 
 const catalog = getCatalog();
 
@@ -153,13 +154,26 @@ export function getColors(cdKeys = []) {
 
 export function getColorDays(lpKey) {
   const lensParam = getLensParam(lpKey);
-  if (!lensParam) return [];
+  if (!lensParam || lensParam.cdKeys == '[]' || lensParam.cdKeys == '')
+    return getDefaultColorDays('??');
   const cdKeys = JSON.parse(formatJSON(lensParam.cdKeys));
 
   return _.map(cdKeys, (c) => {
     const destructuredKey = destructureCdKey(c);
     const color = getColor(destructuredKey.key);
     return { id: c, name: `${color.colorName} - ${destructuredKey.days} days` };
+  });
+}
+
+export function getDefaultColorDays(days) {
+  console.log('called');
+  const formattedDays = formatter(days.toString(), '00');
+  const colors = getFormattedColors(catalog.colors);
+  return _.map(colors, (c) => {
+    return {
+      id: c.id + formattedDays,
+      name: `${c.name} - ${formattedDays} days`,
+    };
   });
 }
 
