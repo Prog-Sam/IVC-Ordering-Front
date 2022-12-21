@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Navigation = ({ currentUser, onLogout, ordersCount }) => {
   return (
     <Navbar bg='dark' variant='dark' expand='lg'>
-      <Container>
+      <Container style={{ alignContent: 'stretch', marginLeft: '0px' }}>
         <Navbar.Brand as={Link} to='/'>
           IVC-ORDERING
         </Navbar.Brand>
