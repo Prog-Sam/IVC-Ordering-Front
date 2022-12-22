@@ -19,6 +19,7 @@ import { getCurrentUser, logout } from './services/authService';
 import { getCart, storeCart } from './services/cartService';
 import ProtectedRoute from './common/protectedRoute';
 import access from './config/accessConfig.json';
+import FAQs from './components/Ordering/menu/faqs';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import {
@@ -85,6 +86,7 @@ function OrderingApp() {
               />
               <ProtectedRoute path='/catalog/:id' component={OrderItemForm} />
               <ProtectedRoute path='/catalog' component={OrderItemForm} />
+              <Route path='/faqs' component={FAQs} />
               <Route
                 path='/login'
                 render={(props) => <LoginForm {...props} />}
