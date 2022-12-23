@@ -69,11 +69,7 @@ function OrderingApp() {
             ordersCount={ordersCount}
           />
           <ToastContainer />
-          <main
-            className='container'
-            style={{ alignContent: 'flex-start', marginLeft: '10px' }}
-          >
-            {/* <div style={{ alignContent: 'stretch', marginLeft: '20px' }}> */}
+          <main className='container-fluid'>
             <Switch>
               <ProtectedRoute path='/orders/:id' component={OrderForm} />
               <ProtectedRoute path='/orders' component={Order} />
@@ -96,7 +92,6 @@ function OrderingApp() {
               <Redirect to='/not-found' />
             </Switch>
           </main>
-          {/* </div> */}
         </CartContext.Provider>
       </UserContext.Provider>
     </div>
