@@ -27,6 +27,9 @@ const Navigation = ({ currentUser, onLogout, ordersCount }) => {
             <Link to='/status' className='nav-link'>
               STATUS
             </Link>
+            <Link to='/faqs' className='nav-link'>
+              FAQs
+            </Link>
             {currentUser && (
               <Fragment>
                 <Link to='/#' className='nav-link'>
