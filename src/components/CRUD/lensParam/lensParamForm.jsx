@@ -33,8 +33,9 @@ const LensParamForm = (props) => {
     totalPower: Joi.number().precision(2).required().label('Total Power'),
     desc: Joi.string().allow('').min(1).max(150).label('Description'),
     fitting: Joi.number().required().label('Fitting'),
-    cdKeys: Joi.string().required().label('Colors and Days'),
+    cdKeys: Joi.string().allow('').label('Colors and Days'),
     rules: Joi.string().default('').allow('').max(1000).label('Rules'),
+    status: Joi.boolean().default(true).label('Status'),
   };
 
   useEffect(() => {
@@ -71,10 +72,16 @@ const LensParamForm = (props) => {
   }, []);
 
   const doSubmit = async () => {
+    const finalLensParam = {
+      ...lensParam,
+      ['rules']: lensParam.rules || '',
+      ['desc']: lensParam.desc || '',
+      ['cdKeys']: lensParam.cdKeys || '[]',
+    };
     try {
       const result = isNew
-        ? await saveLensParam(mapToViewModel(lensParam), colorDays)
-        : await updateLensParam(mapToViewModel(lensParam), colorDays);
+        ? await saveLensParam(mapToViewModel(finalLensParam), colorDays)
+        : await updateLensParam(mapToViewModel(finalLensParam), colorDays);
       toast(`Lens Parameter has been ${isNew ? 'added.' : 'updated.'}`);
       props.history.push('/lensParams');
     } catch (e) {
@@ -115,6 +122,10 @@ const LensParamForm = (props) => {
         {renderInput('fitting', 'Fitting')}
         {renderInput('rules', 'Rules')}
         {renderColorDaySelector('cdKeys', 'Colors and Days', colorDays)}
+        {renderSelect('status', 'Status', [
+          { name: 'Active', id: true },
+          { name: 'Inactive', id: false },
+        ])}
         {renderButton('Submit')}
       </form>
     </div>

@@ -30,6 +30,7 @@ const LensItemTable = ({ lensItems, localEnums, sortColumn, onSort }) => {
       ),
       label: 'Actions',
     },
+    { path: 'status', label: 'Status' },
   ];
 
   return (

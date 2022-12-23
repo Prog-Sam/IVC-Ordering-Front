@@ -16,9 +16,8 @@ const LensParam = () => {
   const [sortColumn, setSortColumn] = useState({});
   const [localEnums, setLocalEnums] = useState({
     status: [
-      { id: 0, value: 'TEMPORARY' },
-      { id: 1, value: 'ACTIVE' },
-      { id: 2, value: 'DISABLED' },
+      { id: true, value: 'ACTIVE' },
+      { id: false, value: 'INACTIVE' },
     ],
   });
   const { databaseEmp } = access;

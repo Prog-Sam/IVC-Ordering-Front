@@ -39,6 +39,7 @@ const LensParamTable = ({ lensParams, localEnums, sortColumn, onSort }) => {
     { path: 'fitting', label: 'Fitting' },
     { path: 'cdKeys', label: 'CD-Keys' },
     { path: 'rules', label: 'Rules' },
+    { path: 'status', label: 'Status' },
   ];
 
   return (

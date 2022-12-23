@@ -41,6 +41,7 @@ const LensItemForm = (props) => {
     productFamilyKey: Joi.number().required().label('Product Family'),
     supplyCategoryKey: Joi.number().required().label('Supply Category'),
     materialKey: Joi.number().required().label('Lens Material'),
+    status: Joi.boolean().default(true).allow(''),
   };
 
   useEffect(() => {
@@ -170,8 +171,39 @@ const LensItemForm = (props) => {
     }
 
     async function populateLensItem() {
-      let { data } = await getLensItem(lensItemId);
+      let { data } = await getLensItem(lensItemId, true);
       setLensItem(data);
+      setSubscribers([
+        {
+          path: 'name',
+          keys: {
+            brandKey: data.Brand.name || '',
+            orderTypeKey: data.OrderType.name || '',
+            typeKey: data.LensType.name || '',
+            indexTypeKey: data.IndexType.name || '',
+            productFamilyKey: data.ProductFamily.name || '',
+            materialKey: data.LensMaterial.name || '',
+            supplyCategoryKey: data.SupplyCategory.name || '',
+          },
+          value: '',
+          getValue: function (keys) {
+            return trim(
+              `${keys.brandKey + ' '}${keys.orderTypeKey + ' '}${
+                keys.typeKey + ' '
+              }${keys.indexTypeKey + ' '}${
+                keys.productFamilyKey.length === 0 ||
+                !keys.productFamilyKey.trim()
+                  ? ''
+                  : keys.productFamilyKey + ' '
+              }${
+                keys.materialKey.length === 0 || !keys.materialKey.trim()
+                  ? ''
+                  : keys.materialKey + ' '
+              }${keys.supplyCategoryKey}`
+            );
+          },
+        },
+      ]);
     }
 
     populateLensItem();
@@ -240,6 +272,15 @@ const LensItemForm = (props) => {
           !isNew
         )}
         {renderSelect('materialKey', 'Lens Material', lensMaterials, !isNew)}
+        {renderSelect(
+          'status',
+          'Status',
+          [
+            { name: 'Active', id: true },
+            { name: 'Inactive', id: false },
+          ],
+          isNew
+        )}
         {renderButton('Submit')}
       </form>
     </div>
