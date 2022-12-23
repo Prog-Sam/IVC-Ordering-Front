@@ -28,85 +28,81 @@ const OrderActionButtons = ({
   return (
     <div>
       {location == 'CART' && (
-        <table>
-          <tr>
-            <td>
-              <button
-                type='button'
-                disabled={isDisabled}
-                className='btn btn-primary'
-                onClick={async () => {
-                  setIsDisabled(true);
-                  const result = await submitForApproval(orderId);
-                  if (!result) setIsDisabled(false);
-                  return cartContext.setOrdersCount(getCart().length);
-                }}
-              >
-                SUBMIT
-              </button>
-            </td>
-            <td>
-              <Link to={`/orderItems/${orderId}`} className='btn btn-warning'>
-                OPEN
-              </Link>
-            </td>
-            <td>
-              <button
-                disabled={isDisabled}
-                type='button'
-                className='btn btn-danger'
-                onClick={() => {
-                  setIsDisabled(true);
-                  removeOrder(orderId);
-                  setIsDisabled(false);
-                  return cartContext.setOrdersCount(getCart().length);
-                }}
-              >
-                DELETE
-              </button>
-            </td>
-          </tr>
-        </table>
+        <div className='row'>
+          <div className='col-m pr-2'>
+            <button
+              type='button'
+              disabled={isDisabled}
+              className='btn btn-primary'
+              onClick={async () => {
+                setIsDisabled(true);
+                const result = await submitForApproval(orderId);
+                if (!result) setIsDisabled(false);
+                return cartContext.setOrdersCount(getCart().length);
+              }}
+            >
+              SUBMIT
+            </button>
+          </div>
+          <div className='col-m pr-2'>
+            <Link to={`/orderItems/${orderId}`} className='btn btn-warning'>
+              OPEN
+            </Link>
+          </div>
+          <div className='col-m pr-2'>
+            <button
+              disabled={isDisabled}
+              type='button'
+              className='btn btn-danger'
+              onClick={() => {
+                setIsDisabled(true);
+                removeOrder(orderId);
+                setIsDisabled(false);
+                return cartContext.setOrdersCount(getCart().length);
+              }}
+            >
+              DELETE
+            </button>
+          </div>
+        </div>
       )}
       {location == 'STATUS' && (
-        <table>
-          <tr>
-            <td>
-              {isApprovable() && (
-                <button
-                  type='button'
-                  onClick={async () => {
-                    const result = await updateOrderStatus(
-                      orderId,
-                      orderStatusConfig.approved
-                    );
-                    if (result.status == 200) setOrders(getCart(true));
-                  }}
-                  className='btn btn-success'
-                >
-                  APPROVE
-                </button>
-              )}
-            </td>
-            <td>
-              {isApprovable() && (
-                <button
-                  type='button'
-                  onClick={async () => {
-                    const result = await updateOrderStatus(
-                      orderId,
-                      orderStatusConfig.rejected
-                    );
-                    if (result.status == 200) setOrders(getCart(true));
-                  }}
-                  className='btn btn-danger'
-                >
-                  REJECT
-                </button>
-              )}
-            </td>
-          </tr>
-        </table>
+        <div className='row'>
+          <div className='col-m pr-2'>
+            {isApprovable() && (
+              <button
+                type='button'
+                onClick={async () => {
+                  const result = await updateOrderStatus(
+                    orderId,
+                    orderStatusConfig.approved
+                  );
+                  if (result.status == 200) setOrders(getCart(true));
+                }}
+                className='btn btn-success'
+              >
+                APPROVE
+              </button>
+            )}
+          </div>
+          <div className='col-m'>
+            {isApprovable() && (
+              <button
+                type='button'
+                onClick={async () => {
+                  const result = await updateOrderStatus(
+                    orderId,
+                    orderStatusConfig.rejected
+                  );
+                  if (result.status == 200) setOrders(getCart(true));
+                }}
+                className='btn btn-danger'
+              >
+                REJECT
+              </button>
+            )}
+          </div>
+        </div>
       )}
     </div>
   );
