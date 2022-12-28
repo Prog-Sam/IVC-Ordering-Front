@@ -16,7 +16,13 @@ const BulkGradeDetailTable = ({
     handleGradeChange(value, field, id);
   };
   return (
-    <table className='table'>
+    <table
+      className='table'
+      style={{
+        tableLayout: 'fixed',
+        minWidth: '1000px',
+      }}
+    >
       <thead>
         <tr>
           <th style={{ width: '10%' }}>{'[POSSITION]'}</th>
