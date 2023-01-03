@@ -21,6 +21,11 @@ const SystemSettings = () => {
         <li className='list-group-item'>
           <Link to='/users'>USERS</Link>
         </li>
+        <li className='list-group-item'>
+          <Link to='/posts' className='nav-link'>
+            POSTS
+          </Link>
+        </li>
       </ul>
     </div>
   );

@@ -22,6 +22,7 @@ import Unit from './components/CRUD/unit/unit';
 import TransactionType from './components/CRUD/transactionType/transactionType';
 import TransactionSeries from './components/CRUD/transactionSeries/transactionSeries';
 import User from './components/CRUD/user/user';
+import Post from './components/CRUD/post/post';
 import Home from './components/CRUD/menu/home';
 
 import SupplierForm from './components/CRUD/supplier/supplierForm';
@@ -45,6 +46,7 @@ import UnitForm from './components/CRUD/unit/unitForm';
 import TransactionTypeForm from './components/CRUD/transactionType/transactionTypeForm';
 import TransactionSeriesForm from './components/CRUD/transactionSeries/transactionSeriesForm';
 import UserForm from './components/CRUD/user/userForm';
+import PostForm from './components/CRUD/post/postForm';
 import NotFound from './components/CRUD/menu/notFound';
 import SystemSettings from './components/CRUD/menu/systemSettings';
 import ItemSettings from './components/CRUD/menu/itemSettings';
@@ -186,6 +188,11 @@ function App() {
               inclusion={management}
               component={UserForm}
             />
+            <ProtectedRoute
+              path='/posts/:id'
+              inclusion={management}
+              component={PostForm}
+            />
             {/*Routes for Non Form */}
             <Route path='/login' render={(props) => <LoginForm {...props} />} />
             <Route
@@ -253,6 +260,7 @@ function App() {
               path='/transactionseries'
               render={(props) => <TransactionSeries {...props} />}
             />
+            <Route path='/posts' render={(props) => <Post {...props} />} />
             <Route path='/users' render={(props) => <User {...props} />} />
             <Route
               path='/system-settings'

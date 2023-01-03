@@ -144,6 +144,7 @@ const useForm = (
   const renderButton = (label, isDisabled = false) => {
     return (
       <button
+        type='submit'
         disabled={validate() || isDisabled}
         className='btn btn-primary d-flex align-items-left'
       >
@@ -232,6 +233,21 @@ const useForm = (
       />
     );
   };
+
+  const renderTextArea = (name, label, type = 'text', readOnly = false) => {
+    return (
+      <textarea
+        className='form-control d-flex align-items-left'
+        name={name}
+        label={label}
+        onChange={handleChange}
+        value={state[name] || ''}
+        type={type}
+        readOnly={readOnly}
+        error={errors[name]}
+      />
+    );
+  };
   return [
     state,
     setState,
@@ -246,6 +262,7 @@ const useForm = (
     renderRxField,
     renderFilePicker,
     setSubscribers,
+    renderTextArea,
   ];
 };
 
