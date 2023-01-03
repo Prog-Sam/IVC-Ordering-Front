@@ -7,6 +7,7 @@ import Select from '../common/select';
 import ColorDaySelector from '../common/colorDaySelector';
 import RxField from '../common/rxField';
 import FilePicker from '../common/filePicker';
+import RTAA from 'react-textarea-autosize';
 import { handleColor } from '../utils/ColorIndex';
 import {
   getSelectedOption,
@@ -236,16 +237,32 @@ const useForm = (
 
   const renderTextArea = (name, label, type = 'text', readOnly = false) => {
     return (
-      <textarea
-        className='form-control d-flex align-items-left'
-        name={name}
-        label={label}
-        onChange={handleChange}
-        value={state[name] || ''}
-        type={type}
-        readOnly={readOnly}
-        error={errors[name]}
-      />
+      <div>
+        <div className='form-group'>
+          <div>
+            <label className='d-flex align-items-left' htmlFor={name}>
+              {label}
+            </label>
+          </div>
+          <div>
+            <RTAA
+              style={{
+                resize: 'none',
+              }}
+              className='form-control d-flex align-items-left'
+              name={name}
+              label={label}
+              onChange={handleChange}
+              value={state[name] || ''}
+              type={type}
+              readOnly={readOnly}
+            />
+          </div>
+          {errors[name] && (
+            <div className='alert alert-danger'>{errors[name]}</div>
+          )}
+        </div>
+      </div>
     );
   };
   return [

@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import RTAA from 'react-textarea-autosize';
 
 // const AnnouncementBoard = ({ items }) => {
 //   return (
@@ -56,7 +57,15 @@ const AnnouncementBoard = ({ items }) => {
             </div>
           </div>
           <div className='row'>
-            <div className='col col-span2'>{i.message}</div>
+            <div className='col col-span2'>
+              <RTAA
+                style={{ resize: 'none' }}
+                className='form-control d-flex align-items-left'
+                name={i.title}
+                value={i.message}
+                readOnly={true}
+              />
+            </div>
           </div>
         </div>
       ))}
