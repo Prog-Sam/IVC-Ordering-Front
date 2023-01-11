@@ -49,7 +49,7 @@ export function generateGradeOption(min, max, stepBy = 0.25) {
         i == 0
           ? { name: 'PLANO', id: 'PLANO' }
           : {
-              name: i.toFixed(2).toString(),
+              name: gradifyPositiveGrades(i.toFixed(2).toString()),
               id: i.toFixed(2).toString(),
             }
       );
@@ -65,7 +65,7 @@ export function generateGradeOption(min, max, stepBy = 0.25) {
         i == 0
           ? { name: 'PLANO', id: 'PLANO' }
           : {
-              name: i.toFixed(2).toString(),
+              name: gradifyPositiveGrades(i.toFixed(2).toString()),
               id: i.toFixed(2).toString(),
             }
       );
@@ -73,6 +73,13 @@ export function generateGradeOption(min, max, stepBy = 0.25) {
   }
 
   return result || [{ name: 'N/A', id: '' }];
+}
+
+export function gradifyPositiveGrades(grade) {
+  const firstChar = grade.charAt(0);
+  if (firstChar == '-') return grade;
+  if (firstChar == 'P') return grade;
+  return `+${grade}`;
 }
 
 export function generateNumberOption(min, max, stepBy) {
