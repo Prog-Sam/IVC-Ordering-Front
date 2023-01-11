@@ -21,6 +21,9 @@ const Navigation = ({ currentUser, onLogout }) => {
             <Link to='/system-settings' className='nav-link'>
               SYSTEM
             </Link>
+            <Link to='/faqs' className='nav-link'>
+              FAQs
+            </Link>
             {currentUser && (
               <Fragment>
                 <Link to='/#' className='nav-link'>

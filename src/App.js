@@ -24,6 +24,7 @@ import TransactionSeries from './components/CRUD/transactionSeries/transactionSe
 import User from './components/CRUD/user/user';
 import Post from './components/CRUD/post/post';
 import Home from './components/CRUD/menu/home';
+import FAQs from './components/CRUD/menu/faqs';
 
 import SupplierForm from './components/CRUD/supplier/supplierForm';
 import BrandForm from './components/CRUD/brand/brandForm';
@@ -194,6 +195,7 @@ function App() {
               component={PostForm}
             />
             {/*Routes for Non Form */}
+            <Route path='/faqs' component={FAQs} />
             <Route path='/login' render={(props) => <LoginForm {...props} />} />
             <Route
               path='/suppliers'
