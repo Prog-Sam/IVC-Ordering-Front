@@ -12,8 +12,8 @@ import 'react-bootstrap-accordion/dist/index.css';
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      {/* <App /> */}
-      <OrderingApp />
+      <App />
+      {/* <OrderingApp /> */}
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
