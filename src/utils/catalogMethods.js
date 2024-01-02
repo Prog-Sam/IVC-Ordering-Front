@@ -185,6 +185,10 @@ export function getLensParams(lensItemKey) {
   let lensParams = _.filter(catalog.lensParam, {
     lensItemKey: lensItemKey || '',
   });
+
+  if(lensItemKey != '' && lensParams.length == 0)
+    lensParams = [_.find(catalog.lensParam, {id: '0000000000'})];
+
   return _.map(lensParams, (l) => {
     return addLpName(l);
   });
