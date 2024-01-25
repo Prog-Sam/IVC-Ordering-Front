@@ -89,7 +89,7 @@ export async function isDuplicate(order, branchId, temp = false) {
 
 export async function getOrderFromDb(order, branchId) {
   const { data: ordersInDb } = await httpService.get(
-    `/orders/?branchId=${branchId}&negativeStatus=REJECTED`
+    `/orders/?branchId=${branchId}`
   );
 
   return ordersInDb;
