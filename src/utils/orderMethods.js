@@ -2,23 +2,35 @@ import { saveOrder } from '../services/orderService';
 import { toast } from 'react-toastify';
 import _ from 'lodash';
 import orderStatus from '../config/orderStatusConfig.json';
-import { removeOrder, updateOrder, getOrder } from './../services/cartService';
+import { removeOrder, updateOrder, getOrder, isDuplicate } from './../services/cartService';
 import { updateOrder as updateDbOrder } from '../services/orderService';
+import { getCurrentUser } from '../services/authService';
 
 export async function submitForApproval(orderId) {
   toast('Submitting Order...');
-  const result = await saveOrder(orderId, orderStatus.forApproval);
-  const validatedResult = validateResult(result);
 
-  if (!validatedResult.isValid) {
-    toast.error(validatedResult.result.errorMessage);
-    console.error(validatedResult.result);
-    return false;
+  const duplicated = await isDuplicate(
+    getOrder(orderId),
+    getCurrentUser().branchKey,
+    false,
+    true
+  );
+  if(!duplicated){
+    const result = await saveOrder(orderId, orderStatus.forApproval);
+    const validatedResult = validateResult(result);
+
+    if (!validatedResult.isValid) {
+      toast.error(validatedResult.result.errorMessage);
+      console.error(validatedResult.result);
+      return false;
+    }
+
+    toast.success('Order has been submitted...');
+    removeOrder(orderId);
+    return result;
   }
-
-  toast.success('Order has been submitted...');
-  removeOrder(orderId);
-  return result;
+  toast.error('Order Number Exists in the database.')
+  return false;
 }
 
 export async function updateOrderStatus(txNumber, status) {
@@ -55,3 +67,12 @@ function updateItemsStatus(items, status) {
     return { ...i, ['status']: status };
   });
 }
+
+  function addNonBulkRxPrefix(order) {
+    let localOrder = { ...order };
+    if (order.orderType == 'JOB ORDER')
+      localOrder.cartNumber = 'J' + order.cartNumber;
+    if (order.orderType == 'SPECIAL ORDER')
+      localOrder.cartNumber = 'S' + order.cartNumber;
+    return localOrder;
+  }

@@ -69,12 +69,14 @@ export function updateOrder(order, temp = false) {
   return order;
 }
 
-export async function isDuplicate(order, branchId, temp = false) {
+export async function isDuplicate(order, branchId, temp = false, dbOnly = false) {
   const cart = getCart(temp);
   const orderOnCart = _.find(cart, {
     orderType: order.orderType,
     cartNumber: order.cartNumber,
   });
+
+  console.log(order);
 
   const ordersInDb = await getOrderFromDb(order, branchId);
 
@@ -83,7 +85,7 @@ export async function isDuplicate(order, branchId, temp = false) {
   });
 
   if (orderInDb) return { ...orderInDb, location: 'DATABASE' };
-  if (orderOnCart) return { ...orderOnCart, location: 'CART' };
+  if ((orderOnCart) && (!dbOnly)) return { ...orderOnCart, location: 'CART' };
   return false;
 }
 

@@ -94,6 +94,7 @@ const OrderItem = (props) => {
             try {
               setDisableSubmit(true);
               if (!(await submitForApproval(props.match.params.id))) {
+                setDisableSubmit(false);
                 return;
               }
               cartContext.setOrdersCount(getCart().length);
