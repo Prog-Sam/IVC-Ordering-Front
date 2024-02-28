@@ -25,6 +25,13 @@ const OrderActionButtons = ({
     if (!whitelisted(access.branchManagement, getCurrentUser())) return false;
     return true;
   };
+  const isReceivable = () => {
+    if (status == statusConfig.received) return true;
+    if (status == statusConfig.processing) return true;
+    if (status == statusConfig.dispatched) return true;
+    if (status == statusConfig.pickedUp) return true;
+    return false;
+  }
   return (
     <div>
       {location == 'CART' && (
@@ -99,6 +106,23 @@ const OrderActionButtons = ({
                 className='btn btn-danger'
               >
                 REJECT
+              </button>
+            )}
+          </div>
+          <div className='col-s'>
+            {isReceivable() && (
+              <button
+                type='button'
+                onClick={async () => {
+                  const result = await updateOrderStatus(
+                    orderId,
+                    orderStatusConfig.closed
+                  );
+                  if (result.status == 200) setOrders(getCart(true));
+                }}
+                className='btn btn-warning'
+              >
+                RECEIVE ORDER
               </button>
             )}
           </div>

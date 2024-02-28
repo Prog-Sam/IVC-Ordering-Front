@@ -38,6 +38,7 @@ const OrderTable = ({
           location={location}
         />
       ),
+      label: 'ACTIONS'
     },
   ];
 
@@ -77,6 +78,7 @@ const OrderTable = ({
           setOrders={setOrders}
         />
       ),
+      label: 'ACTIONS'
     },
   ];
 
