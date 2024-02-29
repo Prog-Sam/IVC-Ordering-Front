@@ -76,8 +76,6 @@ export async function isDuplicate(order, branchId, temp = false, dbOnly = false)
     cartNumber: order.cartNumber,
   });
 
-  console.log(order);
-
   const ordersInDb = await getOrderFromDb(order, branchId);
 
   const orderInDb = await _.find(ordersInDb, {
