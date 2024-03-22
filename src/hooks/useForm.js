@@ -138,7 +138,7 @@ const useForm = (
   };
 
   const handleUpload = (url, name) => {
-    console.log('handleUpload Called');
+    console.log('Uploading');
     setState({ ...state, [name]: url });
   };
 

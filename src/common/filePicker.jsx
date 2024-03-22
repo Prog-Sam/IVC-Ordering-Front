@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { saveFile } from '../services/fileService';
 import { toast } from 'react-toastify';
+import imageCompression from 'browser-image-compression';
 
 const FilePicker = ({ name, label, error, value, handleUpload, ...rest }) => {
   const [driveUrl, setDriveUrl] = useState('https://drive.google.com/file/d/');
@@ -31,11 +32,12 @@ const FilePicker = ({ name, label, error, value, handleUpload, ...rest }) => {
     toast.error('No file selected');
   };
 
-  const handleFileChange = (e) => {
+  const handleFileChange = async (e) => {
     if (e.target.files[0]) {
+      const compressedFile = await compressImageFile(e);
       const localFile = {
-        preview: URL.createObjectURL(e.target.files[0]),
-        data: e.target.files[0],
+        preview: URL.createObjectURL(compressedFile),
+        data: compressedFile,
       };
       setFile(localFile);
       console.log('hasFile');
@@ -44,6 +46,23 @@ const FilePicker = ({ name, label, error, value, handleUpload, ...rest }) => {
     console.log('no file');
     setFile(null);
   };
+
+  const compressImageFile = async (e) => {
+    const imageFile = e.target.files[0];
+
+    const options = {
+      maxSizeMB: 1,
+      maxWidthOrHeight: 1920,
+      useWebWorker: true,
+    }
+
+    try {
+      return await imageCompression(imageFile, options);
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
 
   return (
     <Fragment>
